@@ -1,0 +1,29 @@
+version: "3.9"
+services:
+  web:
+    image: "aposp-report-api"
+    container_name: aposp-report-api
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - ConnectionString=MISSING
+  db:
+    image: postgres:13.3
+    container_name: aposp-report-db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./db/var/prod/pgdata:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    networks:
+      - network
+networks:
+  network:
+    driver: bridge

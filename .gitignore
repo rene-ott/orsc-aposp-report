@@ -1,4 +1,5 @@
 bin/
 obj/
-*.user.csproj
+*.csproj.user
 .vs/
+var/

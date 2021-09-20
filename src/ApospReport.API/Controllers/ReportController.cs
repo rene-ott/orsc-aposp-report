@@ -1,6 +1,7 @@
-﻿using ApospReport.Contract;
+﻿using ApospReport.Application.SaveReport;
+using ApospReport.Contract;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace ApospReport.API.Controllers
 {
@@ -8,17 +9,18 @@ namespace ApospReport.API.Controllers
     [Route("api/report")]
     public class ReportController : ControllerBase
     {
-        private readonly ILogger<ReportController> _logger;
+        private readonly IMediator mediator;
 
-        public ReportController(ILogger<ReportController> logger)
+        public ReportController(IMediator mediator)
         {
-            _logger = logger;
+            this.mediator = mediator;
         }
 
         [HttpPost]
         public IActionResult Post([FromBody] ReportDto request)
         {
-            return Ok(request);
+            mediator.Send(new SaveReportCommand(request));
+            return Ok();
         }
     }
 }
