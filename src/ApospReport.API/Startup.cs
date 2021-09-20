@@ -32,7 +32,7 @@ namespace ApospReport.API
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ApospReport v1"));
             }
 
-            app.ApplicationServices.RunDbMigrations();
+            app.ApplicationServices.InitializeDatabase();
 
             app.UseRouting();
 

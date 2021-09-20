@@ -9,8 +9,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ApospReport.DataStore.Migrations
 {
     [DbContext(typeof(ApospReportDbContext))]
-    [Migration("20210920193721_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20210920205721_d")]
+    partial class d
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -25,16 +25,19 @@ namespace ApospReport.DataStore.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
+                        .HasColumnName("id")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("Username")
                         .IsRequired()
                         .HasMaxLength(12)
-                        .HasColumnType("character varying(12)");
+                        .HasColumnType("character varying(12)")
+                        .HasColumnName("username");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("pk_accounts");
 
-                    b.ToTable("Accounts");
+                    b.ToTable("accounts");
                 });
 
             modelBuilder.Entity("ApospReport.Domain.BankItem", b =>
@@ -42,24 +45,31 @@ namespace ApospReport.DataStore.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
+                        .HasColumnName("id")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<int>("AccountId")
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("account_id");
 
                     b.Property<int>("Count")
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("count");
 
                     b.Property<int>("DefinitionId")
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("definition_id");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("pk_bank_items");
 
-                    b.HasIndex("AccountId");
+                    b.HasIndex("AccountId")
+                        .HasDatabaseName("ix_bank_items_account_id");
 
-                    b.HasIndex("DefinitionId");
+                    b.HasIndex("DefinitionId")
+                        .HasDatabaseName("ix_bank_items_definition_id");
 
-                    b.ToTable("BankItems");
+                    b.ToTable("bank_items");
                 });
 
             modelBuilder.Entity("ApospReport.Domain.InventoryItem", b =>
@@ -67,24 +77,31 @@ namespace ApospReport.DataStore.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
+                        .HasColumnName("id")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<int>("AccountId")
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("account_id");
 
                     b.Property<int>("Count")
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("count");
 
                     b.Property<int>("DefinitionId")
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("definition_id");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("pk_inventory_items");
 
-                    b.HasIndex("AccountId");
+                    b.HasIndex("AccountId")
+                        .HasDatabaseName("ix_inventory_items_account_id");
 
-                    b.HasIndex("DefinitionId");
+                    b.HasIndex("DefinitionId")
+                        .HasDatabaseName("ix_inventory_items_definition_id");
 
-                    b.ToTable("InventoryItems");
+                    b.ToTable("inventory_items");
                 });
 
             modelBuilder.Entity("ApospReport.Domain.ItemDefinition", b =>
@@ -92,21 +109,23 @@ namespace ApospReport.DataStore.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
+                        .HasColumnName("id")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<bool>("IsStackable")
-                        .HasColumnType("boolean");
+                        .HasColumnType("boolean")
+                        .HasColumnName("is_stackable");
 
-                    b.Property<int>("ItemId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("Name")
+                    b.Property<string>("Name")
+                        .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("integer");
+                        .HasColumnType("character varying(100)")
+                        .HasColumnName("name");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("pk_item_definitions");
 
-                    b.ToTable("ItemDefinitions");
+                    b.ToTable("item_definitions");
                 });
 
             modelBuilder.Entity("ApospReport.Domain.Account", b =>
@@ -116,20 +135,25 @@ namespace ApospReport.DataStore.Migrations
                             b1.Property<int>("AccountId")
                                 .ValueGeneratedOnAdd()
                                 .HasColumnType("integer")
+                                .HasColumnName("id")
                                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                             b1.Property<int>("BaseLevel")
-                                .HasColumnType("integer");
+                                .HasColumnType("integer")
+                                .HasColumnName("agility_base_level");
 
                             b1.Property<int>("CurrentLevel")
-                                .HasColumnType("integer");
+                                .HasColumnType("integer")
+                                .HasColumnName("agility_current_level");
 
-                            b1.HasKey("AccountId");
+                            b1.HasKey("AccountId")
+                                .HasName("pk_accounts");
 
-                            b1.ToTable("Accounts");
+                            b1.ToTable("accounts");
 
                             b1.WithOwner()
-                                .HasForeignKey("AccountId");
+                                .HasForeignKey("AccountId")
+                                .HasConstraintName("fk_accounts_accounts_id");
                         });
 
                     b.OwnsOne("ApospReport.Domain.Skill", "Attack", b1 =>
@@ -137,20 +161,25 @@ namespace ApospReport.DataStore.Migrations
                             b1.Property<int>("AccountId")
                                 .ValueGeneratedOnAdd()
                                 .HasColumnType("integer")
+                                .HasColumnName("id")
                                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                             b1.Property<int>("BaseLevel")
-                                .HasColumnType("integer");
+                                .HasColumnType("integer")
+                                .HasColumnName("attack_base_level");
 
                             b1.Property<int>("CurrentLevel")
-                                .HasColumnType("integer");
+                                .HasColumnType("integer")
+                                .HasColumnName("attack_current_level");
 
-                            b1.HasKey("AccountId");
+                            b1.HasKey("AccountId")
+                                .HasName("pk_accounts");
 
-                            b1.ToTable("Accounts");
+                            b1.ToTable("accounts");
 
                             b1.WithOwner()
-                                .HasForeignKey("AccountId");
+                                .HasForeignKey("AccountId")
+                                .HasConstraintName("fk_accounts_accounts_id");
                         });
 
                     b.OwnsOne("ApospReport.Domain.Skill", "Cooking", b1 =>
@@ -158,20 +187,25 @@ namespace ApospReport.DataStore.Migrations
                             b1.Property<int>("AccountId")
                                 .ValueGeneratedOnAdd()
                                 .HasColumnType("integer")
+                                .HasColumnName("id")
                                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                             b1.Property<int>("BaseLevel")
-                                .HasColumnType("integer");
+                                .HasColumnType("integer")
+                                .HasColumnName("cooking_base_level");
 
                             b1.Property<int>("CurrentLevel")
-                                .HasColumnType("integer");
+                                .HasColumnType("integer")
+                                .HasColumnName("cooking_current_level");
 
-                            b1.HasKey("AccountId");
+                            b1.HasKey("AccountId")
+                                .HasName("pk_accounts");
 
-                            b1.ToTable("Accounts");
+                            b1.ToTable("accounts");
 
                             b1.WithOwner()
-                                .HasForeignKey("AccountId");
+                                .HasForeignKey("AccountId")
+                                .HasConstraintName("fk_accounts_accounts_id");
                         });
 
                     b.OwnsOne("ApospReport.Domain.Skill", "Crafting", b1 =>
@@ -179,20 +213,25 @@ namespace ApospReport.DataStore.Migrations
                             b1.Property<int>("AccountId")
                                 .ValueGeneratedOnAdd()
                                 .HasColumnType("integer")
+                                .HasColumnName("id")
                                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                             b1.Property<int>("BaseLevel")
-                                .HasColumnType("integer");
+                                .HasColumnType("integer")
+                                .HasColumnName("crafting_base_level");
 
                             b1.Property<int>("CurrentLevel")
-                                .HasColumnType("integer");
+                                .HasColumnType("integer")
+                                .HasColumnName("crafting_current_level");
 
-                            b1.HasKey("AccountId");
+                            b1.HasKey("AccountId")
+                                .HasName("pk_accounts");
 
-                            b1.ToTable("Accounts");
+                            b1.ToTable("accounts");
 
                             b1.WithOwner()
-                                .HasForeignKey("AccountId");
+                                .HasForeignKey("AccountId")
+                                .HasConstraintName("fk_accounts_accounts_id");
                         });
 
                     b.OwnsOne("ApospReport.Domain.Skill", "Defense", b1 =>
@@ -200,20 +239,25 @@ namespace ApospReport.DataStore.Migrations
                             b1.Property<int>("AccountId")
                                 .ValueGeneratedOnAdd()
                                 .HasColumnType("integer")
+                                .HasColumnName("id")
                                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                             b1.Property<int>("BaseLevel")
-                                .HasColumnType("integer");
+                                .HasColumnType("integer")
+                                .HasColumnName("defense_base_level");
 
                             b1.Property<int>("CurrentLevel")
-                                .HasColumnType("integer");
+                                .HasColumnType("integer")
+                                .HasColumnName("defense_current_level");
 
-                            b1.HasKey("AccountId");
+                            b1.HasKey("AccountId")
+                                .HasName("pk_accounts");
 
-                            b1.ToTable("Accounts");
+                            b1.ToTable("accounts");
 
                             b1.WithOwner()
-                                .HasForeignKey("AccountId");
+                                .HasForeignKey("AccountId")
+                                .HasConstraintName("fk_accounts_accounts_id");
                         });
 
                     b.OwnsOne("ApospReport.Domain.Skill", "Firemaking", b1 =>
@@ -221,20 +265,25 @@ namespace ApospReport.DataStore.Migrations
                             b1.Property<int>("AccountId")
                                 .ValueGeneratedOnAdd()
                                 .HasColumnType("integer")
+                                .HasColumnName("id")
                                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                             b1.Property<int>("BaseLevel")
-                                .HasColumnType("integer");
+                                .HasColumnType("integer")
+                                .HasColumnName("firemaking_base_level");
 
                             b1.Property<int>("CurrentLevel")
-                                .HasColumnType("integer");
+                                .HasColumnType("integer")
+                                .HasColumnName("firemaking_current_level");
 
-                            b1.HasKey("AccountId");
+                            b1.HasKey("AccountId")
+                                .HasName("pk_accounts");
 
-                            b1.ToTable("Accounts");
+                            b1.ToTable("accounts");
 
                             b1.WithOwner()
-                                .HasForeignKey("AccountId");
+                                .HasForeignKey("AccountId")
+                                .HasConstraintName("fk_accounts_accounts_id");
                         });
 
                     b.OwnsOne("ApospReport.Domain.Skill", "Fishing", b1 =>
@@ -242,20 +291,25 @@ namespace ApospReport.DataStore.Migrations
                             b1.Property<int>("AccountId")
                                 .ValueGeneratedOnAdd()
                                 .HasColumnType("integer")
+                                .HasColumnName("id")
                                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                             b1.Property<int>("BaseLevel")
-                                .HasColumnType("integer");
+                                .HasColumnType("integer")
+                                .HasColumnName("fishing_base_level");
 
                             b1.Property<int>("CurrentLevel")
-                                .HasColumnType("integer");
+                                .HasColumnType("integer")
+                                .HasColumnName("fishing_current_level");
 
-                            b1.HasKey("AccountId");
+                            b1.HasKey("AccountId")
+                                .HasName("pk_accounts");
 
-                            b1.ToTable("Accounts");
+                            b1.ToTable("accounts");
 
                             b1.WithOwner()
-                                .HasForeignKey("AccountId");
+                                .HasForeignKey("AccountId")
+                                .HasConstraintName("fk_accounts_accounts_id");
                         });
 
                     b.OwnsOne("ApospReport.Domain.Skill", "Fletching", b1 =>
@@ -263,20 +317,25 @@ namespace ApospReport.DataStore.Migrations
                             b1.Property<int>("AccountId")
                                 .ValueGeneratedOnAdd()
                                 .HasColumnType("integer")
+                                .HasColumnName("id")
                                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                             b1.Property<int>("BaseLevel")
-                                .HasColumnType("integer");
+                                .HasColumnType("integer")
+                                .HasColumnName("fletching_base_level");
 
                             b1.Property<int>("CurrentLevel")
-                                .HasColumnType("integer");
+                                .HasColumnType("integer")
+                                .HasColumnName("fletching_current_level");
 
-                            b1.HasKey("AccountId");
+                            b1.HasKey("AccountId")
+                                .HasName("pk_accounts");
 
-                            b1.ToTable("Accounts");
+                            b1.ToTable("accounts");
 
                             b1.WithOwner()
-                                .HasForeignKey("AccountId");
+                                .HasForeignKey("AccountId")
+                                .HasConstraintName("fk_accounts_accounts_id");
                         });
 
                     b.OwnsOne("ApospReport.Domain.Skill", "Herblaw", b1 =>
@@ -284,20 +343,25 @@ namespace ApospReport.DataStore.Migrations
                             b1.Property<int>("AccountId")
                                 .ValueGeneratedOnAdd()
                                 .HasColumnType("integer")
+                                .HasColumnName("id")
                                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                             b1.Property<int>("BaseLevel")
-                                .HasColumnType("integer");
+                                .HasColumnType("integer")
+                                .HasColumnName("herblaw_base_level");
 
                             b1.Property<int>("CurrentLevel")
-                                .HasColumnType("integer");
+                                .HasColumnType("integer")
+                                .HasColumnName("herblaw_current_level");
 
-                            b1.HasKey("AccountId");
+                            b1.HasKey("AccountId")
+                                .HasName("pk_accounts");
 
-                            b1.ToTable("Accounts");
+                            b1.ToTable("accounts");
 
                             b1.WithOwner()
-                                .HasForeignKey("AccountId");
+                                .HasForeignKey("AccountId")
+                                .HasConstraintName("fk_accounts_accounts_id");
                         });
 
                     b.OwnsOne("ApospReport.Domain.Skill", "Hits", b1 =>
@@ -305,20 +369,25 @@ namespace ApospReport.DataStore.Migrations
                             b1.Property<int>("AccountId")
                                 .ValueGeneratedOnAdd()
                                 .HasColumnType("integer")
+                                .HasColumnName("id")
                                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                             b1.Property<int>("BaseLevel")
-                                .HasColumnType("integer");
+                                .HasColumnType("integer")
+                                .HasColumnName("hits_base_level");
 
                             b1.Property<int>("CurrentLevel")
-                                .HasColumnType("integer");
+                                .HasColumnType("integer")
+                                .HasColumnName("hits_current_level");
 
-                            b1.HasKey("AccountId");
+                            b1.HasKey("AccountId")
+                                .HasName("pk_accounts");
 
-                            b1.ToTable("Accounts");
+                            b1.ToTable("accounts");
 
                             b1.WithOwner()
-                                .HasForeignKey("AccountId");
+                                .HasForeignKey("AccountId")
+                                .HasConstraintName("fk_accounts_accounts_id");
                         });
 
                     b.OwnsOne("ApospReport.Domain.Skill", "Magic", b1 =>
@@ -326,20 +395,25 @@ namespace ApospReport.DataStore.Migrations
                             b1.Property<int>("AccountId")
                                 .ValueGeneratedOnAdd()
                                 .HasColumnType("integer")
+                                .HasColumnName("id")
                                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                             b1.Property<int>("BaseLevel")
-                                .HasColumnType("integer");
+                                .HasColumnType("integer")
+                                .HasColumnName("magic_base_level");
 
                             b1.Property<int>("CurrentLevel")
-                                .HasColumnType("integer");
+                                .HasColumnType("integer")
+                                .HasColumnName("magic_current_level");
 
-                            b1.HasKey("AccountId");
+                            b1.HasKey("AccountId")
+                                .HasName("pk_accounts");
 
-                            b1.ToTable("Accounts");
+                            b1.ToTable("accounts");
 
                             b1.WithOwner()
-                                .HasForeignKey("AccountId");
+                                .HasForeignKey("AccountId")
+                                .HasConstraintName("fk_accounts_accounts_id");
                         });
 
                     b.OwnsOne("ApospReport.Domain.Skill", "Mining", b1 =>
@@ -347,20 +421,25 @@ namespace ApospReport.DataStore.Migrations
                             b1.Property<int>("AccountId")
                                 .ValueGeneratedOnAdd()
                                 .HasColumnType("integer")
+                                .HasColumnName("id")
                                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                             b1.Property<int>("BaseLevel")
-                                .HasColumnType("integer");
+                                .HasColumnType("integer")
+                                .HasColumnName("mining_base_level");
 
                             b1.Property<int>("CurrentLevel")
-                                .HasColumnType("integer");
+                                .HasColumnType("integer")
+                                .HasColumnName("mining_current_level");
 
-                            b1.HasKey("AccountId");
+                            b1.HasKey("AccountId")
+                                .HasName("pk_accounts");
 
-                            b1.ToTable("Accounts");
+                            b1.ToTable("accounts");
 
                             b1.WithOwner()
-                                .HasForeignKey("AccountId");
+                                .HasForeignKey("AccountId")
+                                .HasConstraintName("fk_accounts_accounts_id");
                         });
 
                     b.OwnsOne("ApospReport.Domain.Skill", "Prayer", b1 =>
@@ -368,20 +447,25 @@ namespace ApospReport.DataStore.Migrations
                             b1.Property<int>("AccountId")
                                 .ValueGeneratedOnAdd()
                                 .HasColumnType("integer")
+                                .HasColumnName("id")
                                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                             b1.Property<int>("BaseLevel")
-                                .HasColumnType("integer");
+                                .HasColumnType("integer")
+                                .HasColumnName("prayer_base_level");
 
                             b1.Property<int>("CurrentLevel")
-                                .HasColumnType("integer");
+                                .HasColumnType("integer")
+                                .HasColumnName("prayer_current_level");
 
-                            b1.HasKey("AccountId");
+                            b1.HasKey("AccountId")
+                                .HasName("pk_accounts");
 
-                            b1.ToTable("Accounts");
+                            b1.ToTable("accounts");
 
                             b1.WithOwner()
-                                .HasForeignKey("AccountId");
+                                .HasForeignKey("AccountId")
+                                .HasConstraintName("fk_accounts_accounts_id");
                         });
 
                     b.OwnsOne("ApospReport.Domain.Skill", "Ranged", b1 =>
@@ -389,20 +473,25 @@ namespace ApospReport.DataStore.Migrations
                             b1.Property<int>("AccountId")
                                 .ValueGeneratedOnAdd()
                                 .HasColumnType("integer")
+                                .HasColumnName("id")
                                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                             b1.Property<int>("BaseLevel")
-                                .HasColumnType("integer");
+                                .HasColumnType("integer")
+                                .HasColumnName("ranged_base_level");
 
                             b1.Property<int>("CurrentLevel")
-                                .HasColumnType("integer");
+                                .HasColumnType("integer")
+                                .HasColumnName("ranged_current_level");
 
-                            b1.HasKey("AccountId");
+                            b1.HasKey("AccountId")
+                                .HasName("pk_accounts");
 
-                            b1.ToTable("Accounts");
+                            b1.ToTable("accounts");
 
                             b1.WithOwner()
-                                .HasForeignKey("AccountId");
+                                .HasForeignKey("AccountId")
+                                .HasConstraintName("fk_accounts_accounts_id");
                         });
 
                     b.OwnsOne("ApospReport.Domain.Skill", "Smithing", b1 =>
@@ -410,20 +499,25 @@ namespace ApospReport.DataStore.Migrations
                             b1.Property<int>("AccountId")
                                 .ValueGeneratedOnAdd()
                                 .HasColumnType("integer")
+                                .HasColumnName("id")
                                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                             b1.Property<int>("BaseLevel")
-                                .HasColumnType("integer");
+                                .HasColumnType("integer")
+                                .HasColumnName("smithing_base_level");
 
                             b1.Property<int>("CurrentLevel")
-                                .HasColumnType("integer");
+                                .HasColumnType("integer")
+                                .HasColumnName("smithing_current_level");
 
-                            b1.HasKey("AccountId");
+                            b1.HasKey("AccountId")
+                                .HasName("pk_accounts");
 
-                            b1.ToTable("Accounts");
+                            b1.ToTable("accounts");
 
                             b1.WithOwner()
-                                .HasForeignKey("AccountId");
+                                .HasForeignKey("AccountId")
+                                .HasConstraintName("fk_accounts_accounts_id");
                         });
 
                     b.OwnsOne("ApospReport.Domain.Skill", "Strength", b1 =>
@@ -431,20 +525,25 @@ namespace ApospReport.DataStore.Migrations
                             b1.Property<int>("AccountId")
                                 .ValueGeneratedOnAdd()
                                 .HasColumnType("integer")
+                                .HasColumnName("id")
                                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                             b1.Property<int>("BaseLevel")
-                                .HasColumnType("integer");
+                                .HasColumnType("integer")
+                                .HasColumnName("strength_base_level");
 
                             b1.Property<int>("CurrentLevel")
-                                .HasColumnType("integer");
+                                .HasColumnType("integer")
+                                .HasColumnName("strength_current_level");
 
-                            b1.HasKey("AccountId");
+                            b1.HasKey("AccountId")
+                                .HasName("pk_accounts");
 
-                            b1.ToTable("Accounts");
+                            b1.ToTable("accounts");
 
                             b1.WithOwner()
-                                .HasForeignKey("AccountId");
+                                .HasForeignKey("AccountId")
+                                .HasConstraintName("fk_accounts_accounts_id");
                         });
 
                     b.OwnsOne("ApospReport.Domain.Skill", "Thieving", b1 =>
@@ -452,20 +551,25 @@ namespace ApospReport.DataStore.Migrations
                             b1.Property<int>("AccountId")
                                 .ValueGeneratedOnAdd()
                                 .HasColumnType("integer")
+                                .HasColumnName("id")
                                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                             b1.Property<int>("BaseLevel")
-                                .HasColumnType("integer");
+                                .HasColumnType("integer")
+                                .HasColumnName("thieving_base_level");
 
                             b1.Property<int>("CurrentLevel")
-                                .HasColumnType("integer");
+                                .HasColumnType("integer")
+                                .HasColumnName("thieving_current_level");
 
-                            b1.HasKey("AccountId");
+                            b1.HasKey("AccountId")
+                                .HasName("pk_accounts");
 
-                            b1.ToTable("Accounts");
+                            b1.ToTable("accounts");
 
                             b1.WithOwner()
-                                .HasForeignKey("AccountId");
+                                .HasForeignKey("AccountId")
+                                .HasConstraintName("fk_accounts_accounts_id");
                         });
 
                     b.OwnsOne("ApospReport.Domain.Skill", "Woodcut", b1 =>
@@ -473,20 +577,25 @@ namespace ApospReport.DataStore.Migrations
                             b1.Property<int>("AccountId")
                                 .ValueGeneratedOnAdd()
                                 .HasColumnType("integer")
+                                .HasColumnName("id")
                                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                             b1.Property<int>("BaseLevel")
-                                .HasColumnType("integer");
+                                .HasColumnType("integer")
+                                .HasColumnName("woodcut_base_level");
 
                             b1.Property<int>("CurrentLevel")
-                                .HasColumnType("integer");
+                                .HasColumnType("integer")
+                                .HasColumnName("woodcut_current_level");
 
-                            b1.HasKey("AccountId");
+                            b1.HasKey("AccountId")
+                                .HasName("pk_accounts");
 
-                            b1.ToTable("Accounts");
+                            b1.ToTable("accounts");
 
                             b1.WithOwner()
-                                .HasForeignKey("AccountId");
+                                .HasForeignKey("AccountId")
+                                .HasConstraintName("fk_accounts_accounts_id");
                         });
 
                     b.Navigation("Agility");
@@ -531,12 +640,14 @@ namespace ApospReport.DataStore.Migrations
                     b.HasOne("ApospReport.Domain.Account", "Account")
                         .WithMany("BankItems")
                         .HasForeignKey("AccountId")
+                        .HasConstraintName("fk_bank_items_accounts_account_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ApospReport.Domain.ItemDefinition", "Definition")
                         .WithMany("BankItems")
                         .HasForeignKey("DefinitionId")
+                        .HasConstraintName("fk_bank_items_item_definitions_definition_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -550,12 +661,14 @@ namespace ApospReport.DataStore.Migrations
                     b.HasOne("ApospReport.Domain.Account", "Account")
                         .WithMany("InventoryItems")
                         .HasForeignKey("AccountId")
+                        .HasConstraintName("fk_inventory_items_accounts_account_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ApospReport.Domain.ItemDefinition", "Definition")
                         .WithMany("InventoryItems")
                         .HasForeignKey("DefinitionId")
+                        .HasConstraintName("fk_inventory_items_item_definitions_definition_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

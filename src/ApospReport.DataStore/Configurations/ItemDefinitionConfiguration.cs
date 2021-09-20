@@ -9,7 +9,7 @@ namespace ApospReport.DataStore.Configurations
         public void Configure(EntityTypeBuilder<ItemDefinition> entity)
         {
             entity.HasKey(x => x.Id);
-            entity.Property(x => x.ItemId).IsRequired();
+
             entity.Property(x => x.Name).IsRequired().HasMaxLength(100);
             entity.Property(x => x.IsStackable).IsRequired();
 

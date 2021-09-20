@@ -2,15 +2,17 @@
 using ApospReport.DataStore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace ApospReport.DataStore.Migrations
 {
     [DbContext(typeof(ApospReportDbContext))]
-    partial class ApospReportDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210920205126_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -114,10 +116,9 @@ namespace ApospReport.DataStore.Migrations
                         .HasColumnType("boolean")
                         .HasColumnName("is_stackable");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
+                    b.Property<int>("Name")
                         .HasMaxLength(100)
-                        .HasColumnType("character varying(100)")
+                        .HasColumnType("integer")
                         .HasColumnName("name");
 
                     b.HasKey("Id")
