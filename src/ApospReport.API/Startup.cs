@@ -1,3 +1,4 @@
+using ApospReport.Application;
 using ApospReport.DataStore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -15,14 +16,13 @@ namespace ApospReport.API
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAPIServices();
+            services.AddApplicationServices();
             services.AddDataStoreServices(Configuration["ConnectionString"]);
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
