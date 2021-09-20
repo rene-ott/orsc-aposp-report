@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace AposopReport.Application
+﻿namespace ApospReport.Application
 {
     public class Class1
     {

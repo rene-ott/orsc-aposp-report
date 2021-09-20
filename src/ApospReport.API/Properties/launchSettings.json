@@ -17,6 +17,13 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
+    "Docker": {
+      "commandName": "Docker",
+      "launchBrowser": false,
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
+      "publishAllPorts": true,
+      "httpPort": 5001
+    },
     "ApospReport.API": {
       "commandName": "Project",
       "launchBrowser": false,
@@ -26,13 +33,6 @@
       },
       "dotnetRunMessages": "true",
       "applicationUrl": "http://localhost:5000"
-    },
-    "Docker": {
-      "commandName": "Docker",
-      "launchBrowser": false,
-      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
-      "publishAllPorts": true,
-      "httpPort": 5001
     }
   }
 }

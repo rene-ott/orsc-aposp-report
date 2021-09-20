@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ApospReport.Contract\ApospReport.Contract.csproj" />
+    <ProjectReference Include="..\ApospReport.DataStore\ApospReport.DataStore.csproj" />
   </ItemGroup>
 
 </Project>
