@@ -5,13 +5,13 @@ VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApospReport.API", "ApospReport.API\ApospReport.API.csproj", "{17F7E69F-F29C-4F6A-AAF4-848F870AC611}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApospReport.Contract", "ApospReport.Contract\ApospReport.Contract.csproj", "{5ECD42B3-EC60-4398-B715-0AE4BA48680F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApospReport.Contract", "ApospReport.Contract\ApospReport.Contract.csproj", "{5ECD42B3-EC60-4398-B715-0AE4BA48680F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AposopReport.Application", "AposopReport.Application\AposopReport.Application.csproj", "{0144BBAA-E843-4A78-A150-A9F0920E1385}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApospReport.Application", "ApospReport.Application\ApospReport.Application.csproj", "{0144BBAA-E843-4A78-A150-A9F0920E1385}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApospReport.Domain", "ApospReport.Domain\ApospReport.Domain.csproj", "{7DAACF42-ECAD-4FA1-A8EA-547FF21C028D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApospReport.Domain", "ApospReport.Domain\ApospReport.Domain.csproj", "{7DAACF42-ECAD-4FA1-A8EA-547FF21C028D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApospReport.DataStore", "Aposp.DataStore\ApospReport.DataStore.csproj", "{6424383B-C106-444B-A4ED-6CF4AD801A8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApospReport.DataStore", "ApospReport.DataStore\ApospReport.DataStore.csproj", "{6424383B-C106-444B-A4ED-6CF4AD801A8D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
