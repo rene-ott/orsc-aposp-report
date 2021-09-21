@@ -39,9 +39,7 @@ namespace ApospReport.DataStore
             if (context.ItemDefinitions.Any())
                 return;
 
-            foreach (var itemDef in GetAllItemDefinitions().Skip(10).Take(10))
-                context.ItemDefinitions.Add(itemDef);
-
+            context.AddRange(GetAllItemDefinitions().ToList());
             context.SaveChanges();
         }
 

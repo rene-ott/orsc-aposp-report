@@ -9,8 +9,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ApospReport.DataStore.Migrations
 {
     [DbContext(typeof(ApospReportDbContext))]
-    [Migration("20210920205721_d")]
-    partial class d
+    [Migration("20210921102720_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -107,10 +107,8 @@ namespace ApospReport.DataStore.Migrations
             modelBuilder.Entity("ApospReport.Domain.ItemDefinition", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
-                        .HasColumnName("id")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnName("id");
 
                     b.Property<bool>("IsStackable")
                         .HasColumnType("boolean")
@@ -598,41 +596,59 @@ namespace ApospReport.DataStore.Migrations
                                 .HasConstraintName("fk_accounts_accounts_id");
                         });
 
-                    b.Navigation("Agility");
+                    b.Navigation("Agility")
+                        .IsRequired();
 
-                    b.Navigation("Attack");
+                    b.Navigation("Attack")
+                        .IsRequired();
 
-                    b.Navigation("Cooking");
+                    b.Navigation("Cooking")
+                        .IsRequired();
 
-                    b.Navigation("Crafting");
+                    b.Navigation("Crafting")
+                        .IsRequired();
 
-                    b.Navigation("Defense");
+                    b.Navigation("Defense")
+                        .IsRequired();
 
-                    b.Navigation("Firemaking");
+                    b.Navigation("Firemaking")
+                        .IsRequired();
 
-                    b.Navigation("Fishing");
+                    b.Navigation("Fishing")
+                        .IsRequired();
 
-                    b.Navigation("Fletching");
+                    b.Navigation("Fletching")
+                        .IsRequired();
 
-                    b.Navigation("Herblaw");
+                    b.Navigation("Herblaw")
+                        .IsRequired();
 
-                    b.Navigation("Hits");
+                    b.Navigation("Hits")
+                        .IsRequired();
 
-                    b.Navigation("Magic");
+                    b.Navigation("Magic")
+                        .IsRequired();
 
-                    b.Navigation("Mining");
+                    b.Navigation("Mining")
+                        .IsRequired();
 
-                    b.Navigation("Prayer");
+                    b.Navigation("Prayer")
+                        .IsRequired();
 
-                    b.Navigation("Ranged");
+                    b.Navigation("Ranged")
+                        .IsRequired();
 
-                    b.Navigation("Smithing");
+                    b.Navigation("Smithing")
+                        .IsRequired();
 
-                    b.Navigation("Strength");
+                    b.Navigation("Strength")
+                        .IsRequired();
 
-                    b.Navigation("Thieving");
+                    b.Navigation("Thieving")
+                        .IsRequired();
 
-                    b.Navigation("Woodcut");
+                    b.Navigation("Woodcut")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ApospReport.Domain.BankItem", b =>

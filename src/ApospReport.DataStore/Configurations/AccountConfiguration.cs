@@ -38,11 +38,8 @@ namespace ApospReport.DataStore.Configurations
 
         private static void ConfigureSkill(EntityTypeBuilder<Account> entity, Expression<Func<Account, Skill>> func)
         {
-            entity.OwnsOne(func, x =>
-            {
-                x.Property(p => p.BaseLevel).IsRequired();
-                x.Property(p => p.CurrentLevel).IsRequired();
-            });
+            entity.OwnsOne(func);
+            entity.Navigation(func).IsRequired();
         }
     }
 }
