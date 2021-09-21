@@ -1,5 +1,6 @@
 ﻿using ApospReport.DataStore.Configurations;
 using ApospReport.Domain;
+using ApospReport.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace ApospReport.DataStore

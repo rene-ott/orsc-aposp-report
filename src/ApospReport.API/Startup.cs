@@ -1,10 +1,12 @@
 using ApospReport.Application;
 using ApospReport.DataStore;
+using ApospReport.Domain;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+
 namespace ApospReport.API
 {
     public class Startup
@@ -20,6 +22,7 @@ namespace ApospReport.API
         {
             services.AddAPIServices();
             services.AddApplicationServices();
+            services.AddDomainServices();
             services.AddDataStoreServices(Configuration["ConnectionString"]);
         }
 

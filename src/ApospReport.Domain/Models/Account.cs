@@ -1,12 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
-namespace ApospReport.Domain
+namespace ApospReport.Domain.Models
 {
     public class Account
     {
         public int Id { get; set; }
         public string Username { get; set; }
 
+        /*
         public Skill Attack { get; set; }
         public Skill Defense { get; set; }
         public Skill Strength { get; set; }
@@ -25,8 +27,11 @@ namespace ApospReport.Domain
         public Skill Herblaw { get; set; }
         public Skill Agility { get; set; }
         public Skill Thieving { get; set; }
+        */
 
-        public ICollection<InventoryItem> InventoryItems{ get; set; }
-        public ICollection<BankItem> BankItems { get; set; }
+        public ICollection<InventoryItem> InventoryItems { get; set; } = new List<InventoryItem>();
+        public ICollection<BankItem> BankItems { get; set; } = new List<BankItem>();
+
+        public DateTime? BankViewTimestamp { get; set; }
     }
 }

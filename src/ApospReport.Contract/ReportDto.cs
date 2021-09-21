@@ -5,13 +5,13 @@ namespace ApospReport.Contract
 {
     public class ReportDto
     {
-        public DateTime Timestamp { get; set; }
         public string Username { get; set; }
 
-        public IList<ItemDto> InventoryItems { get; set; }
-        public IList<SkillDto> SkillLevels { get; set; }
+        public IList<ReportSkillDto> Skills { get; set; }
 
-        public DateTime LastViewedBankTimestamp { get; set; }
-        public IList<ItemDto> BankItems { get; set; }
+        public IList<ReportItemDto> InventoryItems { get; set; }
+        public IList<ReportItemDto> BankItems { get; set; }
+
+        public DateTime? BankViewTimestamp { get; set; }
     }
 }

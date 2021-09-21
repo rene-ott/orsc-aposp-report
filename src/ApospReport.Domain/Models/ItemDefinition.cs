@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ApospReport.Domain
+namespace ApospReport.Domain.Models
 {
     public class ItemDefinition
     {

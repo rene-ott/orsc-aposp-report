@@ -1,4 +1,4 @@
-﻿namespace ApospReport.Domain
+﻿namespace ApospReport.Domain.Models
 {
     public class BankItem : AccountItem
     {

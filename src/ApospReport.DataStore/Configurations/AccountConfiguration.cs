@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 using ApospReport.Domain;
+using ApospReport.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -13,6 +14,7 @@ namespace ApospReport.DataStore.Configurations
             entity.HasKey(x => x.Id);
             entity.Property(x => x.Username).HasMaxLength(12).IsRequired();
 
+            /*
             ConfigureSkill(entity, x => x.Attack);
             ConfigureSkill(entity, x => x.Defense);
             ConfigureSkill(entity, x => x.Strength);
@@ -31,6 +33,7 @@ namespace ApospReport.DataStore.Configurations
             ConfigureSkill(entity, x => x.Herblaw);
             ConfigureSkill(entity, x => x.Agility);
             ConfigureSkill(entity, x => x.Thieving);
+            */
 
             entity.HasMany(x => x.InventoryItems).WithOne(x => x.Account).IsRequired();
             entity.HasMany(x => x.BankItems).WithOne(x => x.Account).IsRequired();

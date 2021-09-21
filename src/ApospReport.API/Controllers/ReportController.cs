@@ -1,4 +1,5 @@
-﻿using ApospReport.Application.SaveReport;
+﻿using System.Threading.Tasks;
+using ApospReport.Application.SaveReport;
 using ApospReport.Contract;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -17,9 +18,9 @@ namespace ApospReport.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] ReportDto request)
+        public async Task<IActionResult> Post([FromBody] ReportDto request)
         {
-            mediator.Send(new SaveReportCommand(request));
+            await mediator.Send(new SaveReportCommand(request));
             return Ok();
         }
     }

@@ -1,4 +1,5 @@
 ﻿using ApospReport.Domain;
+using ApospReport.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
