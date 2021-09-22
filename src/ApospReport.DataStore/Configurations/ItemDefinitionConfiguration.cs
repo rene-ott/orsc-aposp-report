@@ -1,5 +1,4 @@
-﻿using ApospReport.Domain;
-using ApospReport.Domain.Models;
+﻿using ApospReport.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -15,8 +14,8 @@ namespace ApospReport.DataStore.Configurations
             entity.Property(x => x.Name).IsRequired().HasMaxLength(100);
             entity.Property(x => x.IsStackable).IsRequired();
 
-            entity.HasMany(x => x.InventoryItems).WithOne(x => x.Definition).IsRequired();
-            entity.HasMany(x => x.BankItems).WithOne(x => x.Definition).IsRequired();
+            entity.HasMany(x => x.InventoryItems).WithOne(x => x.ItemDefinition).IsRequired();
+            entity.HasMany(x => x.BankItems).WithOne(x => x.ItemDefinition).IsRequired();
         }
     }
 }

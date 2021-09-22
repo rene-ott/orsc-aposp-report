@@ -41,8 +41,8 @@ namespace ApospReport.DataStore.Migrations
                 {
                     id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    item_definition_id = table.Column<int>(type: "integer", nullable: false),
                     count = table.Column<int>(type: "integer", nullable: false),
-                    definition_id = table.Column<int>(type: "integer", nullable: false),
                     account_id = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
@@ -55,8 +55,8 @@ namespace ApospReport.DataStore.Migrations
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "fk_bank_items_item_definitions_definition_id",
-                        column: x => x.definition_id,
+                        name: "fk_bank_items_item_definitions_item_definition_id",
+                        column: x => x.item_definition_id,
                         principalTable: "item_definitions",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
@@ -68,8 +68,8 @@ namespace ApospReport.DataStore.Migrations
                 {
                     id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    item_definition_id = table.Column<int>(type: "integer", nullable: false),
                     count = table.Column<int>(type: "integer", nullable: false),
-                    definition_id = table.Column<int>(type: "integer", nullable: false),
                     account_id = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
@@ -82,8 +82,8 @@ namespace ApospReport.DataStore.Migrations
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "fk_inventory_items_item_definitions_definition_id",
-                        column: x => x.definition_id,
+                        name: "fk_inventory_items_item_definitions_item_definition_id",
+                        column: x => x.item_definition_id,
                         principalTable: "item_definitions",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
@@ -95,9 +95,9 @@ namespace ApospReport.DataStore.Migrations
                 column: "account_id");
 
             migrationBuilder.CreateIndex(
-                name: "ix_bank_items_definition_id",
+                name: "ix_bank_items_item_definition_id",
                 table: "bank_items",
-                column: "definition_id");
+                column: "item_definition_id");
 
             migrationBuilder.CreateIndex(
                 name: "ix_inventory_items_account_id",
@@ -105,9 +105,9 @@ namespace ApospReport.DataStore.Migrations
                 column: "account_id");
 
             migrationBuilder.CreateIndex(
-                name: "ix_inventory_items_definition_id",
+                name: "ix_inventory_items_item_definition_id",
                 table: "inventory_items",
-                column: "definition_id");
+                column: "item_definition_id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

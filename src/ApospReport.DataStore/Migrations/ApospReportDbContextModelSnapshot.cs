@@ -59,9 +59,9 @@ namespace ApospReport.DataStore.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("count");
 
-                    b.Property<int>("DefinitionId")
+                    b.Property<int>("ItemDefinitionId")
                         .HasColumnType("integer")
-                        .HasColumnName("definition_id");
+                        .HasColumnName("item_definition_id");
 
                     b.HasKey("Id")
                         .HasName("pk_bank_items");
@@ -69,8 +69,8 @@ namespace ApospReport.DataStore.Migrations
                     b.HasIndex("AccountId")
                         .HasDatabaseName("ix_bank_items_account_id");
 
-                    b.HasIndex("DefinitionId")
-                        .HasDatabaseName("ix_bank_items_definition_id");
+                    b.HasIndex("ItemDefinitionId")
+                        .HasDatabaseName("ix_bank_items_item_definition_id");
 
                     b.ToTable("bank_items");
                 });
@@ -91,9 +91,9 @@ namespace ApospReport.DataStore.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("count");
 
-                    b.Property<int>("DefinitionId")
+                    b.Property<int>("ItemDefinitionId")
                         .HasColumnType("integer")
-                        .HasColumnName("definition_id");
+                        .HasColumnName("item_definition_id");
 
                     b.HasKey("Id")
                         .HasName("pk_inventory_items");
@@ -101,8 +101,8 @@ namespace ApospReport.DataStore.Migrations
                     b.HasIndex("AccountId")
                         .HasDatabaseName("ix_inventory_items_account_id");
 
-                    b.HasIndex("DefinitionId")
-                        .HasDatabaseName("ix_inventory_items_definition_id");
+                    b.HasIndex("ItemDefinitionId")
+                        .HasDatabaseName("ix_inventory_items_item_definition_id");
 
                     b.ToTable("inventory_items");
                 });
@@ -138,16 +138,16 @@ namespace ApospReport.DataStore.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ApospReport.Domain.Models.ItemDefinition", "Definition")
+                    b.HasOne("ApospReport.Domain.Models.ItemDefinition", "ItemDefinition")
                         .WithMany("BankItems")
-                        .HasForeignKey("DefinitionId")
-                        .HasConstraintName("fk_bank_items_item_definitions_definition_id")
+                        .HasForeignKey("ItemDefinitionId")
+                        .HasConstraintName("fk_bank_items_item_definitions_item_definition_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Account");
 
-                    b.Navigation("Definition");
+                    b.Navigation("ItemDefinition");
                 });
 
             modelBuilder.Entity("ApospReport.Domain.Models.InventoryItem", b =>
@@ -159,16 +159,16 @@ namespace ApospReport.DataStore.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ApospReport.Domain.Models.ItemDefinition", "Definition")
+                    b.HasOne("ApospReport.Domain.Models.ItemDefinition", "ItemDefinition")
                         .WithMany("InventoryItems")
-                        .HasForeignKey("DefinitionId")
-                        .HasConstraintName("fk_inventory_items_item_definitions_definition_id")
+                        .HasForeignKey("ItemDefinitionId")
+                        .HasConstraintName("fk_inventory_items_item_definitions_item_definition_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Account");
 
-                    b.Navigation("Definition");
+                    b.Navigation("ItemDefinition");
                 });
 
             modelBuilder.Entity("ApospReport.Domain.Models.Account", b =>

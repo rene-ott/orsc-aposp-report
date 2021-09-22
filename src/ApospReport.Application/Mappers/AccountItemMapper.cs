@@ -22,7 +22,7 @@ namespace ApospReport.Application.Mappers
         {
             return new()
             {
-                DefinitionId = item.Id,
+                ItemDefinitionId = item.Id,
                 Count = item.Count
             };
         }
