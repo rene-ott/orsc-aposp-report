@@ -1,6 +1,6 @@
 ﻿namespace ApospReport.Contract
 {
-    public class ReportItemDto
+    public class ItemDto
     {
         public int Id { get; set; }
         public int Count { get; set; }

@@ -7,17 +7,13 @@ namespace ApospReport.Application.Mappers
 {
     internal interface ISkillMapper
     {
-        IList<Skill> MapFromReport(IList<ReportSkillDto> skills);
+        Skill MapFromReport(SkillDto skill);
     }
 
     internal class SkillMapper : ISkillMapper
     {
-        public IList<Skill> MapFromReport(IList<ReportSkillDto> skills)
-        {
-            return skills.Select(MapFromReport).ToList();
-        }
 
-        private static Skill MapFromReport(ReportSkillDto skill)
+        public Skill MapFromReport(SkillDto skill)
         {
             return new()
             {

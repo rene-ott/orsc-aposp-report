@@ -8,30 +8,31 @@ using ApospReport.Domain.Contracts;
 using ApospReport.Domain.Models;
 using MediatR;
 
-namespace ApospReport.Application.SaveReport
+namespace ApospReport.Application.SaveAccountReport
 {
-    internal class SaveReportCommandHandler : IRequestHandler<SaveReportCommand>
+    internal class SaveAccountReportCommandHandler : IRequestHandler<SaveAccountReportCommand>
     {
         private readonly IGenericRepository genericRepository;
         private readonly ISkillMapper skillMapper;
         private readonly IAccountItemMapper accountItemMapper;
+        private readonly IAccountMapper accountMapper;
 
-        public SaveReportCommandHandler(IGenericRepository genericRepository, IAccountItemMapper accountItemMapper, ISkillMapper skillMapper)
+        public SaveAccountReportCommandHandler(IGenericRepository genericRepository, IAccountItemMapper accountItemMapper, ISkillMapper skillMapper, IAccountMapper accountMapper)
         {
             this.genericRepository = genericRepository;
             this.accountItemMapper = accountItemMapper;
             this.skillMapper = skillMapper;
+            this.accountMapper = accountMapper;
         }
 
-        public async Task<Unit> Handle(SaveReportCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(SaveAccountReportCommand request, CancellationToken cancellationToken)
         {
-            var report = request.Report;
+            var report = request.Account;
 
             var account = await genericRepository.GetAccount(report.Username) ?? new Account { Username = report.Username };
 
             UpdateAccountBankItems(account, report.BankItems, report.BankViewTimestamp);
             UpdateAccountInventoryItems(account, report.InventoryItems);
-            //UpdateAccountSkills(account, report.Skills);
 
             await genericRepository.UpsertAccount(account);
             await genericRepository.Save();
@@ -39,7 +40,7 @@ namespace ApospReport.Application.SaveReport
             return Unit.Value;
         }
 
-        private void UpdateAccountBankItems(Account account, IList<ReportItemDto> reportBankItems, DateTime? bankViewTimestamp)
+        private void UpdateAccountBankItems(Account account, IList<ItemDto> reportBankItems, DateTime? bankViewTimestamp)
         {
             if (bankViewTimestamp == null)
                 return;
@@ -52,7 +53,7 @@ namespace ApospReport.Application.SaveReport
                 account.BankItems.Add(bankItem);
         }
 
-        private void UpdateAccountInventoryItems(Account account, IList<ReportItemDto> reportInventoryItems)
+        private void UpdateAccountInventoryItems(Account account, IList<ItemDto> reportInventoryItems)
         {
             account.InventoryItems.Clear();
             var inventoryItems = accountItemMapper.MapFromReport<InventoryItem>(reportInventoryItems);
@@ -60,7 +61,7 @@ namespace ApospReport.Application.SaveReport
                 account.InventoryItems.Add(inventoryItem);
         }
 
-        private void UpdateAccountSkills(Account account, IList<ReportSkillDto> reportSkills)
+        private void UpdateAccountSkills(Account account, IList<SkillDto> reportSkills)
         {
             var skills = skillMapper.MapFromReport(reportSkills);
 

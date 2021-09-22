@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using ApospReport.Application.SaveReport;
+using ApospReport.Application.SaveAccountReport;
 using ApospReport.Contract;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace ApospReport.API.Controllers
 {
     [ApiController]
-    [Route("api/report")]
+    [Route("api/account")]
     public class ReportController : ControllerBase
     {
         private readonly IMediator mediator;
@@ -18,9 +18,9 @@ namespace ApospReport.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] ReportDto request)
+        public async Task<IActionResult> Post([FromBody] AccountDto request)
         {
-            await mediator.Send(new SaveReportCommand(request));
+            await mediator.Send(new SaveAccountReportCommand(request));
             return Ok();
         }
     }

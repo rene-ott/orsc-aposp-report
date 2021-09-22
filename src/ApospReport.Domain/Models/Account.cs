@@ -8,7 +8,7 @@ namespace ApospReport.Domain.Models
         public int Id { get; set; }
         public string Username { get; set; }
 
-        /*
+        
         public Skill Attack { get; set; }
         public Skill Defense { get; set; }
         public Skill Strength { get; set; }
@@ -27,7 +27,6 @@ namespace ApospReport.Domain.Models
         public Skill Herblaw { get; set; }
         public Skill Agility { get; set; }
         public Skill Thieving { get; set; }
-        */
 
         public ICollection<InventoryItem> InventoryItems { get; set; } = new List<InventoryItem>();
         public ICollection<BankItem> BankItems { get; set; } = new List<BankItem>();
