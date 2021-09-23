@@ -9,14 +9,19 @@ namespace ApospReport.DataStore
     {
         public static void AddDataStoreServices(this IServiceCollection services, string connectionString)
         {
-            services.AddDbContext<ApospReportDbContext>(options => options.UseNpgsql(connectionString));
+            services.AddDbContext<ApospReportDbContext>(options =>
+                options.UseNpgsql(connectionString).UseSnakeCaseNamingConvention()
+            );
             services.AddScoped<IGenericRepository, GenericRepository>();
+
+            services.AddSingleton<IDbInitializer, DbInitializer>();
         }
 
-        public static void RunDbMigrations(this IServiceProvider serviceProvider)
+        public static void InitializeDatabase(this IServiceProvider serviceProvider)
         {
-            using var scope = serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope();
-            scope.ServiceProvider.GetRequiredService<ApospReportDbContext>().Database.Migrate();
+            var dbInitializer = serviceProvider.GetRequiredService<IDbInitializer>();
+            dbInitializer.RunMigrations();
+            dbInitializer.SeedData();
         }
     }
 }
