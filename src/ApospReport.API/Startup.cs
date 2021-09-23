@@ -3,6 +3,7 @@ using ApospReport.DataStore;
 using ApospReport.Domain;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.SpaServices;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -35,10 +36,9 @@ namespace ApospReport.API
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ApospReport v1"));
 
-            if (!env.IsDevelopment())
-            {
+            // production SPA static files
+            if (env.IsProduction())
                 app.UseSpaStaticFiles();
-            }
 
             app.ApplicationServices.InitializeDatabase();
 
@@ -49,6 +49,12 @@ namespace ApospReport.API
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            app.UseSpa(spaBuilder =>
+            {
+                if (env.IsDevelopment())
+                    spaBuilder.UseProxyToSpaDevelopmentServer("http://localhost:4200");
             });
         }
     }
