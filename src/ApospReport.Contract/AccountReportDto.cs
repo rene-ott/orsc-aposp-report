@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ApospReport.Contract
 {
-    public class AccountDto
+    public class AccountReportDto
     {
         public string Username { get; set; }
 
@@ -26,8 +26,8 @@ namespace ApospReport.Contract
         public SkillDto Agility { get; set; }
         public SkillDto Thieving { get; set; }
 
-        public IList<ItemDto> InventoryItems { get; set; }
-        public IList<ItemDto> BankItems { get; set; }
+        public IList<AccountReportItemDto> InventoryItems { get; set; }
+        public IList<AccountReportItemDto> BankItems { get; set; }
 
         public DateTime? BankViewTimestamp { get; set; }
     }

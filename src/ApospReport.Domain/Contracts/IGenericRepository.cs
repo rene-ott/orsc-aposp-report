@@ -7,8 +7,11 @@ namespace ApospReport.Domain.Contracts
     public interface IGenericRepository
     {
         Task<Account> GetAccount(string username);
+        Task<IList<Account>> GetAccountsWithItems();
+        Task<Account> GetAccountWithItems(string username);
         Task UpsertAccount(Account account);
-        Task<IList<ItemDefinition>> GetItemDefinitions();
+        void Remove(Account account);
+        Task<IList<ItemDefinition>> GetBankItemsWithAccounts();
         Task Save();
     }
 }

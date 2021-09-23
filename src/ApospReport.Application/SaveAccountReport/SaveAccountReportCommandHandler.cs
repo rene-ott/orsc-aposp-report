@@ -25,10 +25,10 @@ namespace ApospReport.Application.SaveAccountReport
 
         public async Task<Unit> Handle(SaveAccountReportCommand request, CancellationToken cancellationToken)
         {
-            var report = request.Account;
+            var report = request.AccountReport;
 
-            var existingAccount = await genericRepository.GetAccount(report.Username);
-            var inputAccount = accountMapper.MapFromReport(request.Account);
+            var existingAccount = await genericRepository.GetAccountWithItems(report.Username);
+            var inputAccount = accountMapper.MapFromDto(request.AccountReport);
 
             UpdateAccountSkills(existingAccount, inputAccount);
 
@@ -43,7 +43,7 @@ namespace ApospReport.Application.SaveAccountReport
             return Unit.Value;
         }
 
-        private void UpdateAccountBankItems(Account account, IList<ItemDto> reportBankItems, DateTime? bankViewTimestamp)
+        private void UpdateAccountBankItems(Account account, IList<AccountReportItemDto> reportBankItems, DateTime? bankViewTimestamp)
         {
             if (bankViewTimestamp == null)
                 return;
@@ -51,15 +51,15 @@ namespace ApospReport.Application.SaveAccountReport
             account.BankViewTimestamp = bankViewTimestamp;
 
             account.BankItems.Clear();
-            var bankItems = accountItemMapper.MapFromReport<BankItem>(reportBankItems);
+            var bankItems = accountItemMapper.MapFromDto<BankItem>(reportBankItems);
             foreach (var bankItem in bankItems)
                 account.BankItems.Add(bankItem);
         }
 
-        private void UpdateAccountInventoryItems(Account account, IList<ItemDto> reportInventoryItems)
+        private void UpdateAccountInventoryItems(Account account, IList<AccountReportItemDto> reportInventoryItems)
         {
             account.InventoryItems.Clear();
-            var inventoryItems = accountItemMapper.MapFromReport<InventoryItem>(reportInventoryItems);
+            var inventoryItems = accountItemMapper.MapFromDto<InventoryItem>(reportInventoryItems);
             foreach (var inventoryItem in inventoryItems)
                 account.InventoryItems.Add(inventoryItem);
         }

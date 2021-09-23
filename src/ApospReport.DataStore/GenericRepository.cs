@@ -23,17 +23,44 @@ namespace ApospReport.DataStore
                 .SingleOrDefaultAsync();
         }
 
+        public async Task<Account> GetAccountWithItems(string username)
+        {
+            return await dbContext.Accounts
+                .Where(x => x.Username == username)
+                .Include(x => x.BankItems)
+                .Include(x => x.InventoryItems)
+                .SingleOrDefaultAsync();
+        }
+
+        public async Task<IList<Account>> GetAccountsWithItems()
+        {
+            return await dbContext.Accounts
+                .Include(x => x.BankItems).ThenInclude(x => x.ItemDefinition)
+                .Include(x => x.InventoryItems).ThenInclude(x => x.ItemDefinition)
+                .OrderBy(x => x.Username)
+                .ToListAsync();
+        }
+
+        public async Task<IList<ItemDefinition>> GetBankItemsWithAccounts()
+        {
+            return await dbContext.ItemDefinitions
+                .Include(x => x.BankItems)
+                    .ThenInclude(x => x.Account)
+                .Where(x => x.BankItems.Any())
+                .ToListAsync();
+        }
+
+        public void Remove(Account account)
+        {
+            dbContext.Remove(account);
+        }
+
         public async Task UpsertAccount(Account account)
         {
             if (account.Id == 0)
                 await dbContext.Accounts.AddAsync(account);
             else
                 dbContext.Accounts.Update(account);
-        }
-
-        public async Task<IList<ItemDefinition>> GetItemDefinitions()
-        {
-            return await dbContext.ItemDefinitions.ToListAsync();
         }
 
         public async Task Save()

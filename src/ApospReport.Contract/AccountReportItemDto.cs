@@ -1,8 +1,7 @@
 ﻿namespace ApospReport.Contract
 {
-    public class ItemDto
+    public class AccountReportItemDto : ItemDefinitionDto
     {
-        public int Id { get; set; }
         public int Count { get; set; }
     }
 }

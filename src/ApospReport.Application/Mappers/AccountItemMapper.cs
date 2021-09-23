@@ -7,23 +7,23 @@ namespace ApospReport.Application.Mappers
 {
     internal interface IAccountItemMapper
     {
-        IList<TAccountItem> MapFromReport<TAccountItem>(IList<ItemDto> items)
+        IList<TAccountItem> MapFromDto<TAccountItem>(IList<AccountReportItemDto> items)
             where TAccountItem : AccountItem, new();
     }
 
     internal class AccountItemMapper : IAccountItemMapper
     {
-        public IList<TAccountItem> MapFromReport<TAccountItem>(IList<ItemDto> items) where TAccountItem: AccountItem, new()
+        public IList<TAccountItem> MapFromDto<TAccountItem>(IList<AccountReportItemDto> items) where TAccountItem: AccountItem, new()
         {
-            return items.Select(MapFromReport<TAccountItem>).ToList();
+            return items.Select(MapFromDto<TAccountItem>).ToList();
         }
 
-        private static TAccountItem MapFromReport<TAccountItem>(ItemDto item) where TAccountItem: AccountItem, new()
+        private static TAccountItem MapFromDto<TAccountItem>(AccountReportItemDto accountReportItem) where TAccountItem: AccountItem, new()
         {
             return new()
             {
-                ItemDefinitionId = item.Id,
-                Count = item.Count
+                ItemDefinitionId = accountReportItem.Id,
+                Count = accountReportItem.Count
             };
         }
     }

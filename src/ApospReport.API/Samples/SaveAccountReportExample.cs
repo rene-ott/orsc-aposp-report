@@ -5,9 +5,9 @@ using Swashbuckle.AspNetCore.Filters;
 
 namespace ApospReport.API.Samples
 {
-    public class SaveAccountReportExample : IExamplesProvider<AccountDto>
+    public class SaveAccountReportExample : IExamplesProvider<AccountReportDto>
     {
-        public AccountDto GetExamples()
+        public AccountReportDto GetExamples()
         {
             return new()
             {
@@ -30,7 +30,7 @@ namespace ApospReport.API.Samples
                 Hits = new SkillDto { BaseLevel = 1, CurrentLevel = 1 },
                 Thieving = new SkillDto { BaseLevel = 1, CurrentLevel = 1 },
                 Woodcut = new SkillDto { BaseLevel = 1, CurrentLevel = 1 },
-                BankItems = new List<ItemDto>
+                BankItems = new List<AccountReportItemDto>
                 {
                     // Mace
                     new()
@@ -39,7 +39,7 @@ namespace ApospReport.API.Samples
                         Count = 10
                     }
                 },
-                InventoryItems = new List<ItemDto>
+                InventoryItems = new List<AccountReportItemDto>
                 {
                     // Coins
                     new()

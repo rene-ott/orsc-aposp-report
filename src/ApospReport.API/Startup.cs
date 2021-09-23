@@ -22,7 +22,6 @@ namespace ApospReport.API
         {
             services.AddAPIServices();
             services.AddApplicationServices();
-            services.AddDomainServices();
             services.AddDataStoreServices(Configuration["ConnectionString"]);
         }
 

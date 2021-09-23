@@ -5,7 +5,7 @@ namespace ApospReport.Application.Mappers
 {
     internal interface IAccountMapper
     {
-        Account MapFromReport(AccountDto accountDto);
+        Account MapFromDto(AccountReportDto accountReportDto);
     }
 
     internal class AccountMapper : IAccountMapper
@@ -17,29 +17,29 @@ namespace ApospReport.Application.Mappers
             this.skillMapper = skillMapper;
         }
 
-        public Account MapFromReport(AccountDto accountDto)
+        public Account MapFromDto(AccountReportDto accountReportDto)
         {
-            return new Account
+            return new()
             {
-                Username = accountDto.Username,
-                Agility = skillMapper.MapFromReport(accountDto.Agility),
-                Attack = skillMapper.MapFromReport(accountDto.Agility),
-                Fishing = skillMapper.MapFromReport(accountDto.Fishing),
-                Defense = skillMapper.MapFromReport(accountDto.Defense),
-                Strength = skillMapper.MapFromReport(accountDto.Strength),
-                Hits = skillMapper.MapFromReport(accountDto.Hits),
-                Ranged = skillMapper.MapFromReport(accountDto.Ranged),
-                Prayer = skillMapper.MapFromReport(accountDto.Prayer),
-                Magic = skillMapper.MapFromReport(accountDto.Magic),
-                Cooking = skillMapper.MapFromReport(accountDto.Cooking),
-                Woodcut = skillMapper.MapFromReport(accountDto.Woodcut),
-                Fletching = skillMapper.MapFromReport(accountDto.Fletching),
-                Firemaking = skillMapper.MapFromReport(accountDto.Firemaking),
-                Crafting = skillMapper.MapFromReport(accountDto.Crafting),
-                Smithing = skillMapper.MapFromReport(accountDto.Smithing),
-                Mining = skillMapper.MapFromReport(accountDto.Mining),
-                Herblaw = skillMapper.MapFromReport(accountDto.Herblaw),
-                Thieving = skillMapper.MapFromReport(accountDto.Thieving)
+                Username = accountReportDto.Username,
+                Agility = skillMapper.MapFromDto(accountReportDto.Agility),
+                Attack = skillMapper.MapFromDto(accountReportDto.Agility),
+                Fishing = skillMapper.MapFromDto(accountReportDto.Fishing),
+                Defense = skillMapper.MapFromDto(accountReportDto.Defense),
+                Strength = skillMapper.MapFromDto(accountReportDto.Strength),
+                Hits = skillMapper.MapFromDto(accountReportDto.Hits),
+                Ranged = skillMapper.MapFromDto(accountReportDto.Ranged),
+                Prayer = skillMapper.MapFromDto(accountReportDto.Prayer),
+                Magic = skillMapper.MapFromDto(accountReportDto.Magic),
+                Cooking = skillMapper.MapFromDto(accountReportDto.Cooking),
+                Woodcut = skillMapper.MapFromDto(accountReportDto.Woodcut),
+                Fletching = skillMapper.MapFromDto(accountReportDto.Fletching),
+                Firemaking = skillMapper.MapFromDto(accountReportDto.Firemaking),
+                Crafting = skillMapper.MapFromDto(accountReportDto.Crafting),
+                Smithing = skillMapper.MapFromDto(accountReportDto.Smithing),
+                Mining = skillMapper.MapFromDto(accountReportDto.Mining),
+                Herblaw = skillMapper.MapFromDto(accountReportDto.Herblaw),
+                Thieving = skillMapper.MapFromDto(accountReportDto.Thieving)
             };
         }
     }

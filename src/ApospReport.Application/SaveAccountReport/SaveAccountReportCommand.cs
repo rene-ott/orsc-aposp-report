@@ -5,11 +5,11 @@ namespace ApospReport.Application.SaveAccountReport
 {
     public class SaveAccountReportCommand : IRequest
     {
-        public AccountDto Account { get; }
+        public AccountReportDto AccountReport { get; }
 
-        public SaveAccountReportCommand(AccountDto account)
+        public SaveAccountReportCommand(AccountReportDto accountReport)
         {
-            Account = account;
+            AccountReport = accountReport;
         }
     }
 }
