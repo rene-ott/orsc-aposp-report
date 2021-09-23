@@ -13,15 +13,13 @@ namespace ApospReport.Application.SaveAccountReport
     internal class SaveAccountReportCommandHandler : IRequestHandler<SaveAccountReportCommand>
     {
         private readonly IGenericRepository genericRepository;
-        private readonly ISkillMapper skillMapper;
         private readonly IAccountItemMapper accountItemMapper;
         private readonly IAccountMapper accountMapper;
 
-        public SaveAccountReportCommandHandler(IGenericRepository genericRepository, IAccountItemMapper accountItemMapper, ISkillMapper skillMapper, IAccountMapper accountMapper)
+        public SaveAccountReportCommandHandler(IGenericRepository genericRepository, IAccountItemMapper accountItemMapper, IAccountMapper accountMapper)
         {
             this.genericRepository = genericRepository;
             this.accountItemMapper = accountItemMapper;
-            this.skillMapper = skillMapper;
             this.accountMapper = accountMapper;
         }
 
@@ -29,12 +27,17 @@ namespace ApospReport.Application.SaveAccountReport
         {
             var report = request.Account;
 
-            var account = await genericRepository.GetAccount(report.Username) ?? new Account { Username = report.Username };
+            var existingAccount = await genericRepository.GetAccount(report.Username);
+            var inputAccount = accountMapper.MapFromReport(request.Account);
 
-            UpdateAccountBankItems(account, report.BankItems, report.BankViewTimestamp);
-            UpdateAccountInventoryItems(account, report.InventoryItems);
+            UpdateAccountSkills(existingAccount, inputAccount);
 
-            await genericRepository.UpsertAccount(account);
+            existingAccount ??= inputAccount;
+
+            UpdateAccountBankItems(existingAccount, report.BankItems, report.BankViewTimestamp);
+            UpdateAccountInventoryItems(existingAccount, report.InventoryItems);
+
+            await genericRepository.UpsertAccount(existingAccount);
             await genericRepository.Save();
 
             return Unit.Value;
@@ -61,30 +64,34 @@ namespace ApospReport.Application.SaveAccountReport
                 account.InventoryItems.Add(inventoryItem);
         }
 
-        private void UpdateAccountSkills(Account account, IList<SkillDto> reportSkills)
+        private static void UpdateAccountSkills(Account existingAccount, Account inputAccount)
         {
-            var skills = skillMapper.MapFromReport(reportSkills);
+            if (existingAccount == null)
+                return;
 
-            /*
-            account.Attack = skills[0];
-            account.Defense = skills[0];
-            account.Strength = skills[0];
-            account.Hits = skills[0];
-            account.Ranged = skills[0];
-            account.Prayer = skills[0];
-            account.Magic = skills[0];
-            account.Cooking = skills[0];
-            account.Woodcut = skills[0];
-            account.Fletching = skills[0];
-            account.Fishing = skills[0];
-            account.Firemaking = skills[0];
-            account.Crafting = skills[0];
-            account.Smithing = skills[0];
-            account.Mining = skills[0];
-            account.Herblaw = skills[0];
-            account.Agility = skills[0];
-            account.Thieving = skills[0];
-            */
+            static void MapSkill(Skill skill, Skill inputSkill)
+            {
+                skill.BaseLevel = inputSkill.BaseLevel;
+                skill.CurrentLevel = inputSkill.CurrentLevel;
+            }
+
+            MapSkill(existingAccount.Attack, inputAccount.Attack);
+            MapSkill(existingAccount.Defense, inputAccount.Defense);
+            MapSkill(existingAccount.Strength, inputAccount.Strength);
+            MapSkill(existingAccount.Hits, inputAccount.Hits);
+            MapSkill(existingAccount.Ranged, inputAccount.Ranged);
+            MapSkill(existingAccount.Prayer, inputAccount.Prayer);
+            MapSkill(existingAccount.Magic, inputAccount.Magic);
+            MapSkill(existingAccount.Cooking, inputAccount.Cooking);
+            MapSkill(existingAccount.Woodcut, inputAccount.Woodcut);
+            MapSkill(existingAccount.Fletching, inputAccount.Fletching);
+            MapSkill(existingAccount.Fishing, inputAccount.Fishing);
+            MapSkill(existingAccount.Firemaking, inputAccount.Firemaking);
+            MapSkill(existingAccount.Smithing, inputAccount.Smithing);
+            MapSkill(existingAccount.Mining, inputAccount.Mining);
+            MapSkill(existingAccount.Herblaw, inputAccount.Herblaw);
+            MapSkill(existingAccount.Agility, inputAccount.Agility);
+            MapSkill(existingAccount.Thieving, inputAccount.Thieving);
         }
     }
 }

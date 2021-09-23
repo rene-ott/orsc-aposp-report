@@ -12,6 +12,7 @@ namespace ApospReport.Application
             services.AddMediatR(typeof(SaveAccountReportCommandHandler));
             services.AddScoped<ISkillMapper, SkillMapper>();
             services.AddScoped<IAccountItemMapper, AccountItemMapper>();
+            services.AddScoped<IAccountMapper, AccountMapper>();
         }
     }
 }
