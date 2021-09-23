@@ -30,8 +30,14 @@ namespace ApospReport.API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ApospReport v1"));
+            }
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ApospReport v1"));
+
+            if (!env.IsDevelopment())
+            {
+                app.UseSpaStaticFiles();
             }
 
             app.ApplicationServices.InitializeDatabase();

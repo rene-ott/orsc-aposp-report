@@ -9,6 +9,11 @@ namespace ApospReport.API
     {
         public static void AddAPIServices(this IServiceCollection services)
         {
+            services.AddSpaStaticFiles(configuration =>
+            {
+                configuration.RootPath = "ClientApp/dist";
+            });
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
