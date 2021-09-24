@@ -1,0 +1,20 @@
+<table class="item">
+  <tbody>
+    <tr>
+      <td colspan="2"></td>
+      <td *ngFor="let i of [].constructor(pageCount); let pageIndex = index">
+        <button (click)="openPage(pageIndex)">Page {{ pageIndex + 1 }}</button>
+      </td>
+    </tr>
+    <tr>
+      <td *ngFor="let item of currentPageItems.slice(0, 8)" class="mat-cell">
+        {{ item?.Name || "&nbsp;" }}
+      </td>
+    </tr>
+    <tr>
+      <td *ngFor="let item of currentPageItems.slice(8, 16)">
+        {{ item?.Name || "&nbsp;" }}
+      </td>
+    </tr>
+  </tbody>
+</table>

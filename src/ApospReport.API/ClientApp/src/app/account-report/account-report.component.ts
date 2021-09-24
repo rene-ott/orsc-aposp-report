@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AccountBankItemTableComponent } from './account-bank-item-table/account-bank-item-table.component';
 
 export interface PeriodicElement {
   name: string;

@@ -1,0 +1,18 @@
+.item {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.item,
+.item td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  color: rgba(0, 0, 0, 0.87);
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+.item td {
+  width: 48px;
+  height: 32px;
+  padding: 3px;
+}
