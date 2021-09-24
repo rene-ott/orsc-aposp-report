@@ -1,0 +1,7 @@
+{
+    "recommendations": [
+        "cyrilletuzi.angular-schematics",
+        "angular.ng-template",
+        "johnpapa.angular2"
+    ]
+}
