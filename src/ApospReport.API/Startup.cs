@@ -3,7 +3,6 @@ using ApospReport.DataStore;
 using ApospReport.Domain;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.SpaServices;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -12,17 +11,20 @@ namespace ApospReport.API
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public IConfiguration Configuration { get; }
+        private readonly IHostEnvironment hostEnvironment;
+
+        public Startup(IConfiguration configuration, IHostEnvironment hostEnvironment)
         {
             Configuration = configuration;
+            this.hostEnvironment = hostEnvironment;
         }
-
-        public IConfiguration Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAPIServices();
             services.AddApplicationServices();
+            services.AddDomainServices(hostEnvironment.ContentRootFileProvider);
             services.AddDataStoreServices(Configuration["ConnectionString"]);
         }
 
