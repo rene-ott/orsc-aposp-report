@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using ApospReport.API.Samples;
 using ApospReport.Application.GetAccountReport;
+using ApospReport.Application.GetItemImage;
 using ApospReport.Application.GetTotalBankReport;
 using ApospReport.Application.RemoveAccountReport;
 using ApospReport.Application.SaveAccountReport;
@@ -48,6 +49,12 @@ namespace ApospReport.API.Controllers
         public async Task<IActionResult> GetTotalBank()
         {
             return Ok(await mediator.Send(new GetTotalBankItemReportQuery()));
+        }
+
+        [HttpGet("item-images")]
+        public async Task<IActionResult> GetItemImages()
+        {
+            return Ok(await mediator.Send(new GetItemImageQuery()));
         }
     }
 }

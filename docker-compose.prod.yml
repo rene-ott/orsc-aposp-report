@@ -7,9 +7,13 @@ services:
       context: ./src
       dockerfile: Dockerfile
     ports:
-      - "5000:5000"
+      - "8080:5000"
     environment:
-      - ConnectionString=MISSING
+      - CONNECTIONSTRING=Host=db;Port=5432;Username=aposp_report_app;Password=aposp_report_app_password;Database=aposp_report_db
+      - ASPNETCORE_URLS=http://+:5000
+    depends_on:
+      - db 
+
   db:
     image: postgres:13.3
     container_name: aposp-report-db
@@ -22,8 +26,3 @@ services:
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "5432:5432"
-    networks:
-      - network
-networks:
-  network:
-    driver: bridge
