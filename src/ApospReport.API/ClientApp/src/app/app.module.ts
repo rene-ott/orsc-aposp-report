@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AccountBankItemTableComponent } from './account-report/account-bank-item-table/account-bank-item-table.component';
 import { ItemImageService } from './shared/services/item-image.service';
 import { ItemSlotImageComponent } from './shared/components/item-slot-image/item-slot-image.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { ItemSlotImageComponent } from './shared/components/item-slot-image/item
     ItemSlotImageComponent
    ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     MatTabsModule,
     MatButtonModule,

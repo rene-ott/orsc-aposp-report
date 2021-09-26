@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { BankItem } from 'src/app/shared/models/bank-item.model';
 import * as _ from 'lodash'
+import { MatTabChangeEvent } from '@angular/material/tabs';
 
 @Component({
   selector: 'app-account-bank-item-table',
@@ -37,8 +38,8 @@ export class AccountBankItemTableComponent implements OnInit {
     this.alignedBankItems.push(null)
   }
 
-  openPage(pageIndex: number) {
-    this.currentPageIndex = pageIndex
+  openPage(tabChangeEvent: MatTabChangeEvent) {
+    this.currentPageIndex = tabChangeEvent.index
     this.currentPageItems = this.getPageItems();
   }
 

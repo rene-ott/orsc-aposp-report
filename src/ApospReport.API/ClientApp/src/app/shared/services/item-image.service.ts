@@ -15,7 +15,8 @@ export class ItemImageService {
 
   downloadItemImages(): Observable<ItemImage[]> {
     return this.http
-    .get<ItemImage[]>("http://localhost:5000/api/report/item-images")
+    .get<ItemImage[]>("api/report/item-images")
+    
     .pipe(map(x => {
         this.localStorageService.setItem(this.ITEM_IMAGES_KEY, x);
         return x;
