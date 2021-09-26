@@ -8,12 +8,18 @@
     </tr>
     <tr>
       <td *ngFor="let item of currentPageItems.slice(0, 8)" class="mat-cell">
-        {{ item?.Name || "&nbsp;" }}
+        <app-item-slot-image
+          [base64]="item.base64"
+          [count]="item.count"
+        ></app-item-slot-image>
       </td>
     </tr>
     <tr>
       <td *ngFor="let item of currentPageItems.slice(8, 16)">
-        {{ item?.Name || "&nbsp;" }}
+        <app-item-slot-image
+          [base64]="item.base64"
+          [count]="item.count"
+        ></app-item-slot-image>
       </td>
     </tr>
   </tbody>

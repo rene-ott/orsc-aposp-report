@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ItemImageService } from './shared/services/item-image.service';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ export class AppComponent implements OnInit{
   navLinks: any[];
   activeLinkIndex = -1;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private itemImageService: ItemImageService) {
     this.navLinks = [
         { label: 'Account reports', link: './account', index: 0 },
         { label: 'Total bank report', link: './bank', index: 1 },
@@ -21,5 +22,9 @@ export class AppComponent implements OnInit{
     this.router.events.subscribe(() => {
         this.activeLinkIndex = this.navLinks.indexOf(this.navLinks.find(tab => tab.link === '.' + this.router.url));
     });
+
+    this.itemImageService.downloadItemImages().subscribe(x => {
+      console.log(x);
+    })
   }
 }

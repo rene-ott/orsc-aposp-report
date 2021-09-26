@@ -3,6 +3,7 @@
         "cyrilletuzi.angular-schematics",
         "angular.ng-template",
         "johnpapa.angular2",
-        "esbenp.prettier-vscode"
+        "esbenp.prettier-vscode",
+        "stringham.move-ts"
     ]
 }

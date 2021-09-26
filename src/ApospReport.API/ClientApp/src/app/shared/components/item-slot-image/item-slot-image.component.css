@@ -1,0 +1,8 @@
+.item-img {
+  position: relative;
+}
+
+.item-img__text {
+  text-align: center;
+  font-family: Calibri, sans-serif;
+}
