@@ -12,12 +12,15 @@ import { AccountBankItemTableComponent } from './account-report/account-bank-ite
 import { ItemImageService } from './shared/services/item-image.service';
 import { ItemSlotImageComponent } from './shared/components/item-slot-image/item-slot-image.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatCardModule} from '@angular/material/card';
+import { BankReportComponent } from './bank-report/bank-report.component';
 
 
 @NgModule({
   declarations: [	
     AppComponent,
     AccountReportComponent,
+    BankReportComponent,
     AccountBankItemTableComponent,
     ItemSlotImageComponent
    ],
@@ -28,7 +31,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatButtonModule,
     MatTableModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule,
   ],
   providers: [ItemImageService],
   bootstrap: [AppComponent],

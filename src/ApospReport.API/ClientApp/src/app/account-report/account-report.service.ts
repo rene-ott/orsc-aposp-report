@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { of, Observable, throwError } from 'rxjs';
 import { AccountReport } from './account-report.model';
-import * as accountReports from './accountReports.json'; 
+import * as accountReports from '../../data/accountReports.json'; 
 
 @Injectable({
   providedIn: 'root',
