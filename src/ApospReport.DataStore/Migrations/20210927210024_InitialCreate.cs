@@ -79,7 +79,8 @@ namespace ApospReport.DataStore.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     item_definition_id = table.Column<int>(type: "integer", nullable: false),
                     count = table.Column<int>(type: "integer", nullable: false),
-                    account_id = table.Column<int>(type: "integer", nullable: false)
+                    account_id = table.Column<int>(type: "integer", nullable: false),
+                    position = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -106,7 +107,8 @@ namespace ApospReport.DataStore.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     item_definition_id = table.Column<int>(type: "integer", nullable: false),
                     count = table.Column<int>(type: "integer", nullable: false),
-                    account_id = table.Column<int>(type: "integer", nullable: false)
+                    account_id = table.Column<int>(type: "integer", nullable: false),
+                    position = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -63,6 +63,10 @@ namespace ApospReport.DataStore.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("item_definition_id");
 
+                    b.Property<int>("Position")
+                        .HasColumnType("integer")
+                        .HasColumnName("position");
+
                     b.HasKey("Id")
                         .HasName("pk_bank_items");
 
@@ -94,6 +98,10 @@ namespace ApospReport.DataStore.Migrations
                     b.Property<int>("ItemDefinitionId")
                         .HasColumnType("integer")
                         .HasColumnName("item_definition_id");
+
+                    b.Property<int>("Position")
+                        .HasColumnType("integer")
+                        .HasColumnName("position");
 
                     b.HasKey("Id")
                         .HasName("pk_inventory_items");
