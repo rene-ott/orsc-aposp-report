@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using ApospReport.Contract;
+using ApospReport.Contract.BankReport;
 using ApospReport.Domain.Contracts;
 using MediatR;
 

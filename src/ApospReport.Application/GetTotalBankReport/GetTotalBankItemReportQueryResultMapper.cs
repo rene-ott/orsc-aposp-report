@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using ApospReport.Contract;
+using ApospReport.Contract.BankReport;
 using ApospReport.Domain.Models;
 
 namespace ApospReport.Application.GetTotalBankReport

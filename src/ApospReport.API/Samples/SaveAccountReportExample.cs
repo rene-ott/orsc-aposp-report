@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using ApospReport.Contract;
+using ApospReport.Contract.AccountReport;
 using Swashbuckle.AspNetCore.Filters;
 
 namespace ApospReport.API.Samples
@@ -12,24 +13,28 @@ namespace ApospReport.API.Samples
             return new()
             {
                 Username = "TestUser",
-                Attack = new SkillDto { BaseLevel = 1, CurrentLevel = 1 },
-                Defense = new SkillDto { BaseLevel = 1, CurrentLevel = 1 },
-                Strength = new SkillDto { BaseLevel = 1, CurrentLevel = 1 },
-                Prayer = new SkillDto { BaseLevel = 1, CurrentLevel = 1 },
-                Ranged = new SkillDto { BaseLevel = 1, CurrentLevel = 1 },
-                Agility = new SkillDto { BaseLevel = 1, CurrentLevel = 1 },
-                Herblaw = new SkillDto { BaseLevel = 1, CurrentLevel = 1 },
-                Cooking = new SkillDto { BaseLevel = 1, CurrentLevel = 1 },
-                Crafting = new SkillDto { BaseLevel = 1, CurrentLevel = 1 },
-                Firemaking = new SkillDto { BaseLevel = 1, CurrentLevel = 1 },
-                Fishing = new SkillDto { BaseLevel = 1, CurrentLevel = 1 },
-                Magic = new SkillDto { BaseLevel = 1, CurrentLevel = 1 },
-                Mining = new SkillDto { BaseLevel = 1, CurrentLevel = 1 },
-                Fletching = new SkillDto { BaseLevel = 1, CurrentLevel = 1 },
-                Smithing = new SkillDto { BaseLevel = 1, CurrentLevel = 1 },
-                Hits = new SkillDto { BaseLevel = 1, CurrentLevel = 1 },
-                Thieving = new SkillDto { BaseLevel = 1, CurrentLevel = 1 },
-                Woodcut = new SkillDto { BaseLevel = 1, CurrentLevel = 1 },
+                Skill = new AccountReportSkillDto
+                {
+                    Attack = new AccountReportSkillLevelDto { Base = 1, Current = 1 },
+                    Defense = new AccountReportSkillLevelDto { Base = 1, Current = 1 },
+                    Strength = new AccountReportSkillLevelDto { Base = 1, Current = 1 },
+                    Prayer = new AccountReportSkillLevelDto { Base = 1, Current = 1 },
+                    Ranged = new AccountReportSkillLevelDto { Base = 1, Current = 1 },
+                    Agility = new AccountReportSkillLevelDto { Base = 1, Current = 1 },
+                    Herblaw = new AccountReportSkillLevelDto { Base = 1, Current = 1 },
+                    Cooking = new AccountReportSkillLevelDto { Base = 1, Current = 1 },
+                    Crafting = new AccountReportSkillLevelDto { Base = 1, Current = 1 },
+                    Firemaking = new AccountReportSkillLevelDto { Base = 1, Current = 1 },
+                    Fishing = new AccountReportSkillLevelDto { Base = 1, Current = 1 },
+                    Magic = new AccountReportSkillLevelDto { Base = 1, Current = 1 },
+                    Mining = new AccountReportSkillLevelDto { Base = 1, Current = 1 },
+                    Fletching = new AccountReportSkillLevelDto { Base = 1, Current = 1 },
+                    Smithing = new AccountReportSkillLevelDto { Base = 1, Current = 1 },
+                    Hits = new AccountReportSkillLevelDto { Base = 1, Current = 1 },
+                    Thieving = new AccountReportSkillLevelDto { Base = 1, Current = 1 },
+                    Woodcut = new AccountReportSkillLevelDto { Base = 1, Current = 1 }
+                },
+
                 BankItems = new List<AccountReportItemDto>
                 {
                     // Mace

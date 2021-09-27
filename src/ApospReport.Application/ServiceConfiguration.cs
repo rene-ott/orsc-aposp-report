@@ -1,6 +1,5 @@
 ﻿using ApospReport.Application.GetAccountReport;
 using ApospReport.Application.GetTotalBankReport;
-using ApospReport.Application.Mappers;
 using ApospReport.Application.SaveAccountReport;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,10 +12,7 @@ namespace ApospReport.Application
         {
             services.AddMediatR(typeof(SaveAccountReportCommandHandler));
 
-            services.AddScoped<ISkillMapper, SkillMapper>();
-            services.AddScoped<IAccountItemMapper, AccountItemMapper>();
-            services.AddScoped<IAccountMapper, AccountMapper>();
-
+            services.AddSingleton<ISaveAccountReportCommandInputMapper, SaveAccountReportCommandInputMapper>();
             services.AddSingleton<IGetTotalBankItemReportQueryResultMapper, GetTotalBankItemReportQueryResultMapper>();
             services.AddSingleton<IGetAccountReportQueryResultMapper, GetAccountReportQueryResultMapper>();
         }

@@ -9,5 +9,7 @@
 
         public int Count { get; set; }
         public Account Account { get; set; }
+
+        public int Position { get; set; }
     }
 }

@@ -6,6 +6,7 @@ using ApospReport.Application.GetTotalBankReport;
 using ApospReport.Application.RemoveAccountReport;
 using ApospReport.Application.SaveAccountReport;
 using ApospReport.Contract;
+using ApospReport.Contract.AccountReport;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Filters;
