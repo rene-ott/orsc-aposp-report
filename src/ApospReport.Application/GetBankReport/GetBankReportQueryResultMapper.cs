@@ -1,24 +1,22 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ApospReport.Contract;
 using ApospReport.Contract.BankReport;
 using ApospReport.Domain.Models;
 
-namespace ApospReport.Application.GetTotalBankReport
+namespace ApospReport.Application.GetBankReport
 {
     internal interface IGetTotalBankItemReportQueryResultMapper
     {
-        IList<BankReportItemDto> MapResult(IList<ItemDefinition> itemDefinition);
+        BankReportDto MapResult(IList<ItemDefinition> itemDefinition);
     }
 
-    internal class GetTotalBankItemReportQueryResultMapper : IGetTotalBankItemReportQueryResultMapper
+    internal class GetBankReportQueryResultMapper : IGetTotalBankItemReportQueryResultMapper
     {
 
-        public IList<BankReportItemDto> MapResult(IList<ItemDefinition> itemDefinition)
+        public BankReportDto MapResult(IList<ItemDefinition> itemDefinition)
         {
             var bankItemsPerIdGroups = itemDefinition.SelectMany(x => x.BankItems)
                 .GroupBy(x => x.ItemDefinitionId);
-
 
             var bankReportItems = new List<BankReportItemDto>();
             foreach (var bankItemGroup in bankItemsPerIdGroups)
@@ -49,7 +47,10 @@ namespace ApospReport.Application.GetTotalBankReport
                 bankReportItems.Add(bankReportItem);
             }
 
-            return bankReportItems;
+            return new BankReportDto
+            {
+                Items = bankReportItems
+            };
         }
     }
 }
