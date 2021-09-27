@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using ApospReport.Contract.Common;
 
-namespace ApospReport.Contract
+namespace ApospReport.Contract.BankReport
 {
     public class BankReportItemDto : ItemDefinitionDto
     {

@@ -1,25 +1,24 @@
-﻿using System.Collections.Generic;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
-using ApospReport.Contract;
+using ApospReport.Contract.BankReport;
 using ApospReport.Domain.Contracts;
 using MediatR;
 
-namespace ApospReport.Application.GetTotalBankReport
+namespace ApospReport.Application.GetBankReport
 {
-    internal class GetTotalBankItemReportQueryHandler : IRequestHandler<GetTotalBankItemReportQuery, IList<BankReportItemDto>>
+    internal class GetBankReportQueryHandler : IRequestHandler<GetTotalBankItemReportQuery, BankReportDto>
     {
         private readonly IGenericRepository genericRepository;
         private readonly IGetTotalBankItemReportQueryResultMapper resultMapper;
 
-        public GetTotalBankItemReportQueryHandler(IGenericRepository genericRepository,
+        public GetBankReportQueryHandler(IGenericRepository genericRepository,
                     IGetTotalBankItemReportQueryResultMapper resultMapper)
         {
             this.genericRepository = genericRepository;
             this.resultMapper = resultMapper;
         }
 
-        public async Task<IList<BankReportItemDto>> Handle(GetTotalBankItemReportQuery request, CancellationToken cancellationToken)
+        public async Task<BankReportDto> Handle(GetTotalBankItemReportQuery request, CancellationToken cancellationToken)
         {
             var items = await genericRepository.GetBankItemsWithAccounts();
             var result = resultMapper.MapResult(items);

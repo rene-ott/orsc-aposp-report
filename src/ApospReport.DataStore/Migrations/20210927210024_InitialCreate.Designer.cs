@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ApospReport.DataStore.Migrations
 {
     [DbContext(typeof(ApospReportDbContext))]
-    [Migration("20210923091852_InitialCreate")]
+    [Migration("20210927210024_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -65,6 +65,10 @@ namespace ApospReport.DataStore.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("item_definition_id");
 
+                    b.Property<int>("Position")
+                        .HasColumnType("integer")
+                        .HasColumnName("position");
+
                     b.HasKey("Id")
                         .HasName("pk_bank_items");
 
@@ -96,6 +100,10 @@ namespace ApospReport.DataStore.Migrations
                     b.Property<int>("ItemDefinitionId")
                         .HasColumnType("integer")
                         .HasColumnName("item_definition_id");
+
+                    b.Property<int>("Position")
+                        .HasColumnType("integer")
+                        .HasColumnName("position");
 
                     b.HasKey("Id")
                         .HasName("pk_inventory_items");

@@ -9,7 +9,7 @@ namespace ApospReport.DataStore.Configurations
         public void Configure(EntityTypeBuilder<BankItem> entity)
         {
             entity.HasKey(x => x.Id);
-
+            entity.Property(x => x.Position).IsRequired();
             entity.Property(x => x.Count).IsRequired();
         }
     }

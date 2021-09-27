@@ -9,6 +9,7 @@ namespace ApospReport.DataStore.Configurations
         public void Configure(EntityTypeBuilder<InventoryItem> entity)
         {
             entity.HasKey(x => x.Id);
+            entity.Property(x => x.Position).IsRequired();
             entity.Property(x => x.Count).IsRequired();
         }
     }

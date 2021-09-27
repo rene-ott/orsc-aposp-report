@@ -1,4 +1,4 @@
-﻿namespace ApospReport.Contract
+﻿namespace ApospReport.Contract.BankReport
 {
     public class BankReportUserDto
     {

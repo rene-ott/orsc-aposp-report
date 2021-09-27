@@ -12,7 +12,8 @@ services:
       - CONNECTIONSTRING=Host=db;Port=5432;Username=aposp_report_app;Password=aposp_report_app_password;Database=aposp_report_db
       - ASPNETCORE_URLS=http://+:5000
     depends_on:
-      - db 
+      - db
+    restart: on-failure
 
   db:
     image: postgres:13.3
@@ -26,3 +27,14 @@ services:
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "5432:5432"
+      
+  proxy:
+    image: nginx:alpine
+    container_name: aposp-report-proxy
+    volumes:
+      - ./proxy/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - web
+    ports:
+      - "4000:4000"
+    restart: on-failure

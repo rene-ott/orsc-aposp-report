@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using ApospReport.Contract;
+using ApospReport.Contract.Common;
 using ApospReport.Domain;
 using MediatR;
 
