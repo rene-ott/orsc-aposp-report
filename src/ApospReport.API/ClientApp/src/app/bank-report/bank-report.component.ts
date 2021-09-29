@@ -21,7 +21,7 @@ export class BankReportComponent implements OnInit {
 
   ngOnInit() {
     this.bankReportService.getBankReportItems().subscribe(x => {
-      this.bankReportItems = x;
+      this.bankReportItems = x.items;
       this.rowCount = this.getRowCount();
       this.setBase64ImageToBankItems(this.bankReportItems)
       _.times(this.getBankItemPlaceholderCount(), _ => this.appendPlaceholder());
@@ -42,7 +42,7 @@ export class BankReportComponent implements OnInit {
 
   setBase64ImageToBankItems(bankItems: BankReportItem[]) {
     var itemImages = this.itemImageService.getItemImages();
-    
+
     bankItems.forEach(x => {
       var foundImage = itemImages.find(i => i.id == x.id);
       x.base64 = foundImage!!.data

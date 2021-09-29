@@ -8,7 +8,7 @@ namespace ApospReport.DataStore
         public static Account TestFirstUser = new()
         {
             Username = "TestUser1",
-            BankItems = CreateItems<BankItem>(198),
+            BankItems = CreateItems<BankItem>(192),
             InventoryItems = CreateItems<InventoryItem>(30),
             Attack = CreateSkill(21, 11),
             Defense = CreateSkill(22, 12),
@@ -33,7 +33,7 @@ namespace ApospReport.DataStore
         public static Account TestSecondUser = new()
         {
             Username = "TestUser2",
-            BankItems = CreateItems<BankItem>(198, true),
+            BankItems = CreateItems<BankItem>(192, true),
             InventoryItems = CreateItems<InventoryItem>(30, true),
             Attack = CreateSkill(51, 31),
             Defense = CreateSkill(52, 32),

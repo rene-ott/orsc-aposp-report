@@ -16,8 +16,45 @@
             ></app-item-slot-image>
           </td>
         </tr>
+
         <tr>
           <td *ngFor="let item of currentPageItems.slice(8, 16)">
+            <app-item-slot-image
+              [base64]="item?.base64"
+              [count]="item?.count"
+            ></app-item-slot-image>
+          </td>
+        </tr>
+
+        <tr>
+          <td *ngFor="let item of currentPageItems.slice(16, 24)">
+            <app-item-slot-image
+              [base64]="item?.base64"
+              [count]="item?.count"
+            ></app-item-slot-image>
+          </td>
+        </tr>
+
+        <tr>
+          <td *ngFor="let item of currentPageItems.slice(24, 32)">
+            <app-item-slot-image
+              [base64]="item?.base64"
+              [count]="item?.count"
+            ></app-item-slot-image>
+          </td>
+        </tr>
+
+        <tr>
+          <td *ngFor="let item of currentPageItems.slice(32, 40)">
+            <app-item-slot-image
+              [base64]="item?.base64"
+              [count]="item?.count"
+            ></app-item-slot-image>
+          </td>
+        </tr>
+
+        <tr>
+          <td *ngFor="let item of currentPageItems.slice(40, 48)">
             <app-item-slot-image
               [base64]="item?.base64"
               [count]="item?.count"

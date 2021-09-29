@@ -13,8 +13,8 @@ export class AccountBankItemTableComponent implements OnInit {
   private alignedBankItems: Array<BankItem | null> = [];
 
   private readonly MAX_PAGE_COUNT = 4;
-  private readonly PAGE_SIZE = 16;
-  private readonly BANK_SIZE = 64;
+  private readonly PAGE_SIZE = 48;
+  private readonly BANK_SIZE = 192;
 
   currentPageIndex = 0;
   pageCount = 1
