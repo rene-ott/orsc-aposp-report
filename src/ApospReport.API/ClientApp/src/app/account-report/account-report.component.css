@@ -2,3 +2,7 @@ table.mat-table {
   width: 50%;
   margin: auto;
 }
+
+.mat-cell--top {
+  vertical-align: top;
+}

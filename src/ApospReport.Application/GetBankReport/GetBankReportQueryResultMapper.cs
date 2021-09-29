@@ -49,7 +49,7 @@ namespace ApospReport.Application.GetBankReport
 
             return new BankReportDto
             {
-                Items = bankReportItems
+                Items = bankReportItems.OrderBy(x => x.Id).ToList()
             };
         }
     }

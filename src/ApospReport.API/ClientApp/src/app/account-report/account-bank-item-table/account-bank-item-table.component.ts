@@ -55,7 +55,7 @@ export class AccountBankItemTableComponent implements OnInit {
   }
 
   private isLastPage() {
-    return this.currentPageIndex == this.MAX_PAGE_COUNT - 1;
+    return this.currentPageIndex == this.MAX_PAGE_COUNT;
   }
 
   private getLastPageItemCount() {
