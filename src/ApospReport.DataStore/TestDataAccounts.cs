@@ -33,8 +33,8 @@ namespace ApospReport.DataStore
         public static Account TestSecondUser = new()
         {
             Username = "TestUser2",
-            BankItems = CreateItems<BankItem>(198),
-            InventoryItems = CreateItems<InventoryItem>(30),
+            BankItems = CreateItems<BankItem>(198, true),
+            InventoryItems = CreateItems<InventoryItem>(30, true),
             Attack = CreateSkill(51, 31),
             Defense = CreateSkill(52, 32),
             Strength = CreateSkill(53, 33),

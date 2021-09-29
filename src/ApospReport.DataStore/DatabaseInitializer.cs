@@ -34,10 +34,10 @@ namespace ApospReport.DataStore
 
         public void SeedData(IHostEnvironment env)
         {
+            SeedItemDefinitions();
+
             if (env.IsDevelopment())
                 SeedTestUsers();
-
-            SeedItemDefinitions();
         }
 
         public void SeedTestUsers()
