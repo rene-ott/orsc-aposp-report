@@ -2,6 +2,7 @@
 using ApospReport.Domain.Contracts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace ApospReport.DataStore
 {
@@ -17,11 +18,11 @@ namespace ApospReport.DataStore
             services.AddSingleton<IDbInitializer, DbInitializer>();
         }
 
-        public static void InitializeDatabase(this IServiceProvider serviceProvider)
+        public static void InitializeDatabase(this IServiceProvider serviceProvider, IHostEnvironment hostEnvironment)
         {
             var dbInitializer = serviceProvider.GetRequiredService<IDbInitializer>();
             dbInitializer.RunMigrations();
-            dbInitializer.SeedData();
+            dbInitializer.SeedData(hostEnvironment);
         }
     }
 }

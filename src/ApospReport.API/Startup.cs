@@ -42,7 +42,7 @@ namespace ApospReport.API
             if (env.IsProduction())
                 app.UseSpaStaticFiles();
 
-            app.ApplicationServices.InitializeDatabase();
+            app.ApplicationServices.InitializeDatabase(env);
 
             app.UseRouting();
 

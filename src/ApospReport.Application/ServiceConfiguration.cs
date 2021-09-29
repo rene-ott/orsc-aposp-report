@@ -13,7 +13,7 @@ namespace ApospReport.Application
             services.AddMediatR(typeof(SaveAccountReportCommandHandler));
 
             services.AddSingleton<ISaveAccountReportCommandInputMapper, SaveAccountReportCommandInputMapper>();
-            services.AddSingleton<IGetTotalBankItemReportQueryResultMapper, GetBankReportQueryResultMapper>();
+            services.AddSingleton<IGetBankReportQueryResultMapper, GetBankReportQueryResultMapper>();
             services.AddSingleton<IGetAccountReportQueryResultMapper, GetAccountReportQueryResultMapper>();
         }
     }

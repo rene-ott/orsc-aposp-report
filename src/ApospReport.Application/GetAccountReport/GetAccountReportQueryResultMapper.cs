@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ApospReport.Contract;
 using ApospReport.Contract.AccountReport;
 using ApospReport.Domain.Models;
 
@@ -56,6 +55,7 @@ namespace ApospReport.Application.GetAccountReport
         {
             return new()
             {
+                Position = accountItem.Position,
                 Count = accountItem.Count,
                 Id = accountItem.ItemDefinition.Id,
                 IsStackable = accountItem.ItemDefinition.IsStackable,

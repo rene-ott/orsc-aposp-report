@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using ApospReport.Contract;
 using ApospReport.Contract.AccountReport;
 using ApospReport.Domain.Contracts;
 using MediatR;
