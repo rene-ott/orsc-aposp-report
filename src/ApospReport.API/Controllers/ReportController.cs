@@ -7,11 +7,13 @@ using ApospReport.Application.RemoveAccountReport;
 using ApospReport.Application.SaveAccountReport;
 using ApospReport.Contract.AccountReport;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Filters;
 
 namespace ApospReport.API.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/reports")]
     public class ReportController : ControllerBase

@@ -1,4 +1,5 @@
-﻿using ApospReport.API.Samples;
+﻿using ApospReport.API.Authentication;
+using ApospReport.API.Samples;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
@@ -9,6 +10,11 @@ namespace ApospReport.API
     {
         public static void AddAPIServices(this IServiceCollection services)
         {
+            services.AddAuthentication("ApiKey")
+                .AddScheme<ApiKeyAuthenticationOptions, ApiKeyAuthenticationHandler>("ApiKey", null);
+
+            services.AddSingleton<IApiKeyAuthenticationValidator, ApiKeyAuthenticationValidator>();
+
             // Load static generated files from disk
             services.AddSpaStaticFiles(configuration =>
             {

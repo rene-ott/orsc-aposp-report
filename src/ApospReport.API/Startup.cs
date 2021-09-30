@@ -42,11 +42,12 @@ namespace ApospReport.API
             if (env.IsProduction())
                 app.UseSpaStaticFiles();
 
-            app.ApplicationServices.InitializeDatabase(env);
-
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
+            
+            app.ApplicationServices.InitializeDatabase(env);
 
             app.UseEndpoints(endpoints =>
             {
