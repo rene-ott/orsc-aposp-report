@@ -2,16 +2,16 @@
 
 namespace ApospReport.API.Authentication
 {
-    public interface IApiKeyAuthenticationValidator
+    public interface IApiKeyValidator
     {
         bool IsValid(string apiKey);
     }
 
-    internal class ApiKeyAuthenticationValidator : IApiKeyAuthenticationValidator
+    internal class ApiKeyValidator : IApiKeyValidator
     {
         private readonly IConfiguration configuration;
 
-        public ApiKeyAuthenticationValidator(IConfiguration configuration)
+        public ApiKeyValidator(IConfiguration configuration)
         {
             this.configuration = configuration;
         }

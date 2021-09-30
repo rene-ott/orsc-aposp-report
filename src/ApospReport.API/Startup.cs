@@ -22,7 +22,7 @@ namespace ApospReport.API
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAPIServices();
+            services.AddAPIServices(Configuration);
             services.AddApplicationServices();
             services.AddDomainServices(hostEnvironment.ContentRootFileProvider);
             services.AddDataStoreServices(Configuration["ConnectionString"]);
@@ -35,9 +35,6 @@ namespace ApospReport.API
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ApospReport v1"));
-
             // production SPA static files
             if (env.IsProduction())
                 app.UseSpaStaticFiles();
@@ -46,7 +43,10 @@ namespace ApospReport.API
 
             app.UseAuthentication();
             app.UseAuthorization();
-            
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ApospReport v1"));
+
             app.ApplicationServices.InitializeDatabase(env);
 
             app.UseEndpoints(endpoints =>

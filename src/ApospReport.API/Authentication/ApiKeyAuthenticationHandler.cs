@@ -11,17 +11,17 @@ namespace ApospReport.API.Authentication
 {
     public class ApiKeyAuthenticationHandler : AuthenticationHandler<ApiKeyAuthenticationOptions>
     {
-        private readonly IApiKeyAuthenticationValidator apiKeyAuthenticationValidator;
+        private readonly IApiKeyValidator apiKeyValidator;
 
         public ApiKeyAuthenticationHandler(
             IOptionsMonitor<ApiKeyAuthenticationOptions> options,
             ILoggerFactory logger,
             UrlEncoder encoder,
             ISystemClock clock,
-            IApiKeyAuthenticationValidator apiKeyAuthenticationValidator)
+            IApiKeyValidator apiKeyValidator)
             : base(options, logger, encoder, clock)
         {
-            this.apiKeyAuthenticationValidator = apiKeyAuthenticationValidator;
+            this.apiKeyValidator = apiKeyValidator;
         }
 
         protected override Task<AuthenticateResult> HandleAuthenticateAsync()
@@ -30,7 +30,7 @@ namespace ApospReport.API.Authentication
             if (string.IsNullOrEmpty(apiKey))
                 return Task.FromResult(AuthenticateResult.Fail("Unauthorized"));
 
-            if (!apiKeyAuthenticationValidator.IsValid(apiKey))
+            if (!apiKeyValidator.IsValid(apiKey))
                 return Task.FromResult(AuthenticateResult.Fail("Unauthorized"));
 
             var claims = new List<Claim>

@@ -2,7 +2,6 @@
 using ApospReport.API.Samples;
 using ApospReport.Application.GetAccountReport;
 using ApospReport.Application.GetBankReport;
-using ApospReport.Application.GetItemImage;
 using ApospReport.Application.RemoveAccountReport;
 using ApospReport.Application.SaveAccountReport;
 using ApospReport.Contract.AccountReport;
@@ -13,6 +12,7 @@ using Swashbuckle.AspNetCore.Filters;
 
 namespace ApospReport.API.Controllers
 {
+
     [Authorize]
     [ApiController]
     [Route("api/reports")]
@@ -43,7 +43,6 @@ namespace ApospReport.API.Controllers
         [HttpGet("account")]
         public async Task<IActionResult> GetAccountReports() =>
             Ok(await mediator.Send(new GetAccountReportQuery()));
-
 
         [HttpGet("bank")]
         public async Task<IActionResult> GetBankReport()
