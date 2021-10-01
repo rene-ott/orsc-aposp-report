@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ItemImageService } from '../shared/services/item-image.service';
-import { BankReportItem } from './bank-report-item.model';
-import { BankReportService } from './bank-report.service';
+import { ItemImageService } from '../../shared/services/item-image.service';
+import { BankReportItem } from './models/bank-report-item.model';
+import { BankReportService } from './services/bank-report.service';
 import * as _ from 'lodash'
 
 @Component({
@@ -16,8 +16,7 @@ export class BankReportComponent implements OnInit {
   rowCount = 10
 
   constructor(private bankReportService: BankReportService,
-              private itemImageService: ItemImageService)
-  { }
+    private itemImageService: ItemImageService) { }
 
   ngOnInit() {
     this.bankReportService.getBankReportItems().subscribe(x => {

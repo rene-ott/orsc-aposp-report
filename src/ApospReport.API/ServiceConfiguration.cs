@@ -12,8 +12,7 @@ namespace ApospReport.API
     {
         internal static void AddAPIServices(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddAuthentication("ApiKey")
-                .AddScheme<ApiKeyAuthenticationOptions, ApiKeyAuthenticationHandler>("ApiKey", null);
+            services.AddAuthentication("ApiKey").AddScheme<ApiKeyAuthenticationOptions, ApiKeyAuthenticationHandler>("ApiKey", null);
             services.AddAuthorization();
 
             services.AddSingleton<IApiKeyValidator, ApiKeyValidator>();

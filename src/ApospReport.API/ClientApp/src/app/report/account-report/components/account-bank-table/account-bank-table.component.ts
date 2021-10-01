@@ -4,12 +4,12 @@ import * as _ from 'lodash'
 import { MatTabChangeEvent } from '@angular/material/tabs';
 
 @Component({
-  selector: 'app-account-bank-item-table',
-  templateUrl: './account-bank-item-table.component.html',
-  styleUrls: ['./account-bank-item-table.component.css']
+  selector: 'app-account-bank-table',
+  templateUrl: './account-bank-table.component.html',
+  styleUrls: ['./account-bank-table.component.css']
 })
 export class AccountBankItemTableComponent implements OnInit {
-  
+
   private alignedBankItems: Array<BankItem | null> = [];
 
   private readonly MAX_PAGE_COUNT = 4;
@@ -18,12 +18,12 @@ export class AccountBankItemTableComponent implements OnInit {
 
   currentPageIndex = 0;
   pageCount = 1
-  currentPageItems:any[] = Array.from({length: this.PAGE_SIZE}, () => null) 
+  currentPageItems: any[] = Array.from({ length: this.PAGE_SIZE }, () => null)
 
-  get bankItems(): any { 
+  get bankItems(): any {
     return this.alignedBankItems;
   }
-  
+
   @Input()
   set bankItems(val: BankItem[]) {
     this.alignedBankItems = val;

@@ -1,10 +1,6 @@
-﻿using System.Threading.Tasks;
-using ApospReport.API.Authentication;
-using ApospReport.API.Samples;
+﻿using ApospReport.API.Authentication;
 using ApospReport.Contract;
-using ApospReport.Contract.AccountReport;
 using Microsoft.AspNetCore.Mvc;
-using Swashbuckle.AspNetCore.Filters;
 
 namespace ApospReport.API.Controllers
 {
@@ -20,7 +16,6 @@ namespace ApospReport.API.Controllers
         }
 
         [HttpPost]
-        [SwaggerRequestExample(typeof(AccountReportDto), typeof(SaveAccountReportExample))]
         public IActionResult Authenticate([FromBody] AuthenticationDto request)
         {
             return Ok(new { isValid = apiKeyValidator.IsValid(request.ApiKey) });

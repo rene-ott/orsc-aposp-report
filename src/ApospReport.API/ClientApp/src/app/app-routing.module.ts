@@ -1,23 +1,21 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
-import { AccountReportComponent } from './account-report/account-report.component';
-import { BankReportComponent } from './bank-report/bank-report.component';
+import { Routes, RouterModule } from '@angular/router';
+import { LoginComponent } from './login/login.component';
+import { LoginModule } from './login/login.module';
+import { ReportComponent } from './report/report.component';
+import { ReportModule } from './report/report.module';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/account', pathMatch: 'full' },
-  { path: 'account', component: AccountReportComponent },
-  { path: 'bank', component: BankReportComponent },
+  { path: 'report', component: ReportComponent },
+  { path: 'login', component: LoginComponent },
 ];
 
 @NgModule({
-  declarations: [],
   imports: [
-    CommonModule,
-    [RouterModule.forRoot(routes)],
+    RouterModule.forRoot(routes)
   ],
-  exports: [RouterModule]
+  exports: [
+    RouterModule
+  ]
 })
-export class AppRoutingModule {
-
-}
+export class AppRoutingModule { };
