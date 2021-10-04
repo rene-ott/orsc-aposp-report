@@ -16,6 +16,8 @@ export class ItemSlotImageComponent implements OnInit {
   data!: string;
   isVisible: boolean = false
 
+  @Input()
+  isStackable!: boolean
   constructor() { }
 
   ngOnInit(): void {

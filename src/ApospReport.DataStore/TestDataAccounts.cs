@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using ApospReport.Domain.Extensions;
 using ApospReport.Domain.Models;
 
 namespace ApospReport.DataStore
@@ -10,6 +12,8 @@ namespace ApospReport.DataStore
             Username = "TestUser1",
             BankItems = CreateItems<BankItem>(192),
             InventoryItems = CreateItems<InventoryItem>(30),
+            UpdatedAt = DateTime.UtcNow.TruncateMillis().AddMinutes(-1),
+            BankViewTimestamp = DateTime.UtcNow.TruncateMillis().AddMinutes(-30),
             Attack = CreateSkill(21, 11),
             Defense = CreateSkill(22, 12),
             Strength = CreateSkill(23, 13),
@@ -33,6 +37,8 @@ namespace ApospReport.DataStore
         public static Account TestSecondUser = new()
         {
             Username = "TestUser2",
+            BankViewTimestamp = DateTime.UtcNow.TruncateMillis().AddHours(-1),
+            UpdatedAt = DateTime.UtcNow.TruncateMillis().AddMinutes(-1),
             BankItems = CreateItems<BankItem>(192, true),
             InventoryItems = CreateItems<InventoryItem>(30, true),
             Attack = CreateSkill(51, 31),

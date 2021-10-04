@@ -1,5 +1,4 @@
-﻿using System;
-using ApospReport.API.Authentication;
+﻿using ApospReport.API.Authentication;
 using ApospReport.API.Samples;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

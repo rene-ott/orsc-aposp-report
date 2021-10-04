@@ -12,6 +12,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ReportComponent } from './report.component';
 import { ReportRoutingModule } from './report-routing.module';
+import { TimeDiffPipe } from '../shared/time-diff.pipe';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { ReportRoutingModule } from './report-routing.module';
     BankReportComponent,
     AccountReportComponent,
     AccountBankItemTableComponent,
-    ReportComponent
+    ReportComponent,
+    TimeDiffPipe
   ],
   providers: [ItemImageService],
 

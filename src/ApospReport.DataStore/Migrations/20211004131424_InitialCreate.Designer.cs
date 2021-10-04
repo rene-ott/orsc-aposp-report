@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ApospReport.DataStore.Migrations
 {
     [DbContext(typeof(ApospReportDbContext))]
-    [Migration("20210927210024_InitialCreate")]
+    [Migration("20211004131424_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,6 +32,10 @@ namespace ApospReport.DataStore.Migrations
                     b.Property<DateTime?>("BankViewTimestamp")
                         .HasColumnType("timestamp without time zone")
                         .HasColumnName("bank_view_timestamp");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("timestamp without time zone")
+                        .HasColumnName("updated_at");
 
                     b.Property<string>("Username")
                         .IsRequired()

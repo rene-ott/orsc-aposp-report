@@ -1,22 +1,4 @@
-.item {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.item,
-.item td {
-  border: 1px solid black;
-  border-collapse: collapse;
-  color: rgba(0, 0, 0, 0.87);
-  border-color: rgba(0, 0, 0, 0.12);
-}
-
-.item td {
-  width: 64px;
-  height: 48px;
-  padding: 3px;
-}
-
+/* Makes mat tabs to align left */
 ::ng-deep.mat-tab-label,
 ::ng-deep.mat-tab-label-active {
   min-width: 0 !important;

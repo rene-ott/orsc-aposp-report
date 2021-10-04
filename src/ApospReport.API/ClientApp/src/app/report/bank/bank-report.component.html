@@ -1,5 +1,5 @@
-<mat-card class="mat-elevation-z5">
-  <table class="item">
+<mat-card class="mat-elevation-z5 report-content">
+  <table class="item-table item-table--margin item-table--center">
     <tbody>
       <tr *ngFor="let i of [].constructor(rowCount); let rowIndex = index">
         <td
@@ -9,7 +9,7 @@
               (rowIndex + 1) * rowSize
             )
           "
-          class="mat-cell"
+          class="item-table__cell"
         >
           <app-item-slot-image
             [base64]="bankItem?.base64"

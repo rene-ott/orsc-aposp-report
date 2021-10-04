@@ -3,61 +3,64 @@
     label="Page {{ pageIndex + 1 }}"
     *ngFor="let i of [].constructor(pageCount); let pageIndex = index"
   >
-    <table class="item">
+    <table class="item-table item-table--margin">
       <tbody>
         <tr>
-          <td
-            *ngFor="let item of currentPageItems.slice(0, 8)"
-            class="mat-cell"
-          >
+          <td *ngFor="let item of currentPageItems.slice(0, 8)" class="item-table__cell">
             <app-item-slot-image
               [base64]="item?.base64"
               [count]="item?.count"
+              [isStackable]="item?.isStackable"
             ></app-item-slot-image>
           </td>
         </tr>
 
         <tr>
-          <td *ngFor="let item of currentPageItems.slice(8, 16)">
+          <td *ngFor="let item of currentPageItems.slice(8, 16)" class="item-table__cell">
             <app-item-slot-image
               [base64]="item?.base64"
               [count]="item?.count"
+              [isStackable]="item?.isStackable"
             ></app-item-slot-image>
           </td>
         </tr>
 
         <tr>
-          <td *ngFor="let item of currentPageItems.slice(16, 24)">
+          <td *ngFor="let item of currentPageItems.slice(16, 24)" class="item-table__cell">
             <app-item-slot-image
               [base64]="item?.base64"
               [count]="item?.count"
+              [isStackable]="item?.isStackable"
             ></app-item-slot-image>
           </td>
         </tr>
 
         <tr>
-          <td *ngFor="let item of currentPageItems.slice(24, 32)">
+          <td *ngFor="let item of currentPageItems.slice(24, 32)" class="item-table__cell">
             <app-item-slot-image
               [base64]="item?.base64"
               [count]="item?.count"
+              [isStackable]="item?.isStackable"
             ></app-item-slot-image>
           </td>
         </tr>
 
         <tr>
-          <td *ngFor="let item of currentPageItems.slice(32, 40)">
+          <td *ngFor="let item of currentPageItems.slice(32, 40)" class="item-table__cell">
             <app-item-slot-image
               [base64]="item?.base64"
               [count]="item?.count"
+              [isStackable]="item?.isStackable"
             ></app-item-slot-image>
           </td>
         </tr>
 
         <tr>
-          <td *ngFor="let item of currentPageItems.slice(40, 48)">
+          <td *ngFor="let item of currentPageItems.slice(40, 48)" class="item-table__cell">
             <app-item-slot-image
               [base64]="item?.base64"
               [count]="item?.count"
+              [isStackable]="item?.isStackable"
             ></app-item-slot-image>
           </td>
         </tr>

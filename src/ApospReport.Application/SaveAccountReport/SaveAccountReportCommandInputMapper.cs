@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using ApospReport.Contract.AccountReport;
+using ApospReport.Domain.Extensions;
 using ApospReport.Domain.Models;
 
 namespace ApospReport.Application.SaveAccountReport
@@ -18,6 +20,7 @@ namespace ApospReport.Application.SaveAccountReport
             {
                 Username = dto.Username,
                 BankViewTimestamp = dto.BankViewTimestamp,
+                UpdatedAt = DateTime.UtcNow.TruncateMillis(),
 
                 InventoryItems = MapItems<InventoryItem>(dto.InventoryItems),
                 BankItems = MapItems<BankItem>(dto.BankItems),

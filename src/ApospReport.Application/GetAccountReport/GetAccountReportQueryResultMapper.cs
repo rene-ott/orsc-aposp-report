@@ -23,6 +23,7 @@ namespace ApospReport.Application.GetAccountReport
             {
                 Username = account.Username,
                 BankViewTimestamp = account.BankViewTimestamp,
+                ReportTimestamp = account.UpdatedAt,
 
                 BankItems = account.BankItems.Select(MapItem).OrderBy(x => x.Position).ToList(),
                 InventoryItems = account.InventoryItems.Select(MapItem).OrderBy(x => x.Position).ToList(),
