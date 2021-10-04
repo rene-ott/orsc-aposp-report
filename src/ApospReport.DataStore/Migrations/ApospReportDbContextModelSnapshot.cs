@@ -31,6 +31,10 @@ namespace ApospReport.DataStore.Migrations
                         .HasColumnType("timestamp without time zone")
                         .HasColumnName("bank_view_timestamp");
 
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("timestamp without time zone")
+                        .HasColumnName("updated_at");
+
                     b.Property<string>("Username")
                         .IsRequired()
                         .HasMaxLength(12)

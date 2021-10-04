@@ -1,10 +1,12 @@
 ﻿using System.Threading.Tasks;
 using ApospReport.Application.GetItemImage;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApospReport.API.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/resources")]
     public class ResourceController : ControllerBase

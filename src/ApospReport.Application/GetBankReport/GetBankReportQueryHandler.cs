@@ -9,10 +9,10 @@ namespace ApospReport.Application.GetBankReport
     internal class GetBankReportQueryHandler : IRequestHandler<GetTotalBankItemReportQuery, BankReportDto>
     {
         private readonly IGenericRepository genericRepository;
-        private readonly IGetTotalBankItemReportQueryResultMapper resultMapper;
+        private readonly IGetBankReportQueryResultMapper resultMapper;
 
         public GetBankReportQueryHandler(IGenericRepository genericRepository,
-                    IGetTotalBankItemReportQueryResultMapper resultMapper)
+                    IGetBankReportQueryResultMapper resultMapper)
         {
             this.genericRepository = genericRepository;
             this.resultMapper = resultMapper;

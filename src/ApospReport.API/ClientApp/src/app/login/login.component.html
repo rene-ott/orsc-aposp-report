@@ -1,0 +1,20 @@
+<div class="login-page_container">
+  <mat-card class="mat-elevation-z5">
+    <mat-card-header>
+      <mat-card-title>Login</mat-card-title>
+    </mat-card-header>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onLogIn()" >
+      <mat-card-content>
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input matInput type="password" autocomplete="off" formControlName="password" required>
+        </mat-form-field>
+        <mat-error *ngIf="loginForm.get('password')?.hasError('invalid')">
+          Invalid password
+        </mat-error>
+      </mat-card-content>
+      <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.get('password')?.value == ''">Log in</button>
+    </form>
+  </mat-card>
+</div>

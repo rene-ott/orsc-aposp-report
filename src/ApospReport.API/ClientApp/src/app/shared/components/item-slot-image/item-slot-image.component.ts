@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'app-item-slot-image',
   templateUrl: './item-slot-image.component.html',
-  styleUrls: ['./item-slot-image.component.css']
+  styleUrls: ['./item-slot-image.component.scss']
 })
 export class ItemSlotImageComponent implements OnInit {
 
@@ -16,6 +16,8 @@ export class ItemSlotImageComponent implements OnInit {
   data!: string;
   isVisible: boolean = false
 
+  @Input()
+  isStackable!: boolean
   constructor() { }
 
   ngOnInit(): void {

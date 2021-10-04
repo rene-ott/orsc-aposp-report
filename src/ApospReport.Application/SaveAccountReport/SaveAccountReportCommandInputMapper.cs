@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using ApospReport.Contract;
 using ApospReport.Contract.AccountReport;
+using ApospReport.Domain.Extensions;
 using ApospReport.Domain.Models;
 
 namespace ApospReport.Application.SaveAccountReport
@@ -15,10 +16,11 @@ namespace ApospReport.Application.SaveAccountReport
     {
         public Account MapInput(AccountReportDto dto)
         {
-            return new Account
+            return new()
             {
                 Username = dto.Username,
                 BankViewTimestamp = dto.BankViewTimestamp,
+                UpdatedAt = DateTime.UtcNow.TruncateMillis(),
 
                 InventoryItems = MapItems<InventoryItem>(dto.InventoryItems),
                 BankItems = MapItems<BankItem>(dto.BankItems),
@@ -46,7 +48,7 @@ namespace ApospReport.Application.SaveAccountReport
         private static IList<TAccountItem> MapItems<TAccountItem>(IList<AccountReportItemDto> items)
             where TAccountItem : AccountItem, new()
         {
-            return items.Select(MapItem<TAccountItem>).ToList();
+            return (items == null ? Enumerable.Empty<TAccountItem>() : items.Select(MapItem<TAccountItem>)).ToList();
         }
 
         private static TAccountItem MapItem<TAccountItem>(AccountReportItemDto accountReportItem)

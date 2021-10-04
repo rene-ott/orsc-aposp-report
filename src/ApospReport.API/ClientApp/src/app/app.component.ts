@@ -1,30 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ItemImageService } from './shared/services/item-image.service';
+import { Observable } from 'rxjs';
+import { AuthService } from './shared/services/auth.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
+
   title = 'app';
-  navLinks: any[];
-  activeLinkIndex = -1;
+  isLoggedIn$!: Observable<boolean>;
 
-  constructor(private router: Router, private itemImageService: ItemImageService) {
-    this.navLinks = [
-        { label: 'Account reports', link: './account', index: 0 },
-        { label: 'Total bank report', link: './bank', index: 1 },
-    ];
-}
-  ngOnInit(): void {
-    this.router.events.subscribe(() => {
-        this.activeLinkIndex = this.navLinks.indexOf(this.navLinks.find(tab => tab.link === '.' + this.router.url));
-    });
+  constructor(
+    private authService: AuthService,
+    private router: Router) {
+  }
 
-    this.itemImageService.downloadItemImages().subscribe(x => {
-      console.log(x);
-    })
+  ngOnInit() {
+    this.isLoggedIn$ = this.authService.isLoggedIn;
+    this.authService.markAsLoggedIn();
+  }
+
+  logOut() {
+    this.authService.removeApiKey();
+    this.router.navigate(['/login']);
   }
 }

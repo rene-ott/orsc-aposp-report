@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ApospReport.Contract;
 using ApospReport.Contract.AccountReport;
 using ApospReport.Domain.Models;
 
@@ -24,9 +23,10 @@ namespace ApospReport.Application.GetAccountReport
             {
                 Username = account.Username,
                 BankViewTimestamp = account.BankViewTimestamp,
+                ReportTimestamp = account.UpdatedAt,
 
-                BankItems = account.BankItems.Select(MapItem).ToList(),
-                InventoryItems = account.InventoryItems.Select(MapItem).ToList(),
+                BankItems = account.BankItems.Select(MapItem).OrderBy(x => x.Position).ToList(),
+                InventoryItems = account.InventoryItems.Select(MapItem).OrderBy(x => x.Position).ToList(),
 
                 Skill = new AccountReportSkillDto
                 {
@@ -56,6 +56,7 @@ namespace ApospReport.Application.GetAccountReport
         {
             return new()
             {
+                Position = accountItem.Position,
                 Count = accountItem.Count,
                 Id = accountItem.ItemDefinition.Id,
                 IsStackable = accountItem.ItemDefinition.IsStackable,

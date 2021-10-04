@@ -826,7 +826,7 @@
   },
   {
     "Id": 165,
-    "Name": "Herb",
+    "Name": "Herb (Guam leaf)",
     "IsStackable": false
   },
   {
@@ -2176,47 +2176,47 @@
   },
   {
     "Id": 435,
-    "Name": "Herb",
+    "Name": "Herb (Marrentill)",
     "IsStackable": false
   },
   {
     "Id": 436,
-    "Name": "Herb",
+    "Name": "Herb (Tarromin)",
     "IsStackable": false
   },
   {
     "Id": 437,
-    "Name": "Herb",
+    "Name": "Herb (Harralander)",
     "IsStackable": false
   },
   {
     "Id": 438,
-    "Name": "Herb",
+    "Name": "Herb (Ranarr weed)",
     "IsStackable": false
   },
   {
     "Id": 439,
-    "Name": "Herb",
+    "Name": "Herb (Irit leaf)",
     "IsStackable": false
   },
   {
     "Id": 440,
-    "Name": "Herb",
+    "Name": "Herb (Avantoe)",
     "IsStackable": false
   },
   {
     "Id": 441,
-    "Name": "Herb",
+    "Name": "Herb (Kwuarm)",
     "IsStackable": false
   },
   {
     "Id": 442,
-    "Name": "Herb",
+    "Name": "Herb (Cadantine)",
     "IsStackable": false
   },
   {
     "Id": 443,
-    "Name": "Herb",
+    "Name": "Herb (Dwarf weed)",
     "IsStackable": false
   },
   {
@@ -4666,7 +4666,7 @@
   },
   {
     "Id": 933,
-    "Name": "Herb",
+    "Name": "Herb (Torstol)",
     "IsStackable": false
   },
   {

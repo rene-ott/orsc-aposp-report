@@ -3,17 +3,17 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text.Json;
-using ApospReport.Domain;
 using ApospReport.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace ApospReport.DataStore
 {
     public interface IDbInitializer
     {
         void RunMigrations();
-        void SeedData();
+        void SeedData(IHostEnvironment env);
     }
 
     public class DbInitializer : IDbInitializer
@@ -32,7 +32,27 @@ namespace ApospReport.DataStore
             context.Database.Migrate();
         }
 
-        public void SeedData()
+        public void SeedData(IHostEnvironment env)
+        {
+             SeedItemDefinitions();
+
+            if (env.IsDevelopment())
+                SeedTestUsers();
+        }
+
+        public void SeedTestUsers()
+        {
+            using var serviceScope = scopeFactory.CreateScope();
+            using var context = serviceScope.ServiceProvider.GetRequiredService<ApospReportDbContext>();
+
+            if (context.Accounts.Any())
+                return;
+
+            context.Accounts.AddRange(TestDataAccounts.TestFirstUser, TestDataAccounts.TestSecondUser);
+            context.SaveChanges();
+        }
+
+        private void SeedItemDefinitions()
         {
             using var serviceScope = scopeFactory.CreateScope();
             using var context = serviceScope.ServiceProvider.GetRequiredService<ApospReportDbContext>();

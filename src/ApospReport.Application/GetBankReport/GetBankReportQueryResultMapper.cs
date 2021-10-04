@@ -5,12 +5,12 @@ using ApospReport.Domain.Models;
 
 namespace ApospReport.Application.GetBankReport
 {
-    internal interface IGetTotalBankItemReportQueryResultMapper
+    internal interface IGetBankReportQueryResultMapper
     {
         BankReportDto MapResult(IList<ItemDefinition> itemDefinition);
     }
 
-    internal class GetBankReportQueryResultMapper : IGetTotalBankItemReportQueryResultMapper
+    internal class GetBankReportQueryResultMapper : IGetBankReportQueryResultMapper
     {
 
         public BankReportDto MapResult(IList<ItemDefinition> itemDefinition)
@@ -49,7 +49,7 @@ namespace ApospReport.Application.GetBankReport
 
             return new BankReportDto
             {
-                Items = bankReportItems
+                Items = bankReportItems.OrderBy(x => x.Id).ToList()
             };
         }
     }
