@@ -7,7 +7,7 @@ import * as _ from 'lodash'
 @Component({
   selector: 'app-bank-report',
   templateUrl: './bank-report.component.html',
-  styleUrls: ['./bank-report.component.css']
+  styleUrls: ['./bank-report.component.scss']
 })
 export class BankReportComponent implements OnInit {
 

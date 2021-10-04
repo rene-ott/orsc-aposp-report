@@ -6,7 +6,7 @@ import { MatTabChangeEvent } from '@angular/material/tabs';
 @Component({
   selector: 'app-account-bank-table',
   templateUrl: './account-bank-table.component.html',
-  styleUrls: ['./account-bank-table.component.css']
+  styleUrls: ['./account-bank-table.component.scss']
 })
 export class AccountBankItemTableComponent implements OnInit {
 
