@@ -13,6 +13,7 @@ using Swashbuckle.AspNetCore.Filters;
 namespace ApospReport.API.Controllers
 {
 
+    [Authorize]
     [ApiController]
     [Route("api/reports")]
     public class ReportController : ControllerBase

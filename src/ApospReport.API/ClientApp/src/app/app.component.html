@@ -1,1 +1,9 @@
+<mat-toolbar color="primary" *ngIf="isLoggedIn$ | async">
+  <span>APOS+ Report</span>
+  <span class="example-spacer"></span>
+  <button mat-button (click)="logOut()">
+    <mat-icon>exit_to_app</mat-icon>
+    Log out
+  </button>
+</mat-toolbar>
 <router-outlet></router-outlet>

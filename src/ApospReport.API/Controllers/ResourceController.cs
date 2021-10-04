@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ApospReport.API.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/resources")]
     public class ResourceController : ControllerBase

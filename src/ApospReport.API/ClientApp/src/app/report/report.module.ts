@@ -6,7 +6,6 @@ import { ItemSlotImageComponent } from '../shared/components/item-slot-image/ite
 import { AccountBankItemTableComponent } from './account-report/components/account-bank-table/account-bank-table.component';
 import { BankReportComponent } from './bank/bank-report.component';
 import { AccountReportComponent } from './account-report/account-report.component';
-import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
@@ -20,7 +19,6 @@ import { ReportRoutingModule } from './report-routing.module';
     MatTabsModule,
     MatButtonModule,
     MatTableModule,
-    HttpClientModule,
     MatCardModule,
     ReportRoutingModule
   ],

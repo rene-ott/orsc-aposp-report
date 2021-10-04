@@ -1,32 +1,37 @@
-import { Component, OnInit } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
+import { Component } from '@angular/core';
 import { AuthService } from '../shared/services/auth.service';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: []
+  styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
+  loginForm = this.fb.group({
+    password: ['', Validators.required]
+  });
 
-  password = "";
-  invalidPassword = false;
-
-  constructor(private authService: AuthService, private cookieService: CookieService) {
-
-  }
-
-  ngOnInit() {
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router) {
   }
 
   onLogIn() {
-    this.authService.isValidKey(this.password).subscribe(x => {
-      if (!x) {
-        window.alert("INVALID PASSWORD");
-        return;
+    const password = this.loginForm.controls['password'].value;
+    this.authService.isValidApiKey(password).subscribe(isValid => {
+      if (isValid) {
+        this.authService.setApiKey(password);
+        this.router.navigate(['/'], { replaceUrl: true })
+      } else {
+        this.setFormInvalid();
       }
-      this.cookieService.set("X-API-KEY", this.password)
     })
   }
 
+  setFormInvalid() {
+    this.loginForm.controls['password'].setErrors({ invalid: true });
+  }
 }
