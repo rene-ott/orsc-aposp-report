@@ -2,10 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-	  <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+	<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileFile>..\Dockerfile</DockerfileFile>
-	  <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+	<TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
 	<SpaRoot>ClientApp\</SpaRoot>
+	<SkipClientAppBuild>True</SkipClientAppBuild>
   </PropertyGroup>
 
   <ItemGroup>
@@ -34,7 +35,7 @@
 	  <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
 	</ItemGroup>
 
-	<Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+	<Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish" Condition="$(SkipClientAppBuild) != 'True'">
 		<Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
 		<Exec WorkingDirectory="$(SpaRoot)" Command="npm run build" />
 
