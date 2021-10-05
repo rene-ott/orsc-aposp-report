@@ -6,11 +6,14 @@ services:
     build:
       context: ./src
       dockerfile: Dockerfile
+      args:
+        SKIP_CLIENT_APP_BUILD: ${SKIP_CLIENT_APP_BUILD:-True}
     ports:
-      - "8080:5000"
+      - "5000:5000"
     environment:
       - CONNECTIONSTRING=Host=db;Port=5432;Username=aposp_report_app;Password=aposp_report_app_password;Database=aposp_report_db
       - ASPNETCORE_URLS=http://+:5000
+      - APIKEY=${API_KEY:?err}
     depends_on:
       - db
     restart: on-failure
@@ -27,7 +30,7 @@ services:
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "5432:5432"
-      
+
   proxy:
     image: nginx:alpine
     container_name: aposp-report-proxy
@@ -36,5 +39,5 @@ services:
     depends_on:
       - web
     ports:
-      - "4000:4000"
+      - "80:80"
     restart: on-failure
