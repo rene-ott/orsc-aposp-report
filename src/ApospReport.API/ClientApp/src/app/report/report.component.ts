@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterLinkActive } from '@angular/router';
+import { Router } from '@angular/router';
 import { ItemImageService } from '../shared/services/item-image.service';
 
 @Component({
