@@ -15,4 +15,8 @@ export class AccountReportService {
   getAccountReports(): Observable<AccountReport[]> {
     return this.http.get<AccountReport[]>(ApiPaths.AccountReport);
   }
+
+  deleteUser(username: string): Observable<unknown> {
+    return this.http.delete(`${ApiPaths.AccountReport}/${username}`);
+  }
 }

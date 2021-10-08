@@ -1,4 +1,8 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z5 report-content">
+<table
+  mat-table
+  [dataSource]="dataSource"
+  class="mat-elevation-z5 report-content"
+>
   <ng-container matColumnDef="username">
     <th mat-header-cell *matHeaderCellDef>Report info</th>
     <td mat-cell *matCellDef="let element" class="mat-cell--top">
@@ -14,6 +18,19 @@
       <app-account-bank-table
         [bankItems]="dataSource.data[i].bankItems"
       ></app-account-bank-table>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
+    <td mat-cell *matCellDef="let element; index as i" class="mat-cell--top">
+      <button
+        mat-raised-button
+        color="warn"
+        (click)="removeUser(i, element.username)"
+      >
+        Remove
+      </button>
     </td>
   </ng-container>
 

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
 import { ItemImageService } from '../shared/services/item-image.service';
 import { ItemSlotImageComponent } from '../shared/components/item-slot-image/item-slot-image.component';
 import { AccountBankItemTableComponent } from './account-report/components/account-bank-table/account-bank-table.component';

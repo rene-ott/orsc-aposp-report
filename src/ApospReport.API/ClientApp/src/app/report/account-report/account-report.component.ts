@@ -16,7 +16,7 @@ export class AccountReportComponent implements OnInit {
     private accountReportService: AccountReportService) {
   }
 
-  displayedColumns: string[] = ['username', /* 'skills', 'inventory', */ 'bank'];
+  displayedColumns: string[] = ['username', /* 'skills', 'inventory', */ 'bank', 'actions'];
   dataSource = new MatTableDataSource<AccountReport>();;
 
   ngOnInit() {
@@ -34,6 +34,13 @@ export class AccountReportComponent implements OnInit {
     bankItems.forEach(x => {
       var foundImage = itemImages.find(i => i.id == x.id);
       x.base64 = foundImage!!.data
+    });
+  }
+
+  removeUser(index: number, username: string) {
+    this.accountReportService.deleteUser(username).subscribe(_ => {
+      this.dataSource.data.splice(index, 1);
+      this.dataSource._updateChangeSubscription();
     });
   }
 }
