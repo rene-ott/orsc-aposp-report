@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { BankItem } from 'src/app/shared/models/bank-item.model';
-import * as _ from 'lodash'
+import * as _ from 'lodash';
 import { MatTabChangeEvent } from '@angular/material/tabs';
+import { ReportItem } from 'src/app/report/shared/components/report-item/report-item.model';
 
 @Component({
   selector: 'app-account-bank-table',
@@ -10,7 +10,7 @@ import { MatTabChangeEvent } from '@angular/material/tabs';
 })
 export class AccountBankItemTableComponent implements OnInit {
 
-  private alignedBankItems: Array<BankItem | null> = [];
+  private alignedBankItems: (ReportItem | null)[] = [];
 
   private readonly MAX_PAGE_COUNT = 4;
   private readonly PAGE_SIZE = 48;
@@ -18,14 +18,21 @@ export class AccountBankItemTableComponent implements OnInit {
 
   currentPageIndex = 0;
   pageCount = 1
-  currentPageItems: any[] = Array.from({ length: this.PAGE_SIZE }, () => null)
 
-  get bankItems(): any {
+  currentPageItems: (ReportItem | null)[] = Array.from({ length: this.PAGE_SIZE }, () => null)
+  currentPageFirstRowItems: (ReportItem | null)[] = [];
+  currentPageSecondRowItems: (ReportItem | null)[] = [];
+  currentPageThirdRowItems: (ReportItem | null)[] = [];
+  currentPageFourthRowItems: (ReportItem | null)[] = [];
+  currentPageFifthRowItems: (ReportItem | null)[] = [];
+  currentPageSixthRowItems: (ReportItem | null)[] = [];
+
+  get bankItems(): (ReportItem | null)[] {
     return this.alignedBankItems;
   }
 
   @Input()
-  set bankItems(val: BankItem[]) {
+  set bankItems(val: (ReportItem | null)[]) {
     this.alignedBankItems = val;
     _.times(this.getBankItemPlaceholderCount(), _ => this.appendPlaceholder());
   }
@@ -40,15 +47,26 @@ export class AccountBankItemTableComponent implements OnInit {
 
   openPage(tabChangeEvent: MatTabChangeEvent) {
     this.currentPageIndex = tabChangeEvent.index
-    this.currentPageItems = this.getPageItems();
+    this.setCurrentPageItems();
   }
 
   ngOnInit(): void {
     this.pageCount = this.getPageCount();
-    this.currentPageItems = this.getPageItems();
+    this.setCurrentPageItems();
   }
 
-  private getPageItems(): any[] {
+  setCurrentPageItems() {
+    this.currentPageItems = this.getPageItems();
+
+    this.currentPageFirstRowItems = this.currentPageItems.slice(0, 8);
+    this.currentPageSecondRowItems = this.currentPageItems.slice(8, 16);
+    this.currentPageThirdRowItems = this.currentPageItems.slice(16, 24);
+    this.currentPageFourthRowItems = this.currentPageItems.slice(24, 32);
+    this.currentPageFifthRowItems = this.currentPageItems.slice(32, 40);
+    this.currentPageSixthRowItems = this.currentPageItems.slice(40, 48);
+  }
+
+  private getPageItems(): (ReportItem | null)[] {
     var firstItemIndexOnPage = this.currentPageIndex * this.PAGE_SIZE;
     var lastItemIndexOnPage = firstItemIndexOnPage + (this.isLastPage() ? this.getLastPageItemCount() : this.PAGE_SIZE)
     return this.alignedBankItems.slice(firstItemIndexOnPage, lastItemIndexOnPage)

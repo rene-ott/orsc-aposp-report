@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ItemImageService } from '../shared/services/item-image.service';
-import { ItemSlotImageComponent } from '../shared/components/item-slot-image/item-slot-image.component';
 import { AccountBankItemTableComponent } from './account-report/components/account-bank-table/account-bank-table.component';
 import { BankReportComponent } from './bank-report/bank-report.component';
 import { AccountReportComponent } from './account-report/account-report.component';
@@ -12,6 +10,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { ReportComponent } from './report.component';
 import { ReportRoutingModule } from './report-routing.module';
 import { TimeDiffPipe } from '../shared/time-diff.pipe';
+import { ReportItemComponent } from './shared/components/report-item/report-item.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   imports: [
@@ -20,17 +20,18 @@ import { TimeDiffPipe } from '../shared/time-diff.pipe';
     MatButtonModule,
     MatTableModule,
     MatCardModule,
-    ReportRoutingModule
+    ReportRoutingModule,
+    MatTooltipModule,
   ],
   declarations: [
-    ItemSlotImageComponent,
     BankReportComponent,
     AccountReportComponent,
     AccountBankItemTableComponent,
     ReportComponent,
-    TimeDiffPipe
+    TimeDiffPipe,
+    ReportItemComponent
   ],
-  providers: [ItemImageService],
+  providers: [],
 
   exports: [ReportComponent, MatTabsModule] // This needs to be exported to AppModule, otherwise error with [active] 
 })

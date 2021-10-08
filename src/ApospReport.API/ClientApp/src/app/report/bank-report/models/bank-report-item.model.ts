@@ -1,7 +1,5 @@
-export interface BankReportItem {
-    id: number;
-    name: string;
-    base64: string,
-    totalItemCount: number,
+import { ReportItem } from "../../shared/components/report-item/report-item.model";
+
+export interface BankReportItem extends ReportItem {
     users: BankReportItem[]
 }

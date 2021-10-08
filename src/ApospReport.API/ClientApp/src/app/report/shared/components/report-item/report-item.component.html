@@ -1,0 +1,9 @@
+<div
+  *ngIf="hasContent"
+  matTooltip="{{ item?.name }}"
+  matTooltipPosition="above"
+  matTooltipClass="report-item__tooltip"
+>
+  <img [src]="imageSrc" class="report-item__img" width="48px" height="32px" />
+  <div class="report-item__text">{{ itemCount }}</div>
+</div>

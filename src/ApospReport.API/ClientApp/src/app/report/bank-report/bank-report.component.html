@@ -11,10 +11,7 @@
           "
           class="item-table__cell"
         >
-          <app-item-slot-image
-            [base64]="bankItem?.base64"
-            [count]="bankItem?.totalItemCount"
-          ></app-item-slot-image>
+          <app-report-item [item]="bankItem"></app-report-item>
         </td>
       </tr>
     </tbody>

@@ -1,0 +1,15 @@
+.report-item__img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.report-item__text {
+  text-align: center;
+  font-family: Calibri, sans-serif;
+}
+
+::ng-deep.report-item__tooltip {
+  background-color: #3f51b5;
+  font-size: 12px;
+}
