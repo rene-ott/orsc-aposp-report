@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BankReport } from '../models/bank-report.model';
-import { ApiPaths } from '../../../shared/ApiPaths';
+import { ApiPaths } from '../../../shared/api-paths';
 
 @Injectable({
   providedIn: 'root',

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ItemImageService } from '../shared/services/item-image.service';
 import { ItemSlotImageComponent } from '../shared/components/item-slot-image/item-slot-image.component';
 import { AccountBankItemTableComponent } from './account-report/components/account-bank-table/account-bank-table.component';
-import { BankReportComponent } from './bank/bank-report.component';
+import { BankReportComponent } from './bank-report/bank-report.component';
 import { AccountReportComponent } from './account-report/account-report.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';

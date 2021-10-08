@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ItemImage } from '../models/item-image.model';
 import { LocalStorageService } from './local-storage.service';
-import { ApiPaths } from '../ApiPaths';
+import { ApiPaths } from '../api-paths';
 
 @Injectable()
 export class ItemImageService {
