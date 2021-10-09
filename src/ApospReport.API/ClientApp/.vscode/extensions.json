@@ -4,6 +4,6 @@
         "angular.ng-template",
         "johnpapa.angular2",
         "esbenp.prettier-vscode",
-        "stringham.move-ts"
+        "stringham.move-ts",
     ]
 }

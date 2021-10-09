@@ -2,8 +2,10 @@ import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { BankReportItem } from './models/bank-report-item.model';
 import { BankReportService } from './services/bank-report.service';
 import * as _ from 'lodash'
-import { ReportItem } from '../shared/components/report-item/report-item.model';
 import { ReportItemComponent } from '../shared/components/report-item/report-item.component';
+import {MatDialog} from '@angular/material/dialog';
+import { BankReportItemDialogComponent } from '../bank-report-item-dialog/bank-report-item-dialog.component';
+import { ReportItemSelectionChangedEvent } from '../shared/components/report-item/report-item-selection-changed-event.model';
 
 @Component({
   selector: 'app-bank-report',
@@ -14,23 +16,32 @@ export class BankReportComponent implements OnInit {
 
   @ViewChildren('reportItem') reportItemComponents!: QueryList<ReportItemComponent>;
 
-  selectedBankReportItem: (BankReportItem | null) = null;
+  selectedBankReportItems: BankReportItem[] = [];
 
   rowSize = 10;
   bankReportItems: (BankReportItem | null)[] = [];
   rowCount = 10
 
-  constructor(private bankReportService: BankReportService)
+  constructor(private bankReportService: BankReportService, public dialog: MatDialog)
   {}
 
-  onReportItemSelected(item: ReportItem) {
-    this.reportItemComponents.forEach(c => {
-      if (c.isSelected && c.item != item) {
-        c.deselectItem();
-      }
-    });
+  openBankReportItemDialog() {
+    this.dialog.open(BankReportItemDialogComponent, {
+      height: '600px',
+      width: '800px',
+      data: {
+        items: this.selectedBankReportItems
+    }});
+  }
 
-    this.selectedBankReportItem = item as BankReportItem;
+  onReportItemSelected(evt: ReportItemSelectionChangedEvent) {
+    var bankReportItem = evt.item as BankReportItem;
+
+    if (!evt.isSelected) {
+      _.remove(this.selectedBankReportItems, x => x == bankReportItem);
+    } else {
+      this.selectedBankReportItems.push(bankReportItem);
+    }
   }
 
   ngOnInit() {
@@ -53,7 +64,3 @@ export class BankReportComponent implements OnInit {
     return Math.ceil(this.bankReportItems.length / this.rowSize)
   }
 }
-function ChildDirective(ChildDirective: any) {
-  throw new Error('Function not implemented.');
-}
-

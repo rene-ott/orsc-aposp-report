@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ReportItemSelectionChangedEvent } from './report-item-selection-changed-event.model';
 import { ReportItem } from './report-item.model';
 
 @Component({
@@ -10,14 +11,16 @@ export class ReportItemComponent implements OnInit {
 
   isSelected = false;
   hasContent: boolean = false;
-  itemCount: string = "";
   imageSrc: string = "";
+
+  @Input()
+  text: string = "";
 
   @Input()
   item: ReportItem | null = null;
 
   @Output()
-  reportItemSelect: EventEmitter<ReportItem> = new EventEmitter();
+  reportItemSelect: EventEmitter<ReportItemSelectionChangedEvent> = new EventEmitter();
 
   @Input()
   selectable: boolean = false;
@@ -27,8 +30,8 @@ export class ReportItemComponent implements OnInit {
       return;
     }
 
-    this.isSelected = true;
-    this.reportItemSelect.emit(this.item);
+    this.isSelected = !this.isSelected;
+    this.reportItemSelect.emit(new ReportItemSelectionChangedEvent(this.item, this.isSelected));
   }
 
   deselectItem() {
@@ -43,8 +46,5 @@ export class ReportItemComponent implements OnInit {
     }
 
     this.imageSrc = `/images/items/${this.item.id}.png`;
-    this.itemCount = this.item.isStackable
-     ? `[${this.item.count}]`
-     : this.item.count.toString();
   }
 }

@@ -1,24 +1,42 @@
-<mat-card class="mat-elevation-z5 report-content">
-  <table class="item-table item-table--margin item-table--center">
-    <tbody>
-      <tr *ngFor="let i of [].constructor(rowCount); let rowIndex = index">
-        <td
-          *ngFor="
-            let bankItem of bankReportItems.slice(
-              rowIndex * rowSize,
-              (rowIndex + 1) * rowSize
-            )
-          "
-          class="item-table__cell"
-        >
-          <app-report-item
-            #reportItem
-            [item]="bankItem"
-            (reportItemSelect)="onReportItemSelected($event)"
-            [selectable]="!!bankItem"
-          ></app-report-item>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</mat-card>
+<div class="bank-report__container">
+  <mat-card class="mat-elevation-z5 bank-report__content">
+    <table class="item-table item-table--margin item-table--center">
+      <tbody>
+        <tr *ngFor="let i of [].constructor(rowCount); let rowIndex = index">
+          <td
+            *ngFor="
+              let bankItem of bankReportItems.slice(
+                rowIndex * rowSize,
+                (rowIndex + 1) * rowSize
+              )
+            "
+            class="item-table__cell"
+          >
+            <app-report-item
+              #reportItem
+              [item]="bankItem"
+              [text]="
+                bankItem?.isStackable
+                  ? (bankItem?.count | surroundWithBrackets)
+                  : (bankItem?.count | toString)
+              "
+              (reportItemSelect)="onReportItemSelected($event)"
+              [selectable]="!!bankItem"
+            ></app-report-item>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </mat-card>
+  <div class="bank-report__action-menu">
+    <button
+      matTooltip="Select items for which you want to see owners"
+      mat-raised-button
+      color="primary"
+      disabled="{{ selectedBankReportItems.length == 0 }}"
+      (click)="openBankReportItemDialog()"
+    >
+      Show item owners
+    </button>
+  </div>
+</div>

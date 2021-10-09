@@ -10,7 +10,14 @@
             *ngFor="let currentPageItem of currentPageFirstRowItems"
             class="item-table__cell"
           >
-            <app-report-item [item]="currentPageItem"></app-report-item>
+            <app-report-item
+              [item]="currentPageItem"
+              [text]="
+                currentPageItem?.isStackable
+                  ? (currentPageItem?.count | surroundWithBrackets)
+                  : (currentPageItem?.count | toString)
+              "
+            ></app-report-item>
           </td>
         </tr>
 
@@ -19,7 +26,14 @@
             *ngFor="let currentPageItem of currentPageSecondRowItems"
             class="item-table__cell"
           >
-            <app-report-item [item]="currentPageItem"></app-report-item>
+            <app-report-item
+              [item]="currentPageItem"
+              [text]="
+                currentPageItem?.isStackable
+                  ? (currentPageItem?.count | surroundWithBrackets)
+                  : (currentPageItem?.count | toString)
+              "
+            ></app-report-item>
           </td>
         </tr>
 
@@ -28,7 +42,14 @@
             *ngFor="let currentPageItem of currentPageThirdRowItems"
             class="item-table__cell"
           >
-            <app-report-item [item]="currentPageItem"></app-report-item>
+            <app-report-item
+              [item]="currentPageItem"
+              [text]="
+                currentPageItem?.isStackable
+                  ? (currentPageItem?.count | surroundWithBrackets)
+                  : (currentPageItem?.count | toString)
+              "
+            ></app-report-item>
           </td>
         </tr>
 
@@ -37,7 +58,14 @@
             *ngFor="let currentPageItem of currentPageFourthRowItems"
             class="item-table__cell"
           >
-            <app-report-item [item]="currentPageItem"></app-report-item>
+            <app-report-item
+              [item]="currentPageItem"
+              [text]="
+                currentPageItem?.isStackable
+                  ? (currentPageItem?.count | surroundWithBrackets)
+                  : (currentPageItem?.count | toString)
+              "
+            ></app-report-item>
           </td>
         </tr>
 
@@ -46,7 +74,14 @@
             *ngFor="let currentPageItem of currentPageFifthRowItems"
             class="item-table__cell"
           >
-            <app-report-item [item]="currentPageItem"></app-report-item>
+            <app-report-item
+              [item]="currentPageItem"
+              [text]="
+                currentPageItem?.isStackable
+                  ? (currentPageItem?.count | surroundWithBrackets)
+                  : (currentPageItem?.count | toString)
+              "
+            ></app-report-item>
           </td>
         </tr>
 
@@ -55,7 +90,14 @@
             *ngFor="let currentPageItem of currentPageSixthRowItems"
             class="item-table__cell"
           >
-            <app-report-item [item]="currentPageItem"></app-report-item>
+            <app-report-item
+              [item]="currentPageItem"
+              [text]="
+                currentPageItem?.isStackable
+                  ? (currentPageItem?.count | surroundWithBrackets)
+                  : (currentPageItem?.count | toString)
+              "
+            ></app-report-item>
           </td>
         </tr>
       </tbody>
