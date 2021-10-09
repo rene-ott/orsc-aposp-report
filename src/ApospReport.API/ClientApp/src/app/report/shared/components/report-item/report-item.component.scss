@@ -1,3 +1,15 @@
+.report-item {
+  height: 100%;
+}
+
+.report-item--selectable {
+  cursor: pointer;
+}
+
+.report-item--selected {
+  outline: 2px solid #3f51b5;
+}
+
 .report-item__img {
   display: block;
   margin-left: auto;

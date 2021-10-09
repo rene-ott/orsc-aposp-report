@@ -12,6 +12,8 @@ import { ReportRoutingModule } from './report-routing.module';
 import { TimeDiffPipe } from '../shared/time-diff.pipe';
 import { ReportItemComponent } from './shared/components/report-item/report-item.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { AccountReportService } from './account-report/services/account-report.service';
+import { BankReportService } from './bank-report/services/bank-report.service';
 
 @NgModule({
   imports: [
@@ -31,8 +33,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     TimeDiffPipe,
     ReportItemComponent
   ],
-  providers: [],
-
+  providers: [AccountReportService, BankReportService],
   exports: [ReportComponent, MatTabsModule] // This needs to be exported to AppModule, otherwise error with [active] 
 })
 export class ReportModule { }

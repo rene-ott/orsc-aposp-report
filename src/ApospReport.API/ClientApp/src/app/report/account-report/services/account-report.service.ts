@@ -4,9 +4,7 @@ import { Observable } from 'rxjs';
 import { AccountReport } from './../models/account-report.model';
 import { ApiPaths } from '../../../shared/api-paths';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class AccountReportService {
 
   constructor(private http: HttpClient) {

@@ -1,5 +1,8 @@
 <div
   *ngIf="hasContent"
+  [class.report-item--selectable]="selectable"
+  [class.report-item--selected]="isSelected"
+  (click)="selectItem()"
   matTooltip="{{ item?.name }}"
   matTooltipPosition="above"
   matTooltipClass="report-item__tooltip"

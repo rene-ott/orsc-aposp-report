@@ -11,7 +11,12 @@
           "
           class="item-table__cell"
         >
-          <app-report-item [item]="bankItem"></app-report-item>
+          <app-report-item
+            #reportItem
+            [item]="bankItem"
+            (reportItemSelect)="onReportItemSelected($event)"
+            [selectable]="!!bankItem"
+          ></app-report-item>
         </td>
       </tr>
     </tbody>
