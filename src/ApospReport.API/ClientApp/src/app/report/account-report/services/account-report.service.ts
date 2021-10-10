@@ -2,11 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AccountReport } from './../models/account-report.model';
-import { ApiPaths } from '../../../shared/ApiPaths';
+import { ApiPaths } from '../../../shared/api-paths';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class AccountReportService {
 
   constructor(private http: HttpClient) {
@@ -17,6 +15,6 @@ export class AccountReportService {
   }
 
   deleteUser(username: string): Observable<unknown> {
-    return this.http.delete(`${ApiPaths.AccountReport}/${username}`)
+    return this.http.delete(`${ApiPaths.AccountReport}/${username}`);
   }
 }

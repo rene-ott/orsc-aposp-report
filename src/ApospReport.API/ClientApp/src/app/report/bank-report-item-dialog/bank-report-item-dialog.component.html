@@ -1,0 +1,41 @@
+<h1 mat-dialog-title>Item owners</h1>
+<div mat-dialog-content>
+  <table
+    class="
+      item-table item-table--margin item-table--center
+      bank-report-item-dialog__table
+    "
+    *ngFor="let item of data.items"
+  >
+    <thead>
+      <th class="item-table__cell item-table__cell--wrap-content">Item</th>
+      <th class="item-table__cell item-table__cell--wrap-content">Username</th>
+      <th class="item-table__cell item-table__cell--wrap-content">Count</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of item.users; let first = first">
+        <td class="item-table__cell item-table__cell--wrap-content">
+          <app-report-item
+            *ngIf="first"
+            [item]="item"
+            [selectable]="false"
+          ></app-report-item>
+        </td>
+        <td class="item-table__cell item-table__cell--wrap-content">
+          {{ user.username }}
+        </td>
+        <td class="item-table__cell item-table__cell--wrap-content">
+          {{ user.itemCount }}
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="item-table__cell item-table__cell--wrap-content">
+          <strong>Total count</strong>
+        </td>
+        <td class="item-table__cell item-table__cell--wrap-content">
+          {{ item.count }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

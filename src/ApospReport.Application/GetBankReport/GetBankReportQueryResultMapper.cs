@@ -29,7 +29,7 @@ namespace ApospReport.Application.GetBankReport
                     Id = bankItemGroup.Key,
                     IsStackable = itemDef.IsStackable,
                     Name = itemDef.Name,
-                    TotalItemCount = bankItems.Sum(x => x.Count)
+                    Count = bankItems.Sum(x => x.Count)
                 };
 
 

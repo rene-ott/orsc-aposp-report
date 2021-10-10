@@ -5,3 +5,12 @@
   padding: 3px !important;
   margin: 3px !important;
 }
+
+.label-na {
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 8;
+}
+
+::ng-deep .mat-tab-group.mat-primary .mat-ink-bar {
+  background-color: rgb(39, 184, 176) !important;
+}

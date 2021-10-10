@@ -24,12 +24,6 @@
   </ItemGroup>
 
 	<ItemGroup>
-		<Content Include="App_Data\**">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-	</ItemGroup>
-
-	<ItemGroup>
 	  <Content Remove="$(SpaRoot)**" />
 	  <None Remove="$(SpaRoot)**" />
 	  <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
@@ -57,6 +51,10 @@
 
   <ItemGroup Condition="'$(Configuration)'=='Release'">
     <Content Remove="appsettings.Development.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
   </ItemGroup>
 
 </Project>

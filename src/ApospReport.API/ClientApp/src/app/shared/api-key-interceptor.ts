@@ -7,7 +7,7 @@ import {
 } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { Observable } from 'rxjs';
-import { ApiPaths } from './ApiPaths';
+import { ApiPaths } from './api-paths';
 @Injectable()
 export class ApiKeyInterceptor implements HttpInterceptor {
     constructor(public authService: AuthService) { }

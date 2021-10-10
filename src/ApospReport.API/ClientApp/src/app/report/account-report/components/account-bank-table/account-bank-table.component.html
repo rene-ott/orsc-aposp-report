@@ -6,62 +6,110 @@
     <table class="item-table item-table--margin">
       <tbody>
         <tr>
-          <td *ngFor="let item of currentPageItems.slice(0, 8)" class="item-table__cell">
-            <app-item-slot-image
-              [base64]="item?.base64"
-              [count]="item?.count"
-              [isStackable]="item?.isStackable"
-            ></app-item-slot-image>
+          <td
+            *ngFor="let currentPageItem of currentPageFirstRowItems"
+            class="item-table__cell"
+          >
+            <app-report-item
+              *ngIf="isDataAvailable"
+              [item]="currentPageItem"
+              [text]="
+                currentPageItem?.isStackable
+                  ? (currentPageItem?.count | surroundWithBrackets)
+                  : (currentPageItem?.count | toString)
+              "
+            ></app-report-item>
+            <span *ngIf="!isDataAvailable" class="label-na">N/A</span>
           </td>
         </tr>
 
         <tr>
-          <td *ngFor="let item of currentPageItems.slice(8, 16)" class="item-table__cell">
-            <app-item-slot-image
-              [base64]="item?.base64"
-              [count]="item?.count"
-              [isStackable]="item?.isStackable"
-            ></app-item-slot-image>
+          <td
+            *ngFor="let currentPageItem of currentPageSecondRowItems"
+            class="item-table__cell"
+          >
+            <app-report-item
+              *ngIf="isDataAvailable"
+              [item]="currentPageItem"
+              [text]="
+                currentPageItem?.isStackable
+                  ? (currentPageItem?.count | surroundWithBrackets)
+                  : (currentPageItem?.count | toString)
+              "
+            ></app-report-item>
+            <span *ngIf="!isDataAvailable" class="label-na">N/A</span>
           </td>
         </tr>
 
         <tr>
-          <td *ngFor="let item of currentPageItems.slice(16, 24)" class="item-table__cell">
-            <app-item-slot-image
-              [base64]="item?.base64"
-              [count]="item?.count"
-              [isStackable]="item?.isStackable"
-            ></app-item-slot-image>
+          <td
+            *ngFor="let currentPageItem of currentPageThirdRowItems"
+            class="item-table__cell"
+          >
+            <app-report-item
+              *ngIf="isDataAvailable"
+              [item]="currentPageItem"
+              [text]="
+                currentPageItem?.isStackable
+                  ? (currentPageItem?.count | surroundWithBrackets)
+                  : (currentPageItem?.count | toString)
+              "
+            ></app-report-item>
+            <span *ngIf="!isDataAvailable" class="label-na">N/A</span>
           </td>
         </tr>
 
         <tr>
-          <td *ngFor="let item of currentPageItems.slice(24, 32)" class="item-table__cell">
-            <app-item-slot-image
-              [base64]="item?.base64"
-              [count]="item?.count"
-              [isStackable]="item?.isStackable"
-            ></app-item-slot-image>
+          <td
+            *ngFor="let currentPageItem of currentPageFourthRowItems"
+            class="item-table__cell"
+          >
+            <app-report-item
+              *ngIf="isDataAvailable"
+              [item]="currentPageItem"
+              [text]="
+                currentPageItem?.isStackable
+                  ? (currentPageItem?.count | surroundWithBrackets)
+                  : (currentPageItem?.count | toString)
+              "
+            ></app-report-item>
+            <span *ngIf="!isDataAvailable" class="label-na">N/A</span>
           </td>
         </tr>
 
         <tr>
-          <td *ngFor="let item of currentPageItems.slice(32, 40)" class="item-table__cell">
-            <app-item-slot-image
-              [base64]="item?.base64"
-              [count]="item?.count"
-              [isStackable]="item?.isStackable"
-            ></app-item-slot-image>
+          <td
+            *ngFor="let currentPageItem of currentPageFifthRowItems"
+            class="item-table__cell"
+          >
+            <app-report-item
+              *ngIf="isDataAvailable"
+              [item]="currentPageItem"
+              [text]="
+                currentPageItem?.isStackable
+                  ? (currentPageItem?.count | surroundWithBrackets)
+                  : (currentPageItem?.count | toString)
+              "
+            ></app-report-item>
+            <span *ngIf="!isDataAvailable" class="label-na">N/A</span>
           </td>
         </tr>
 
         <tr>
-          <td *ngFor="let item of currentPageItems.slice(40, 48)" class="item-table__cell">
-            <app-item-slot-image
-              [base64]="item?.base64"
-              [count]="item?.count"
-              [isStackable]="item?.isStackable"
-            ></app-item-slot-image>
+          <td
+            *ngFor="let currentPageItem of currentPageSixthRowItems"
+            class="item-table__cell"
+          >
+            <app-report-item
+              *ngIf="isDataAvailable"
+              [item]="currentPageItem"
+              [text]="
+                currentPageItem?.isStackable
+                  ? (currentPageItem?.count | surroundWithBrackets)
+                  : (currentPageItem?.count | toString)
+              "
+            ></app-report-item>
+            <span *ngIf="!isDataAvailable" class="label-na">N/A</span>
           </td>
         </tr>
       </tbody>

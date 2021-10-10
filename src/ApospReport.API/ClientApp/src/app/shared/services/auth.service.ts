@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { ApiPaths } from '../ApiPaths';
+import { ApiPaths } from '../api-paths';
 import { AuthResult } from '../models/auth-result.model';
 import { LocalStorageService } from './local-storage.service';
 

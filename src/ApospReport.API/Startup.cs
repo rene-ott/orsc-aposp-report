@@ -1,6 +1,5 @@
 using ApospReport.Application;
 using ApospReport.DataStore;
-using ApospReport.Domain;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -12,19 +11,16 @@ namespace ApospReport.API
     public class Startup
     {
         public IConfiguration Configuration { get; }
-        private readonly IHostEnvironment hostEnvironment;
 
-        public Startup(IConfiguration configuration, IHostEnvironment hostEnvironment)
+        public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            this.hostEnvironment = hostEnvironment;
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAPIServices(Configuration);
             services.AddApplicationServices();
-            services.AddDomainServices(hostEnvironment.ContentRootFileProvider);
             services.AddDataStoreServices(Configuration["ConnectionString"]);
         }
 
@@ -39,13 +35,18 @@ namespace ApospReport.API
             if (env.IsProduction())
                 app.UseSpaStaticFiles();
 
+            app.UseStaticFiles();
+
             app.UseRouting();
 
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ApospReport v1"));
+            if (env.IsDevelopment())
+            {
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ApospReport v1"));
+            }
 
             app.ApplicationServices.InitializeDatabase(env);
 

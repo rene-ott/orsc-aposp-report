@@ -1,10 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
-import { ItemImageService } from '../shared/services/item-image.service';
-import { ItemSlotImageComponent } from '../shared/components/item-slot-image/item-slot-image.component';
 import { AccountBankItemTableComponent } from './account-report/components/account-bank-table/account-bank-table.component';
-import { BankReportComponent } from './bank/bank-report.component';
+import { BankReportComponent } from './bank-report/bank-report.component';
 import { AccountReportComponent } from './account-report/account-report.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -13,6 +10,14 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { ReportComponent } from './report.component';
 import { ReportRoutingModule } from './report-routing.module';
 import { TimeDiffPipe } from '../shared/time-diff.pipe';
+import { ReportItemComponent } from './shared/components/report-item/report-item.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { AccountReportService } from './account-report/services/account-report.service';
+import { BankReportService } from './bank-report/services/bank-report.service';
+import { MatDialogModule } from '@angular/material/dialog';
+import { BankReportItemDialogComponent } from './bank-report-item-dialog/bank-report-item-dialog.component';
+import { ToStringPipe } from '../shared/to-string.pipe';
+import { SurroundWithBracketsPipe } from '../shared/surround-with-brackets.pipe';
 
 @NgModule({
   imports: [
@@ -21,18 +26,22 @@ import { TimeDiffPipe } from '../shared/time-diff.pipe';
     MatButtonModule,
     MatTableModule,
     MatCardModule,
-    ReportRoutingModule
+    ReportRoutingModule,
+    MatDialogModule,
+    MatTooltipModule,
   ],
   declarations: [
-    ItemSlotImageComponent,
     BankReportComponent,
     AccountReportComponent,
     AccountBankItemTableComponent,
     ReportComponent,
-    TimeDiffPipe
+    TimeDiffPipe,
+    ToStringPipe,
+    SurroundWithBracketsPipe,
+    ReportItemComponent,
+    BankReportItemDialogComponent
   ],
-  providers: [ItemImageService],
-
+  providers: [AccountReportService, BankReportService],
   exports: [ReportComponent, MatTabsModule] // This needs to be exported to AppModule, otherwise error with [active] 
 })
 export class ReportModule { }
