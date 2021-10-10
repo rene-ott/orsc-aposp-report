@@ -12,12 +12,13 @@ export class AccountBankItemTableComponent implements OnInit {
 
   private alignedBankItems: (ReportItem | null)[] = [];
 
-  private readonly MAX_PAGE_COUNT = 4;
-  private readonly PAGE_SIZE = 48;
-  private readonly BANK_SIZE = 192;
+  private readonly MAX_PAGE_COUNT: number = 4;
+  private readonly PAGE_SIZE: number = 48;
+  private readonly BANK_SIZE: number = 192;
 
-  currentPageIndex = 0;
-  pageCount = 1
+  currentPageIndex: number = 0;
+  pageCount: number = 1
+  isDataAvailable:boolean = false;
 
   currentPageItems: (ReportItem | null)[] = Array.from({ length: this.PAGE_SIZE }, () => null)
   currentPageFirstRowItems: (ReportItem | null)[] = [];
@@ -53,6 +54,8 @@ export class AccountBankItemTableComponent implements OnInit {
   ngOnInit(): void {
     this.pageCount = this.getPageCount();
     this.setCurrentPageItems();
+
+    this.isDataAvailable = this.getRealPageCount() > 0;
   }
 
   setCurrentPageItems() {
@@ -80,8 +83,13 @@ export class AccountBankItemTableComponent implements OnInit {
     return this.getTotalItemCount() - (this.getPageCount() * this.PAGE_SIZE)
   }
 
-  private getPageCount(): number {
-    return Math.ceil(this.getTotalItemCount() / this.PAGE_SIZE)
+  private getRealPageCount(): number {
+    return Math.ceil(this.getTotalItemCount() / this.PAGE_SIZE);
+  }
+
+  private getPageCount() {
+    var realPageCount = this.getRealPageCount(); 
+    return realPageCount == 0 ? 1 : realPageCount;
   }
 
   private getTotalItemCount(): number {

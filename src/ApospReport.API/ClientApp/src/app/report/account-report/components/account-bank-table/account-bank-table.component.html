@@ -11,6 +11,7 @@
             class="item-table__cell"
           >
             <app-report-item
+              *ngIf="isDataAvailable"
               [item]="currentPageItem"
               [text]="
                 currentPageItem?.isStackable
@@ -18,6 +19,7 @@
                   : (currentPageItem?.count | toString)
               "
             ></app-report-item>
+            <span *ngIf="!isDataAvailable" class="label-na">N/A</span>
           </td>
         </tr>
 
@@ -27,6 +29,7 @@
             class="item-table__cell"
           >
             <app-report-item
+              *ngIf="isDataAvailable"
               [item]="currentPageItem"
               [text]="
                 currentPageItem?.isStackable
@@ -34,6 +37,7 @@
                   : (currentPageItem?.count | toString)
               "
             ></app-report-item>
+            <span *ngIf="!isDataAvailable" class="label-na">N/A</span>
           </td>
         </tr>
 
@@ -43,6 +47,7 @@
             class="item-table__cell"
           >
             <app-report-item
+              *ngIf="isDataAvailable"
               [item]="currentPageItem"
               [text]="
                 currentPageItem?.isStackable
@@ -50,6 +55,7 @@
                   : (currentPageItem?.count | toString)
               "
             ></app-report-item>
+            <span *ngIf="!isDataAvailable" class="label-na">N/A</span>
           </td>
         </tr>
 
@@ -59,6 +65,7 @@
             class="item-table__cell"
           >
             <app-report-item
+              *ngIf="isDataAvailable"
               [item]="currentPageItem"
               [text]="
                 currentPageItem?.isStackable
@@ -66,6 +73,7 @@
                   : (currentPageItem?.count | toString)
               "
             ></app-report-item>
+            <span *ngIf="!isDataAvailable" class="label-na">N/A</span>
           </td>
         </tr>
 
@@ -75,6 +83,7 @@
             class="item-table__cell"
           >
             <app-report-item
+              *ngIf="isDataAvailable"
               [item]="currentPageItem"
               [text]="
                 currentPageItem?.isStackable
@@ -82,6 +91,7 @@
                   : (currentPageItem?.count | toString)
               "
             ></app-report-item>
+            <span *ngIf="!isDataAvailable" class="label-na">N/A</span>
           </td>
         </tr>
 
@@ -91,6 +101,7 @@
             class="item-table__cell"
           >
             <app-report-item
+              *ngIf="isDataAvailable"
               [item]="currentPageItem"
               [text]="
                 currentPageItem?.isStackable
@@ -98,6 +109,7 @@
                   : (currentPageItem?.count | toString)
               "
             ></app-report-item>
+            <span *ngIf="!isDataAvailable" class="label-na">N/A</span>
           </td>
         </tr>
       </tbody>
