@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { AccountReportService } from './services/account-report.service';
 import { AccountReport } from './models/account-report.model';
@@ -20,13 +20,6 @@ export class AccountReportComponent implements OnInit {
   ngOnInit() {
     this.accountReportService.getAccountReports().subscribe(x => {
       this.dataSource.data = x;
-    });
-  }
-
-  removeUser(index: number, username: string) {
-    this.accountReportService.deleteUser(username).subscribe(_ => {
-      this.dataSource.data.splice(index, 1);
-      this.dataSource._updateChangeSubscription();
     });
   }
 

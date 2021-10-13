@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit, ElementRef, ViewChild, Renderer2 } from '@angular/core';
 import * as _ from 'lodash';
-import { MatTabChangeEvent } from '@angular/material/tabs';
+import { MatTab, MatTabChangeEvent, MatTabGroup } from '@angular/material/tabs';
 import { ReportItem } from 'src/app/report/shared/components/report-item/report-item.model';
 
 @Component({
@@ -8,8 +8,20 @@ import { ReportItem } from 'src/app/report/shared/components/report-item/report-
   templateUrl: './account-bank-table.component.html',
   styleUrls: ['./account-bank-table.component.scss']
 })
-export class AccountBankItemTableComponent implements OnInit {
+export class AccountBankItemTableComponent implements OnInit, AfterViewInit {
+  
+  constructor(private renderer: Renderer2, private element: ElementRef) {
+  }
 
+  ngAfterViewInit(): void {
+    var tabLabels = this.element.nativeElement.querySelector(".mat-tab-labels");
+    var inkBar = this.element.nativeElement.querySelector(".mat-ink-bar");
+    if (!this.isDataAvailable) {
+      this.renderer.setStyle(tabLabels, "visibility", "hidden");
+      this.renderer.removeChild(this.element.nativeElement, inkBar);
+    }
+  }
+  
   private alignedBankItems: (ReportItem | null)[] = [];
 
   private readonly MAX_PAGE_COUNT: number = 4;
