@@ -1,7 +1,8 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { AccountReportService } from './services/account-report.service';
 import { AccountReport } from './models/account-report.model';
+import { AccountReportSkill } from './models/account-report-skill.model';
 
 @Component({
   selector: 'app-account-report',
@@ -9,7 +10,7 @@ import { AccountReport } from './models/account-report.model';
   styleUrls: ['./account-report.component.scss']
 })
 export class AccountReportComponent implements OnInit {
-
+  
   constructor(
     private accountReportService: AccountReportService) {
   }

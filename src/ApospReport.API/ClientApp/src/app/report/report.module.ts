@@ -18,6 +18,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { BankReportItemDialogComponent } from './bank-report-item-dialog/bank-report-item-dialog.component';
 import { ToStringPipe } from '../shared/to-string.pipe';
 import { SurroundWithBracketsPipe } from '../shared/surround-with-brackets.pipe';
+import { AccountLevelsComponent } from './account-report/components/account-levels/account-levels.component';
 
 @NgModule({
   imports: [
@@ -39,7 +40,8 @@ import { SurroundWithBracketsPipe } from '../shared/surround-with-brackets.pipe'
     ToStringPipe,
     SurroundWithBracketsPipe,
     ReportItemComponent,
-    BankReportItemDialogComponent
+    BankReportItemDialogComponent,
+    AccountLevelsComponent
   ],
   providers: [AccountReportService, BankReportService],
   exports: [ReportComponent, MatTabsModule] // This needs to be exported to AppModule, otherwise error with [active] 
