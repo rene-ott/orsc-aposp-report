@@ -5,7 +5,7 @@ namespace ApospReport.Contract.BankReport
 {
     public class BankReportItemDto : ItemDefinitionDto
     {
-        public int TotalItemCount { get; set; }
+        public int Count { get; set; }
         public IList<BankReportUserDto> Users { get; set; } = new List<BankReportUserDto>();
     }
 }

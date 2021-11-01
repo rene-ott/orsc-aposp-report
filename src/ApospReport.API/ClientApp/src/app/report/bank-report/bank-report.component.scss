@@ -1,0 +1,22 @@
+.mat-card {
+  width: 50%;
+}
+
+.bank-report__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  margin-top: 5vh !important;
+  margin-bottom: 5vh !important;
+}
+
+.bank-report__content {
+  width: 40%;
+}
+
+.bank-report__action-menu {
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+}

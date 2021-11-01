@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { ItemImageService } from '../../shared/services/item-image.service';
-import * as _ from 'lodash'
 import { AccountReportService } from './services/account-report.service';
 import { AccountReport } from './models/account-report.model';
+import { AccountReportSkill } from './models/account-report-skill.model';
 
 @Component({
   selector: 'app-account-report',
@@ -11,29 +10,24 @@ import { AccountReport } from './models/account-report.model';
   styleUrls: ['./account-report.component.scss']
 })
 export class AccountReportComponent implements OnInit {
-
-  constructor(private itemImageService: ItemImageService,
+  
+  constructor(
     private accountReportService: AccountReportService) {
   }
 
-  displayedColumns: string[] = ['username', /* 'skills', 'inventory', */ 'bank'];
+  displayedColumns: string[] = ['username', /* 'skills', 'inventory', */ 'bank', 'actions'];
   dataSource = new MatTableDataSource<AccountReport>();;
 
   ngOnInit() {
     this.accountReportService.getAccountReports().subscribe(x => {
       this.dataSource.data = x;
-      this.setBase64ImageToBankItems(x);
     });
   }
 
-  setBase64ImageToBankItems(accountReports: AccountReport[]) {
-    //TODO: in prod _map, can be replaced with array.map 
-    var bankItems = _.flatten(_.map(accountReports, x => x.bankItems))
-    var itemImages = this.itemImageService.getItemImages();
-
-    bankItems.forEach(x => {
-      var foundImage = itemImages.find(i => i.id == x.id);
-      x.base64 = foundImage!!.data
+  removeUser(index: number, username: string) {
+    this.accountReportService.deleteUser(username).subscribe(_ => {
+      this.dataSource.data.splice(index, 1);
+      this.dataSource._updateChangeSubscription();
     });
   }
 }

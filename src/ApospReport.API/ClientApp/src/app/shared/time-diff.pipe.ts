@@ -1,12 +1,15 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { min } from 'lodash';
 
 @Pipe({ name: 'timeDiff' })
 export class TimeDiffPipe implements PipeTransform {
     transform(value: string): string {
 
-        const currentTimestamp = new Date();
+        if (value == null) {
+            return "N/A"
+        }
+
         const inputTimestamp = new Date(value);
+        const currentTimestamp = new Date();
 
         var difference = currentTimestamp.getTime() - inputTimestamp.getTime();
         var resultInMinutes = Math.round(difference / 60000);

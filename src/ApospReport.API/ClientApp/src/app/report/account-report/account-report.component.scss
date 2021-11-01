@@ -1,3 +1,38 @@
 .mat-cell--top {
   vertical-align: top;
 }
+
+.report-content {
+  width: 65%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5vh !important;
+  margin-bottom: 5vh !important;
+}
+
+.inline-with-tab-content {
+  margin-top: 65px;
+}
+
+.account-report-time {
+  margin-top: 25px;
+}
+
+.account-report-username {
+  font-size: 1.75em;
+  font-weight: bold;
+}
+
+.mat-column-username {
+  flex: 0 0 30% !important;
+  width: 30% !important;
+}
+.mat-column-bank {
+  flex: 0 0 60% !important;
+  width: 60% !important;
+}
+
+.mat-column-actions {
+  flex: 0 0 10% !important;
+  width: 10% !important;
+}

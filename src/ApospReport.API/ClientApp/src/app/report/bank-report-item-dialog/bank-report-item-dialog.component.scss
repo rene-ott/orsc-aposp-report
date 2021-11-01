@@ -1,0 +1,16 @@
+::ng-deep.mat-dialog-content {
+  display: flex;
+  flex-direction: row !important;
+  justify-content: center !important;
+  flex-wrap: wrap;
+}
+
+::ng-deep.mat-dialog-container {
+  overflow-y: hidden;
+}
+
+.bank-report-item-dialog__table {
+  max-width: 50%;
+  margin-left: 20px !important;
+  margin-right: 20px !important;
+}
