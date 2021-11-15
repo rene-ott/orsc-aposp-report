@@ -22,6 +22,7 @@ namespace ApospReport.Application.GetAccountReport
             return new()
             {
                 Username = account.Username,
+                Base64EncodedScreenshot = account.Base64EncodedScreenshot,
                 BankViewTimestamp = account.BankViewTimestamp,
                 ReportTimestamp = account.UpdatedAt,
 

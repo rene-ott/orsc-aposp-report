@@ -12,6 +12,8 @@
 
 .inline-with-tab-content {
   margin-top: 65px;
+  display: flex;
+  align-items: center;
 }
 
 .account-report-time {
@@ -21,6 +23,7 @@
 .account-report-username {
   font-size: 1.75em;
   font-weight: bold;
+  margin-left: 5px;
 }
 
 .mat-column-username {

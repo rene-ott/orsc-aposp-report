@@ -4,5 +4,6 @@
     {
         public int Current { get; set; }
         public int Base { get; set; }
+        public int TotalXp { get; set; }
     }
 }

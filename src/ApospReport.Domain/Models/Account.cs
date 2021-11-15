@@ -7,6 +7,7 @@ namespace ApospReport.Domain.Models
     {
         public int Id { get; set; }
         public string Username { get; set; }
+        public string Base64EncodedScreenshot { get; set; }
         public DateTime UpdatedAt { get; set; }
 
         public Skill Attack { get; set; } = new();

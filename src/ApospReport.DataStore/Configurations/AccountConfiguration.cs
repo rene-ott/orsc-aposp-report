@@ -12,6 +12,7 @@ namespace ApospReport.DataStore.Configurations
         {
             entity.HasKey(x => x.Id);
             entity.Property(x => x.Username).HasMaxLength(12).IsRequired();
+            entity.Property(x => x.Base64EncodedScreenshot);
             entity.Property(x => x.UpdatedAt).IsRequired()
                 .HasConversion(v => v, v => DateTime.SpecifyKind(v, DateTimeKind.Utc));
             

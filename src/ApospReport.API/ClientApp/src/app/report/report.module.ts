@@ -19,6 +19,8 @@ import { BankReportItemDialogComponent } from './bank-report-item-dialog/bank-re
 import { ToStringPipe } from '../shared/to-string.pipe';
 import { SurroundWithBracketsPipe } from '../shared/surround-with-brackets.pipe';
 import { AccountLevelsComponent } from './account-report/components/account-levels/account-levels.component';
+import { ImageDialogComponent } from './shared/components/image-dialog/image-dialog.component';
+import { ImageComponent } from './shared/components/image/image.component';
 
 @NgModule({
   imports: [
@@ -41,6 +43,8 @@ import { AccountLevelsComponent } from './account-report/components/account-leve
     SurroundWithBracketsPipe,
     ReportItemComponent,
     BankReportItemDialogComponent,
+    ImageDialogComponent,
+    ImageComponent,
     AccountLevelsComponent
   ],
   providers: [AccountReportService, BankReportService],

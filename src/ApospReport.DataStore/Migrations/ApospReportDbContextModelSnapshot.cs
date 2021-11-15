@@ -31,6 +31,10 @@ namespace ApospReport.DataStore.Migrations
                         .HasColumnType("timestamp without time zone")
                         .HasColumnName("bank_view_timestamp");
 
+                    b.Property<string>("Base64EncodedScreenshot")
+                        .HasColumnType("text")
+                        .HasColumnName("base64encoded_screenshot");
+
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("timestamp without time zone")
                         .HasColumnName("updated_at");

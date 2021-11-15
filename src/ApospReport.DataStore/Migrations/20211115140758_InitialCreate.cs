@@ -15,6 +15,7 @@ namespace ApospReport.DataStore.Migrations
                     id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     username = table.Column<string>(type: "character varying(12)", maxLength: 12, nullable: false),
+                    base64encoded_screenshot = table.Column<string>(type: "text", nullable: true),
                     updated_at = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     attack_current_level = table.Column<int>(type: "integer", nullable: false),
                     attack_base_level = table.Column<int>(type: "integer", nullable: false),

@@ -1,0 +1,7 @@
+img:hover {
+    cursor: pointer;
+}
+img {
+    border: 2px solid lightgray;
+    border-radius: 10%;
+}

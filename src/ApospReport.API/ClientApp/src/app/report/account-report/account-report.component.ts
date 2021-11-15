@@ -2,7 +2,6 @@ import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '
 import { MatTableDataSource } from '@angular/material/table';
 import { AccountReportService } from './services/account-report.service';
 import { AccountReport } from './models/account-report.model';
-import { AccountReportSkill } from './models/account-report-skill.model';
 
 @Component({
   selector: 'app-account-report',

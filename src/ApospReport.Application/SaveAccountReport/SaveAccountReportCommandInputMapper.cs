@@ -19,6 +19,7 @@ namespace ApospReport.Application.SaveAccountReport
             return new()
             {
                 Username = dto.Username,
+                Base64EncodedScreenshot = dto.Base64EncodedScreenshot,
                 BankViewTimestamp = dto.BankViewTimestamp,
                 UpdatedAt = DateTime.UtcNow.TruncateMillis(),
 
