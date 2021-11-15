@@ -1,4 +1,5 @@
 export interface AccountReportSkillLevel {
     base: number,
-    current: number
+    current: number,
+    totalXp: number
 }

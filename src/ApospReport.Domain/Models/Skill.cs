@@ -6,7 +6,13 @@
         public int BaseLevel { get; set; }
         public int TotalXp { get; set; }
 
-        public int NextLevelXp => BaseLevel == 99 ? 0 : SkillXpTable.GetLevelXp(BaseLevel);
-        public int XpToNextLevel => NextLevelXp - TotalXp;
+        public int NextLevelXp => BaseLevel == 99
+            ? 0
+            : SkillXpTable.GetLevelXp(BaseLevel + 1);
+
+        public int ThisLevelXp => SkillXpTable.GetLevelXp(BaseLevel);
+
+        public int XpDifferenceBetweenNextAndThisLevel => BaseLevel == 99 ? 0 : NextLevelXp - ThisLevelXp;
+
     }
 }

@@ -38,7 +38,7 @@ namespace ApospReport.Application.GetAccountReport
                     Crafting = MapSkill(account.Crafting),
                     Defense = MapSkill(account.Defense),
                     Firemaking = MapSkill(account.Firemaking),
-                    Fishing = MapSkill(account.Firemaking),
+                    Fishing = MapSkill(account.Fishing),
                     Herblaw = MapSkill(account.Herblaw),
                     Hits = MapSkill(account.Hits),
                     Magic = MapSkill(account.Magic),
@@ -70,7 +70,8 @@ namespace ApospReport.Application.GetAccountReport
             return new()
             {
                 Base = skill.BaseLevel,
-                Current = skill.CurrentLevel
+                Current = skill.CurrentLevel,
+                TotalXp = skill.TotalXp
             };
         }
     }

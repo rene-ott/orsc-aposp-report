@@ -44,6 +44,7 @@ namespace ApospReport.Application.GetBankReport
                     bankReportItem.Users.Add(bankReportUser);
                 }
 
+                bankReportItem.Users = bankReportItem.Users.OrderByDescending(x => x.ItemCount).ToList();
                 bankReportItems.Add(bankReportItem);
             }
 

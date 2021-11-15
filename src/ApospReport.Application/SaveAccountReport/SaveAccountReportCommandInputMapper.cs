@@ -37,6 +37,7 @@ namespace ApospReport.Application.SaveAccountReport
                 Woodcut = MapSkillLevel(dto.Skill.Woodcut),
                 Fletching = MapSkillLevel(dto.Skill.Fletching),
                 Fishing = MapSkillLevel(dto.Skill.Fishing),
+                Crafting = MapSkillLevel(dto.Skill.Crafting),
                 Firemaking = MapSkillLevel(dto.Skill.Firemaking),
                 Smithing = MapSkillLevel(dto.Skill.Smithing),
                 Mining = MapSkillLevel(dto.Skill.Mining),

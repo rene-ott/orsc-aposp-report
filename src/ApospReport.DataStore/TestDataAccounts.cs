@@ -68,7 +68,8 @@ namespace ApospReport.DataStore
             return new()
             {
                 BaseLevel = baseLevel,
-                CurrentLevel = currentLevel
+                CurrentLevel = currentLevel,
+                TotalXp = SkillXpTable.GetLevelXp(baseLevel) - 10
             };
         }
 
