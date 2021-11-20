@@ -1,0 +1,7 @@
+<img
+  (click)="openBankReportItemDialog()"
+  *ngIf="base64EncodedString != ''"
+  width="64"
+  height="44"
+  src="{{ 'data:image/png;base64,' + base64EncodedString }}"
+/>

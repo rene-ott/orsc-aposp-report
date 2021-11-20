@@ -19,6 +19,7 @@ namespace ApospReport.Application.SaveAccountReport
             return new()
             {
                 Username = dto.Username,
+                Base64EncodedScreenshot = dto.Base64EncodedScreenshot,
                 BankViewTimestamp = dto.BankViewTimestamp,
                 UpdatedAt = DateTime.UtcNow.TruncateMillis(),
 
@@ -36,6 +37,7 @@ namespace ApospReport.Application.SaveAccountReport
                 Woodcut = MapSkillLevel(dto.Skill.Woodcut),
                 Fletching = MapSkillLevel(dto.Skill.Fletching),
                 Fishing = MapSkillLevel(dto.Skill.Fishing),
+                Crafting = MapSkillLevel(dto.Skill.Crafting),
                 Firemaking = MapSkillLevel(dto.Skill.Firemaking),
                 Smithing = MapSkillLevel(dto.Skill.Smithing),
                 Mining = MapSkillLevel(dto.Skill.Mining),
@@ -67,7 +69,8 @@ namespace ApospReport.Application.SaveAccountReport
             return new()
             {
                 BaseLevel = accountReportSkillLevel.Base,
-                CurrentLevel = accountReportSkillLevel.Current
+                CurrentLevel = accountReportSkillLevel.Current,
+                TotalXp = accountReportSkillLevel.TotalXp
             };
         }
     }

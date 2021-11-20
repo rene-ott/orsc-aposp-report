@@ -25,6 +25,7 @@ namespace ApospReport.Application.SaveAccountReport
             if (existingAccount != null)
             {
                 existingAccount.UpdatedAt = inputAccount.UpdatedAt;
+                existingAccount.Base64EncodedScreenshot = inputAccount.Base64EncodedScreenshot;
                 existingAccount.UpdateBankItems(inputAccount.BankItems, inputAccount.BankViewTimestamp);
                 existingAccount.UpdateInventoryItems(inputAccount.InventoryItems);
                 existingAccount.UpdateSkills(inputAccount);

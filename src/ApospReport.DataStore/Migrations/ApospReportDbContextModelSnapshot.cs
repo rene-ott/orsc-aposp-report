@@ -31,6 +31,10 @@ namespace ApospReport.DataStore.Migrations
                         .HasColumnType("timestamp without time zone")
                         .HasColumnName("bank_view_timestamp");
 
+                    b.Property<string>("Base64EncodedScreenshot")
+                        .HasColumnType("text")
+                        .HasColumnName("base64encoded_screenshot");
+
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("timestamp without time zone")
                         .HasColumnName("updated_at");
@@ -159,6 +163,10 @@ namespace ApospReport.DataStore.Migrations
                                 .HasColumnType("integer")
                                 .HasColumnName("agility_current_level");
 
+                            b1.Property<int>("TotalXp")
+                                .HasColumnType("integer")
+                                .HasColumnName("agility_total_xp");
+
                             b1.HasKey("AccountId")
                                 .HasName("pk_accounts");
 
@@ -184,6 +192,10 @@ namespace ApospReport.DataStore.Migrations
                             b1.Property<int>("CurrentLevel")
                                 .HasColumnType("integer")
                                 .HasColumnName("attack_current_level");
+
+                            b1.Property<int>("TotalXp")
+                                .HasColumnType("integer")
+                                .HasColumnName("attack_total_xp");
 
                             b1.HasKey("AccountId")
                                 .HasName("pk_accounts");
@@ -211,6 +223,10 @@ namespace ApospReport.DataStore.Migrations
                                 .HasColumnType("integer")
                                 .HasColumnName("cooking_current_level");
 
+                            b1.Property<int>("TotalXp")
+                                .HasColumnType("integer")
+                                .HasColumnName("cooking_total_xp");
+
                             b1.HasKey("AccountId")
                                 .HasName("pk_accounts");
 
@@ -236,6 +252,10 @@ namespace ApospReport.DataStore.Migrations
                             b1.Property<int>("CurrentLevel")
                                 .HasColumnType("integer")
                                 .HasColumnName("crafting_current_level");
+
+                            b1.Property<int>("TotalXp")
+                                .HasColumnType("integer")
+                                .HasColumnName("crafting_total_xp");
 
                             b1.HasKey("AccountId")
                                 .HasName("pk_accounts");
@@ -263,6 +283,10 @@ namespace ApospReport.DataStore.Migrations
                                 .HasColumnType("integer")
                                 .HasColumnName("defense_current_level");
 
+                            b1.Property<int>("TotalXp")
+                                .HasColumnType("integer")
+                                .HasColumnName("defense_total_xp");
+
                             b1.HasKey("AccountId")
                                 .HasName("pk_accounts");
 
@@ -288,6 +312,10 @@ namespace ApospReport.DataStore.Migrations
                             b1.Property<int>("CurrentLevel")
                                 .HasColumnType("integer")
                                 .HasColumnName("firemaking_current_level");
+
+                            b1.Property<int>("TotalXp")
+                                .HasColumnType("integer")
+                                .HasColumnName("firemaking_total_xp");
 
                             b1.HasKey("AccountId")
                                 .HasName("pk_accounts");
@@ -315,6 +343,10 @@ namespace ApospReport.DataStore.Migrations
                                 .HasColumnType("integer")
                                 .HasColumnName("fishing_current_level");
 
+                            b1.Property<int>("TotalXp")
+                                .HasColumnType("integer")
+                                .HasColumnName("fishing_total_xp");
+
                             b1.HasKey("AccountId")
                                 .HasName("pk_accounts");
 
@@ -340,6 +372,10 @@ namespace ApospReport.DataStore.Migrations
                             b1.Property<int>("CurrentLevel")
                                 .HasColumnType("integer")
                                 .HasColumnName("fletching_current_level");
+
+                            b1.Property<int>("TotalXp")
+                                .HasColumnType("integer")
+                                .HasColumnName("fletching_total_xp");
 
                             b1.HasKey("AccountId")
                                 .HasName("pk_accounts");
@@ -367,6 +403,10 @@ namespace ApospReport.DataStore.Migrations
                                 .HasColumnType("integer")
                                 .HasColumnName("herblaw_current_level");
 
+                            b1.Property<int>("TotalXp")
+                                .HasColumnType("integer")
+                                .HasColumnName("herblaw_total_xp");
+
                             b1.HasKey("AccountId")
                                 .HasName("pk_accounts");
 
@@ -392,6 +432,10 @@ namespace ApospReport.DataStore.Migrations
                             b1.Property<int>("CurrentLevel")
                                 .HasColumnType("integer")
                                 .HasColumnName("hits_current_level");
+
+                            b1.Property<int>("TotalXp")
+                                .HasColumnType("integer")
+                                .HasColumnName("hits_total_xp");
 
                             b1.HasKey("AccountId")
                                 .HasName("pk_accounts");
@@ -419,6 +463,10 @@ namespace ApospReport.DataStore.Migrations
                                 .HasColumnType("integer")
                                 .HasColumnName("magic_current_level");
 
+                            b1.Property<int>("TotalXp")
+                                .HasColumnType("integer")
+                                .HasColumnName("magic_total_xp");
+
                             b1.HasKey("AccountId")
                                 .HasName("pk_accounts");
 
@@ -444,6 +492,10 @@ namespace ApospReport.DataStore.Migrations
                             b1.Property<int>("CurrentLevel")
                                 .HasColumnType("integer")
                                 .HasColumnName("mining_current_level");
+
+                            b1.Property<int>("TotalXp")
+                                .HasColumnType("integer")
+                                .HasColumnName("mining_total_xp");
 
                             b1.HasKey("AccountId")
                                 .HasName("pk_accounts");
@@ -471,6 +523,10 @@ namespace ApospReport.DataStore.Migrations
                                 .HasColumnType("integer")
                                 .HasColumnName("prayer_current_level");
 
+                            b1.Property<int>("TotalXp")
+                                .HasColumnType("integer")
+                                .HasColumnName("prayer_total_xp");
+
                             b1.HasKey("AccountId")
                                 .HasName("pk_accounts");
 
@@ -496,6 +552,10 @@ namespace ApospReport.DataStore.Migrations
                             b1.Property<int>("CurrentLevel")
                                 .HasColumnType("integer")
                                 .HasColumnName("ranged_current_level");
+
+                            b1.Property<int>("TotalXp")
+                                .HasColumnType("integer")
+                                .HasColumnName("ranged_total_xp");
 
                             b1.HasKey("AccountId")
                                 .HasName("pk_accounts");
@@ -523,6 +583,10 @@ namespace ApospReport.DataStore.Migrations
                                 .HasColumnType("integer")
                                 .HasColumnName("smithing_current_level");
 
+                            b1.Property<int>("TotalXp")
+                                .HasColumnType("integer")
+                                .HasColumnName("smithing_total_xp");
+
                             b1.HasKey("AccountId")
                                 .HasName("pk_accounts");
 
@@ -548,6 +612,10 @@ namespace ApospReport.DataStore.Migrations
                             b1.Property<int>("CurrentLevel")
                                 .HasColumnType("integer")
                                 .HasColumnName("strength_current_level");
+
+                            b1.Property<int>("TotalXp")
+                                .HasColumnType("integer")
+                                .HasColumnName("strength_total_xp");
 
                             b1.HasKey("AccountId")
                                 .HasName("pk_accounts");
@@ -575,6 +643,10 @@ namespace ApospReport.DataStore.Migrations
                                 .HasColumnType("integer")
                                 .HasColumnName("thieving_current_level");
 
+                            b1.Property<int>("TotalXp")
+                                .HasColumnType("integer")
+                                .HasColumnName("thieving_total_xp");
+
                             b1.HasKey("AccountId")
                                 .HasName("pk_accounts");
 
@@ -600,6 +672,10 @@ namespace ApospReport.DataStore.Migrations
                             b1.Property<int>("CurrentLevel")
                                 .HasColumnType("integer")
                                 .HasColumnName("woodcut_current_level");
+
+                            b1.Property<int>("TotalXp")
+                                .HasColumnType("integer")
+                                .HasColumnName("woodcut_total_xp");
 
                             b1.HasKey("AccountId")
                                 .HasName("pk_accounts");

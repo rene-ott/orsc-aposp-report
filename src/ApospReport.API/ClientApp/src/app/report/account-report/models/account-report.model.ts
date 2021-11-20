@@ -3,6 +3,7 @@ import { AccountReportSkill } from "./account-report-skill.model";
 
 export interface AccountReport {
     username: string;
+    base64EncodedScreenshot: string;
     bankViewTimestamp: string;
     reportTimestamp: string;
     bankItems: ReportItem[];

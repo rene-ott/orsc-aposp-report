@@ -1,0 +1,17 @@
+.account-levels__skill {
+  flex: 50%;
+  margin-top: 3px;
+}
+
+.account-level__tooltip {
+  background-color: #3f51b5;
+  font-size: 12px;
+  white-space: pre-line;
+}
+
+
+::ng-deep .mat-tooltip  {
+  background-color: #3f51b5;
+  font-size: 12px;
+  white-space: pre-line !important;
+}

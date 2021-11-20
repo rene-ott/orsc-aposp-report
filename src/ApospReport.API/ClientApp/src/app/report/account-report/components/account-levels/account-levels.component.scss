@@ -2,9 +2,9 @@
   display: flex;
   flex-wrap: wrap;
   margin-top: 25px;
-}
 
-.account-levels__skill {
-  flex: 50%;
-  margin-top: 3px;
+  &> app-account-levels-skill {
+    flex: 50%;
+    margin-top: 3px;
+  }
 }

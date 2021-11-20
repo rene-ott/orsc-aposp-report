@@ -7,6 +7,7 @@ namespace ApospReport.Domain.Models
     {
         public int Id { get; set; }
         public string Username { get; set; }
+        public string Base64EncodedScreenshot { get; set; }
         public DateTime UpdatedAt { get; set; }
 
         public Skill Attack { get; set; } = new();
@@ -60,6 +61,7 @@ namespace ApospReport.Domain.Models
             {
                 skill.BaseLevel = newSkill.BaseLevel;
                 skill.CurrentLevel = newSkill.CurrentLevel;
+                skill.TotalXp = newSkill.TotalXp;
             }
 
             UpdateSkill(Attack, account.Attack);
