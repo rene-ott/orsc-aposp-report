@@ -1,84 +1,55 @@
 <div class="account-levels">
-  <div class="account-levels__skill"
-  >
-    <img src="/images/skills/attack.gif" />&nbsp;Attack:
-    {{ skill.attack.current }}/{{ skill.attack.base }}
-  </div>
-  <div class="account-levels__skill">
-    <img src="/images/skills/fletching.gif" />&nbsp;Fletching:
-    {{ skill.fletching.current }}/{{ skill.fletching.base }}
-  </div>
+  <app-account-levels-skill [skillLevel]="skill.attack" skillName="Attack">
+  </app-account-levels-skill>
 
-  <div class="account-levels__skill">
-    <img src="/images/skills/defense.gif" />&nbsp;Defense:
-    {{ skill.defense.current }}/{{ skill.defense.base }}
-  </div>
-  <div class="account-levels__skill">
-    <img src="/images/skills/fishing.gif" />&nbsp;Fishing:
-    {{ skill.fishing.current }}/{{ skill.fishing.base }}
-  </div>
+  <app-account-levels-skill [skillLevel]="skill.fletching" skillName="Fletching">
+  </app-account-levels-skill>
 
-  <div class="account-levels__skill">
-    <img src="/images/skills/strength.gif" />&nbsp;Strength:
-    {{ skill.strength.current }}/{{ skill.strength.base }}
-  </div>
-  <div class="account-levels__skill">
-    <img src="/images/skills/firemaking.gif" />&nbsp;Firemaking:
-    {{ skill.firemaking.current }}/{{ skill.firemaking.base }}
-  </div>
+  <app-account-levels-skill [skillLevel]="skill.defense" skillName="Defense">
+  </app-account-levels-skill>
 
-  <div class="account-levels__skill">
-    <img src="/images/skills/hits.gif" />&nbsp;Hits: {{ skill.hits.current }}/{{
-      skill.hits.base
-    }}
-  </div>
-  <div class="account-levels__skill">
-    <img src="/images/skills/crafting.gif" />&nbsp;Crafting:
-    {{ skill.crafting.current }}/{{ skill.crafting.base }}
-  </div>
+  <app-account-levels-skill [skillLevel]="skill.fishing" skillName="Fishing">
+  </app-account-levels-skill>
 
-  <div class="account-levels__skill">
-    <img src="/images/skills/ranged.gif" />&nbsp;Ranged:
-    {{ skill.ranged.current }}/{{ skill.ranged.base }}
-  </div>
-  <div class="account-levels__skill">
-    <img src="/images/skills/smithing.gif" />&nbsp;Smithing:
-    {{ skill.smithing.current }}/{{ skill.smithing.base }}
-  </div>
+  <app-account-levels-skill [skillLevel]="skill.strength" skillName="Strength">
+  </app-account-levels-skill>
 
-  <div class="account-levels__skill">
-    <img src="/images/skills/prayer.gif" />&nbsp;Prayer:
-    {{ skill.prayer.current }}/{{ skill.prayer.base }}
-  </div>
-  <div class="account-levels__skill">
-    <img src="/images/skills/mining.gif" />&nbsp;Mining:
-    {{ skill.mining.current }}/{{ skill.mining.base }}
-  </div>
+  <app-account-levels-skill [skillLevel]="skill.firemaking" skillName="Firemaking">
+  </app-account-levels-skill>
 
-  <div class="account-levels__skill">
-    <img src="/images/skills/magic.gif" />&nbsp;Magic:
-    {{ skill.magic.current }}/{{ skill.magic.base }}
-  </div>
-  <div class="account-levels__skill">
-    <img src="/images/skills/herblaw.gif" />&nbsp;Herblaw:
-    {{ skill.herblaw.current }}/{{ skill.herblaw.base }}
-  </div>
+  <app-account-levels-skill [skillLevel]="skill.hits" skillName="Hits">
+  </app-account-levels-skill>
 
-  <div class="account-levels__skill">
-    <img src="/images/skills/cooking.gif" />&nbsp;Cooking:
-    {{ skill.cooking.current }}/{{ skill.cooking.base }}
-  </div>
-  <div class="account-levels__skill">
-    <img src="/images/skills/agility.gif" />&nbsp;Agility:
-    {{ skill.agility.current }}/{{ skill.agility.base }}
-  </div>
+  <app-account-levels-skill [skillLevel]="skill.crafting" skillName="Crafting">
+  </app-account-levels-skill>
 
-  <div class="account-levels__skill">
-    <img src="/images/skills/woodcut.gif" />&nbsp;Woodcut:
-    {{ skill.woodcut.current }}/{{ skill.woodcut.base }}
-  </div>
-  <div class="account-levels__skill">
-    <img src="/images/skills/thieving.gif" />&nbsp;Thieving:
-    {{ skill.thieving.current }}/{{ skill.thieving.base }}
-  </div>
+  <app-account-levels-skill [skillLevel]="skill.ranged" skillName="Ranged">
+  </app-account-levels-skill>
+
+  <app-account-levels-skill [skillLevel]="skill.smithing" skillName="Smithing">
+  </app-account-levels-skill>
+
+  <app-account-levels-skill [skillLevel]="skill.prayer" skillName="Prayer">
+  </app-account-levels-skill>
+
+  <app-account-levels-skill [skillLevel]="skill.mining" skillName="Mining">
+  </app-account-levels-skill>
+
+  <app-account-levels-skill [skillLevel]="skill.magic" skillName="Magic">
+  </app-account-levels-skill>
+
+  <app-account-levels-skill [skillLevel]="skill.herblaw" skillName="Herblaw">
+  </app-account-levels-skill>
+
+  <app-account-levels-skill [skillLevel]="skill.cooking" skillName="Cooking">
+  </app-account-levels-skill>
+
+  <app-account-levels-skill [skillLevel]="skill.agility" skillName="Agility">
+  </app-account-levels-skill>
+
+  <app-account-levels-skill [skillLevel]="skill.woodcut" skillName="Woodcut">
+  </app-account-levels-skill>
+
+  <app-account-levels-skill [skillLevel]="skill.thieving" skillName="Thieving">
+  </app-account-levels-skill>
 </div>

@@ -21,6 +21,7 @@ import { SurroundWithBracketsPipe } from '../shared/surround-with-brackets.pipe'
 import { AccountLevelsComponent } from './account-report/components/account-levels/account-levels.component';
 import { ImageDialogComponent } from './shared/components/image-dialog/image-dialog.component';
 import { ImageComponent } from './shared/components/image/image.component';
+import { AccountLevelsSkillComponent } from './account-report/components/account-levels-skill/account-levels-skill.component';
 
 @NgModule({
   imports: [
@@ -45,7 +46,8 @@ import { ImageComponent } from './shared/components/image/image.component';
     BankReportItemDialogComponent,
     ImageDialogComponent,
     ImageComponent,
-    AccountLevelsComponent
+    AccountLevelsComponent,
+    AccountLevelsSkillComponent
   ],
   providers: [AccountReportService, BankReportService],
   exports: [ReportComponent, MatTabsModule] // This needs to be exported to AppModule, otherwise error with [active] 

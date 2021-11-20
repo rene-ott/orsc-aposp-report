@@ -2,15 +2,9 @@
   display: flex;
   flex-wrap: wrap;
   margin-top: 25px;
-}
 
-.account-levels__skill {
-  flex: 50%;
-  margin-top: 3px;
-}
-
-::ng-deep.account-level__tooltip {
-  background-color: #3f51b5;
-  font-size: 12px;
-  white-space: pre-line;
+  &> app-account-levels-skill {
+    flex: 50%;
+    margin-top: 3px;
+  }
 }
