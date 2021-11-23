@@ -1,8 +1,13 @@
 <div
-    matTooltipPosition="above"
-    matTooltip="Total XP: {{skillLevel.totalXp | number:'1.0':'en-US'}}
-    XP to next level: {{skillLevel.xpLeftToNextLevel | number:'1.0':'en-US'}}
-    Level completed: {{skillLevel.percentageDoneForNextLevel | number : '1.2-2'}}%">
-  <img src="/images/skills/{{skillName}}.gif" />&nbsp;{{skillName}}:
-  {{ skillLevel.current }}/{{ skillLevel.base }}
+  matTooltipPosition="above"
+  matTooltip="Total XP: {{ skillLevel.xp | number: '1.0':'en-US' }}
+    XP to next level: {{
+    skillLevel.xpUntilNextLevel | naNumber: '1.0':'en-US'
+  }}
+    Level completed: {{
+    skillLevel.nextLevelCompletionPercentage | naNumber: '1.2-2':null:'%'
+  }}"
+>
+  <img src="/images/skills/{{ skillName }}.gif" />&nbsp;{{ skillName }}:
+  {{ skillLevel.currentLevel }}/{{ skillLevel.level }}
 </div>

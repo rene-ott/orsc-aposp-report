@@ -155,17 +155,17 @@ namespace ApospReport.DataStore.Migrations
                                 .HasColumnName("id")
                                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                            b1.Property<int>("BaseLevel")
-                                .HasColumnType("integer")
-                                .HasColumnName("agility_base_level");
-
                             b1.Property<int>("CurrentLevel")
                                 .HasColumnType("integer")
                                 .HasColumnName("agility_current_level");
 
-                            b1.Property<int>("TotalXp")
+                            b1.Property<int>("Level")
                                 .HasColumnType("integer")
-                                .HasColumnName("agility_total_xp");
+                                .HasColumnName("agility_level");
+
+                            b1.Property<int>("Xp")
+                                .HasColumnType("integer")
+                                .HasColumnName("agility_xp");
 
                             b1.HasKey("AccountId")
                                 .HasName("pk_accounts");
@@ -185,17 +185,17 @@ namespace ApospReport.DataStore.Migrations
                                 .HasColumnName("id")
                                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                            b1.Property<int>("BaseLevel")
-                                .HasColumnType("integer")
-                                .HasColumnName("attack_base_level");
-
                             b1.Property<int>("CurrentLevel")
                                 .HasColumnType("integer")
                                 .HasColumnName("attack_current_level");
 
-                            b1.Property<int>("TotalXp")
+                            b1.Property<int>("Level")
                                 .HasColumnType("integer")
-                                .HasColumnName("attack_total_xp");
+                                .HasColumnName("attack_level");
+
+                            b1.Property<int>("Xp")
+                                .HasColumnType("integer")
+                                .HasColumnName("attack_xp");
 
                             b1.HasKey("AccountId")
                                 .HasName("pk_accounts");
@@ -215,17 +215,17 @@ namespace ApospReport.DataStore.Migrations
                                 .HasColumnName("id")
                                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                            b1.Property<int>("BaseLevel")
-                                .HasColumnType("integer")
-                                .HasColumnName("cooking_base_level");
-
                             b1.Property<int>("CurrentLevel")
                                 .HasColumnType("integer")
                                 .HasColumnName("cooking_current_level");
 
-                            b1.Property<int>("TotalXp")
+                            b1.Property<int>("Level")
                                 .HasColumnType("integer")
-                                .HasColumnName("cooking_total_xp");
+                                .HasColumnName("cooking_level");
+
+                            b1.Property<int>("Xp")
+                                .HasColumnType("integer")
+                                .HasColumnName("cooking_xp");
 
                             b1.HasKey("AccountId")
                                 .HasName("pk_accounts");
@@ -245,17 +245,17 @@ namespace ApospReport.DataStore.Migrations
                                 .HasColumnName("id")
                                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                            b1.Property<int>("BaseLevel")
-                                .HasColumnType("integer")
-                                .HasColumnName("crafting_base_level");
-
                             b1.Property<int>("CurrentLevel")
                                 .HasColumnType("integer")
                                 .HasColumnName("crafting_current_level");
 
-                            b1.Property<int>("TotalXp")
+                            b1.Property<int>("Level")
                                 .HasColumnType("integer")
-                                .HasColumnName("crafting_total_xp");
+                                .HasColumnName("crafting_level");
+
+                            b1.Property<int>("Xp")
+                                .HasColumnType("integer")
+                                .HasColumnName("crafting_xp");
 
                             b1.HasKey("AccountId")
                                 .HasName("pk_accounts");
@@ -275,17 +275,17 @@ namespace ApospReport.DataStore.Migrations
                                 .HasColumnName("id")
                                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                            b1.Property<int>("BaseLevel")
-                                .HasColumnType("integer")
-                                .HasColumnName("defense_base_level");
-
                             b1.Property<int>("CurrentLevel")
                                 .HasColumnType("integer")
                                 .HasColumnName("defense_current_level");
 
-                            b1.Property<int>("TotalXp")
+                            b1.Property<int>("Level")
                                 .HasColumnType("integer")
-                                .HasColumnName("defense_total_xp");
+                                .HasColumnName("defense_level");
+
+                            b1.Property<int>("Xp")
+                                .HasColumnType("integer")
+                                .HasColumnName("defense_xp");
 
                             b1.HasKey("AccountId")
                                 .HasName("pk_accounts");
@@ -305,17 +305,17 @@ namespace ApospReport.DataStore.Migrations
                                 .HasColumnName("id")
                                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                            b1.Property<int>("BaseLevel")
-                                .HasColumnType("integer")
-                                .HasColumnName("firemaking_base_level");
-
                             b1.Property<int>("CurrentLevel")
                                 .HasColumnType("integer")
                                 .HasColumnName("firemaking_current_level");
 
-                            b1.Property<int>("TotalXp")
+                            b1.Property<int>("Level")
                                 .HasColumnType("integer")
-                                .HasColumnName("firemaking_total_xp");
+                                .HasColumnName("firemaking_level");
+
+                            b1.Property<int>("Xp")
+                                .HasColumnType("integer")
+                                .HasColumnName("firemaking_xp");
 
                             b1.HasKey("AccountId")
                                 .HasName("pk_accounts");
@@ -335,17 +335,17 @@ namespace ApospReport.DataStore.Migrations
                                 .HasColumnName("id")
                                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                            b1.Property<int>("BaseLevel")
-                                .HasColumnType("integer")
-                                .HasColumnName("fishing_base_level");
-
                             b1.Property<int>("CurrentLevel")
                                 .HasColumnType("integer")
                                 .HasColumnName("fishing_current_level");
 
-                            b1.Property<int>("TotalXp")
+                            b1.Property<int>("Level")
                                 .HasColumnType("integer")
-                                .HasColumnName("fishing_total_xp");
+                                .HasColumnName("fishing_level");
+
+                            b1.Property<int>("Xp")
+                                .HasColumnType("integer")
+                                .HasColumnName("fishing_xp");
 
                             b1.HasKey("AccountId")
                                 .HasName("pk_accounts");
@@ -365,17 +365,17 @@ namespace ApospReport.DataStore.Migrations
                                 .HasColumnName("id")
                                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                            b1.Property<int>("BaseLevel")
-                                .HasColumnType("integer")
-                                .HasColumnName("fletching_base_level");
-
                             b1.Property<int>("CurrentLevel")
                                 .HasColumnType("integer")
                                 .HasColumnName("fletching_current_level");
 
-                            b1.Property<int>("TotalXp")
+                            b1.Property<int>("Level")
                                 .HasColumnType("integer")
-                                .HasColumnName("fletching_total_xp");
+                                .HasColumnName("fletching_level");
+
+                            b1.Property<int>("Xp")
+                                .HasColumnType("integer")
+                                .HasColumnName("fletching_xp");
 
                             b1.HasKey("AccountId")
                                 .HasName("pk_accounts");
@@ -395,17 +395,17 @@ namespace ApospReport.DataStore.Migrations
                                 .HasColumnName("id")
                                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                            b1.Property<int>("BaseLevel")
-                                .HasColumnType("integer")
-                                .HasColumnName("herblaw_base_level");
-
                             b1.Property<int>("CurrentLevel")
                                 .HasColumnType("integer")
                                 .HasColumnName("herblaw_current_level");
 
-                            b1.Property<int>("TotalXp")
+                            b1.Property<int>("Level")
                                 .HasColumnType("integer")
-                                .HasColumnName("herblaw_total_xp");
+                                .HasColumnName("herblaw_level");
+
+                            b1.Property<int>("Xp")
+                                .HasColumnType("integer")
+                                .HasColumnName("herblaw_xp");
 
                             b1.HasKey("AccountId")
                                 .HasName("pk_accounts");
@@ -425,17 +425,17 @@ namespace ApospReport.DataStore.Migrations
                                 .HasColumnName("id")
                                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                            b1.Property<int>("BaseLevel")
-                                .HasColumnType("integer")
-                                .HasColumnName("hits_base_level");
-
                             b1.Property<int>("CurrentLevel")
                                 .HasColumnType("integer")
                                 .HasColumnName("hits_current_level");
 
-                            b1.Property<int>("TotalXp")
+                            b1.Property<int>("Level")
                                 .HasColumnType("integer")
-                                .HasColumnName("hits_total_xp");
+                                .HasColumnName("hits_level");
+
+                            b1.Property<int>("Xp")
+                                .HasColumnType("integer")
+                                .HasColumnName("hits_xp");
 
                             b1.HasKey("AccountId")
                                 .HasName("pk_accounts");
@@ -455,17 +455,17 @@ namespace ApospReport.DataStore.Migrations
                                 .HasColumnName("id")
                                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                            b1.Property<int>("BaseLevel")
-                                .HasColumnType("integer")
-                                .HasColumnName("magic_base_level");
-
                             b1.Property<int>("CurrentLevel")
                                 .HasColumnType("integer")
                                 .HasColumnName("magic_current_level");
 
-                            b1.Property<int>("TotalXp")
+                            b1.Property<int>("Level")
                                 .HasColumnType("integer")
-                                .HasColumnName("magic_total_xp");
+                                .HasColumnName("magic_level");
+
+                            b1.Property<int>("Xp")
+                                .HasColumnType("integer")
+                                .HasColumnName("magic_xp");
 
                             b1.HasKey("AccountId")
                                 .HasName("pk_accounts");
@@ -485,17 +485,17 @@ namespace ApospReport.DataStore.Migrations
                                 .HasColumnName("id")
                                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                            b1.Property<int>("BaseLevel")
-                                .HasColumnType("integer")
-                                .HasColumnName("mining_base_level");
-
                             b1.Property<int>("CurrentLevel")
                                 .HasColumnType("integer")
                                 .HasColumnName("mining_current_level");
 
-                            b1.Property<int>("TotalXp")
+                            b1.Property<int>("Level")
                                 .HasColumnType("integer")
-                                .HasColumnName("mining_total_xp");
+                                .HasColumnName("mining_level");
+
+                            b1.Property<int>("Xp")
+                                .HasColumnType("integer")
+                                .HasColumnName("mining_xp");
 
                             b1.HasKey("AccountId")
                                 .HasName("pk_accounts");
@@ -515,17 +515,17 @@ namespace ApospReport.DataStore.Migrations
                                 .HasColumnName("id")
                                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                            b1.Property<int>("BaseLevel")
-                                .HasColumnType("integer")
-                                .HasColumnName("prayer_base_level");
-
                             b1.Property<int>("CurrentLevel")
                                 .HasColumnType("integer")
                                 .HasColumnName("prayer_current_level");
 
-                            b1.Property<int>("TotalXp")
+                            b1.Property<int>("Level")
                                 .HasColumnType("integer")
-                                .HasColumnName("prayer_total_xp");
+                                .HasColumnName("prayer_level");
+
+                            b1.Property<int>("Xp")
+                                .HasColumnType("integer")
+                                .HasColumnName("prayer_xp");
 
                             b1.HasKey("AccountId")
                                 .HasName("pk_accounts");
@@ -545,17 +545,17 @@ namespace ApospReport.DataStore.Migrations
                                 .HasColumnName("id")
                                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                            b1.Property<int>("BaseLevel")
-                                .HasColumnType("integer")
-                                .HasColumnName("ranged_base_level");
-
                             b1.Property<int>("CurrentLevel")
                                 .HasColumnType("integer")
                                 .HasColumnName("ranged_current_level");
 
-                            b1.Property<int>("TotalXp")
+                            b1.Property<int>("Level")
                                 .HasColumnType("integer")
-                                .HasColumnName("ranged_total_xp");
+                                .HasColumnName("ranged_level");
+
+                            b1.Property<int>("Xp")
+                                .HasColumnType("integer")
+                                .HasColumnName("ranged_xp");
 
                             b1.HasKey("AccountId")
                                 .HasName("pk_accounts");
@@ -575,17 +575,17 @@ namespace ApospReport.DataStore.Migrations
                                 .HasColumnName("id")
                                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                            b1.Property<int>("BaseLevel")
-                                .HasColumnType("integer")
-                                .HasColumnName("smithing_base_level");
-
                             b1.Property<int>("CurrentLevel")
                                 .HasColumnType("integer")
                                 .HasColumnName("smithing_current_level");
 
-                            b1.Property<int>("TotalXp")
+                            b1.Property<int>("Level")
                                 .HasColumnType("integer")
-                                .HasColumnName("smithing_total_xp");
+                                .HasColumnName("smithing_level");
+
+                            b1.Property<int>("Xp")
+                                .HasColumnType("integer")
+                                .HasColumnName("smithing_xp");
 
                             b1.HasKey("AccountId")
                                 .HasName("pk_accounts");
@@ -605,17 +605,17 @@ namespace ApospReport.DataStore.Migrations
                                 .HasColumnName("id")
                                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                            b1.Property<int>("BaseLevel")
-                                .HasColumnType("integer")
-                                .HasColumnName("strength_base_level");
-
                             b1.Property<int>("CurrentLevel")
                                 .HasColumnType("integer")
                                 .HasColumnName("strength_current_level");
 
-                            b1.Property<int>("TotalXp")
+                            b1.Property<int>("Level")
                                 .HasColumnType("integer")
-                                .HasColumnName("strength_total_xp");
+                                .HasColumnName("strength_level");
+
+                            b1.Property<int>("Xp")
+                                .HasColumnType("integer")
+                                .HasColumnName("strength_xp");
 
                             b1.HasKey("AccountId")
                                 .HasName("pk_accounts");
@@ -635,17 +635,17 @@ namespace ApospReport.DataStore.Migrations
                                 .HasColumnName("id")
                                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                            b1.Property<int>("BaseLevel")
-                                .HasColumnType("integer")
-                                .HasColumnName("thieving_base_level");
-
                             b1.Property<int>("CurrentLevel")
                                 .HasColumnType("integer")
                                 .HasColumnName("thieving_current_level");
 
-                            b1.Property<int>("TotalXp")
+                            b1.Property<int>("Level")
                                 .HasColumnType("integer")
-                                .HasColumnName("thieving_total_xp");
+                                .HasColumnName("thieving_level");
+
+                            b1.Property<int>("Xp")
+                                .HasColumnType("integer")
+                                .HasColumnName("thieving_xp");
 
                             b1.HasKey("AccountId")
                                 .HasName("pk_accounts");
@@ -665,17 +665,17 @@ namespace ApospReport.DataStore.Migrations
                                 .HasColumnName("id")
                                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                            b1.Property<int>("BaseLevel")
-                                .HasColumnType("integer")
-                                .HasColumnName("woodcut_base_level");
-
                             b1.Property<int>("CurrentLevel")
                                 .HasColumnType("integer")
                                 .HasColumnName("woodcut_current_level");
 
-                            b1.Property<int>("TotalXp")
+                            b1.Property<int>("Level")
                                 .HasColumnType("integer")
-                                .HasColumnName("woodcut_total_xp");
+                                .HasColumnName("woodcut_level");
+
+                            b1.Property<int>("Xp")
+                                .HasColumnType("integer")
+                                .HasColumnName("woodcut_xp");
 
                             b1.HasKey("AccountId")
                                 .HasName("pk_accounts");

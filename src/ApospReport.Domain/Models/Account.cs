@@ -59,9 +59,9 @@ namespace ApospReport.Domain.Models
         {
             static void UpdateSkill(Skill skill, Skill newSkill)
             {
-                skill.BaseLevel = newSkill.BaseLevel;
+                skill.Level = newSkill.Level;
                 skill.CurrentLevel = newSkill.CurrentLevel;
-                skill.TotalXp = newSkill.TotalXp;
+                skill.Xp = newSkill.Xp;
             }
 
             UpdateSkill(Attack, account.Attack);

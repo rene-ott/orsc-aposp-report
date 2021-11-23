@@ -2,11 +2,12 @@
 {
     public class AccountReportSkillLevelDto
     {
-        public int Current { get; set; }
-        public int Base { get; set; }
-        public int TotalXp { get; set; }
-        public int XpLeftToNextLevel { get; set; }
-        public int NextLevelXp { get; set; }
-        public decimal PercentageDoneForNextLevel { get; set; }
+        public int CurrentLevel { get; set; }
+        public int Level { get; set; }
+        public int Xp { get; set; }
+
+        public int? XpUntilNextLevel { get; set; }
+        public int? NextLevelXp { get; set; }
+        public double? NextLevelCompletionPercentage { get; set; }
     }
 }

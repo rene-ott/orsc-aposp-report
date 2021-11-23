@@ -32,7 +32,7 @@ namespace ApospReport.DataStore
             Mining = CreateSkill(25, 35),
             Herblaw = CreateSkill(26, 36),
             Agility = CreateSkill(27, 37),
-            Thieving = CreateSkill(28, 38)
+            Thieving = CreateSkill(98, 99, 50)
         };
 
         public static Account TestSecondUser = new()
@@ -59,17 +59,17 @@ namespace ApospReport.DataStore
             Smithing = CreateSkill(44, 64),
             Mining = CreateSkill(45, 65),
             Herblaw = CreateSkill(46, 66),
-            Agility = CreateSkill(47, 67),
-            Thieving = CreateSkill(48, 68)
+            Agility = CreateSkill(99, 99),
+            Thieving = CreateSkill(97, 98, 500_000)
         };
 
-        private static Skill CreateSkill(int currentLevel, int baseLevel)
+        private static Skill CreateSkill(int currentLevel, int level, int addXp = 0)
         {
             return new()
             {
-                BaseLevel = baseLevel,
+                Level = level,
                 CurrentLevel = currentLevel,
-                TotalXp = SkillXpTable.GetLevelXp(baseLevel) - 10
+                Xp = LevelTable.GetXp(level) + addXp
             };
         }
 

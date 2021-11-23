@@ -4,6 +4,8 @@ using System.Security.Principal;
 using System.Text.Encodings.Web;
 using Microsoft.AspNetCore.Authentication;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
@@ -26,6 +28,12 @@ namespace ApospReport.API.Authentication
 
         protected override Task<AuthenticateResult> HandleAuthenticateAsync()
         {
+            var endpoint = Context.GetEndpoint();
+            if (endpoint?.Metadata.GetMetadata<AuthorizeAttribute>() == null)
+            {
+                return Task.FromResult(AuthenticateResult.NoResult());
+            }
+
             string apiKey = Request.Headers["X-API-KEY"];
             if (string.IsNullOrEmpty(apiKey))
                 return Task.FromResult(AuthenticateResult.Fail("Unauthorized"));

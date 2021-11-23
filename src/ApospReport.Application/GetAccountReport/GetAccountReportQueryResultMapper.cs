@@ -69,11 +69,11 @@ namespace ApospReport.Application.GetAccountReport
         {
             return new()
             {
-                Base = skill.BaseLevel,
-                Current = skill.CurrentLevel,
-                TotalXp = skill.TotalXp,
-                PercentageDoneForNextLevel = skill.PercentageDoneForNextLevel,
-                XpLeftToNextLevel = skill.XpLeftToNextLevel,
+                Level = skill.Level,
+                CurrentLevel = skill.CurrentLevel,
+                Xp = skill.Xp,
+                NextLevelCompletionPercentage = skill.NextLevelCompletionPercentage,
+                XpUntilNextLevel = skill.XpUntilNextLevel,
                 NextLevelXp = skill.NextLevelXp
             };
         }

@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace ApospReport.Domain.Models
 {
-    public static class SkillXpTable
+    public static class LevelTable
     {
         private static readonly IDictionary<int, int> LevelXpTable = new Dictionary<int, int>
         {
@@ -111,9 +107,14 @@ namespace ApospReport.Domain.Models
             { 99, 13034431 },
         };
 
-        public static int GetLevelXp(int level)
+        public static int GetXp(int level)
         {
             return LevelXpTable[level];
+        }
+
+        public static int GetXpDifferenceBetweenLevels(int level1, int level2)
+        {
+            return GetXp(level1) - GetXp(level2);
         }
     }
 }

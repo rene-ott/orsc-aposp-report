@@ -68,9 +68,9 @@ namespace ApospReport.Application.SaveAccountReport
         {
             return new()
             {
-                BaseLevel = accountReportSkillLevel.Base,
-                CurrentLevel = accountReportSkillLevel.Current,
-                TotalXp = accountReportSkillLevel.TotalXp
+                Level = accountReportSkillLevel.Level,
+                CurrentLevel = accountReportSkillLevel.CurrentLevel,
+                Xp = accountReportSkillLevel.Xp
             };
         }
     }
