@@ -15,8 +15,10 @@
               [item]="currentPageItem"
               [text]="
                 currentPageItem?.isStackable
-                  ? (currentPageItem?.count | surroundWithBrackets)
-                  : (currentPageItem?.count | toString)
+                  ? (currentPageItem?.count
+                    | number: '1.0':'en-US'
+                    | surroundWithBrackets)
+                  : (currentPageItem?.count | number: '1.0':'en-US' | toString)
               "
             ></app-report-item>
             <span *ngIf="!isDataAvailable" class="label-na">N/A</span>
@@ -33,8 +35,10 @@
               [item]="currentPageItem"
               [text]="
                 currentPageItem?.isStackable
-                  ? (currentPageItem?.count | surroundWithBrackets)
-                  : (currentPageItem?.count | toString)
+                  ? (currentPageItem?.count
+                    | number: '1.0':'en-US'
+                    | surroundWithBrackets)
+                  : (currentPageItem?.count | number: '1.0':'en-US' | toString)
               "
             ></app-report-item>
             <span *ngIf="!isDataAvailable" class="label-na">N/A</span>
@@ -51,8 +55,10 @@
               [item]="currentPageItem"
               [text]="
                 currentPageItem?.isStackable
-                  ? (currentPageItem?.count | surroundWithBrackets)
-                  : (currentPageItem?.count | toString)
+                  ? (currentPageItem?.count
+                    | number: '1.0':'en-US'
+                    | surroundWithBrackets)
+                  : (currentPageItem?.count | number: '1.0':'en-US' | toString)
               "
             ></app-report-item>
             <span *ngIf="!isDataAvailable" class="label-na">N/A</span>
@@ -69,8 +75,10 @@
               [item]="currentPageItem"
               [text]="
                 currentPageItem?.isStackable
-                  ? (currentPageItem?.count | surroundWithBrackets)
-                  : (currentPageItem?.count | toString)
+                  ? (currentPageItem?.count
+                    | number: '1.0':'en-US'
+                    | surroundWithBrackets)
+                  : (currentPageItem?.count | number: '1.0':'en-US' | toString)
               "
             ></app-report-item>
             <span *ngIf="!isDataAvailable" class="label-na">N/A</span>
@@ -87,8 +95,10 @@
               [item]="currentPageItem"
               [text]="
                 currentPageItem?.isStackable
-                  ? (currentPageItem?.count | surroundWithBrackets)
-                  : (currentPageItem?.count | toString)
+                  ? (currentPageItem?.count
+                    | number: '1.0':'en-US'
+                    | surroundWithBrackets)
+                  : (currentPageItem?.count | number: '1.0':'en-US' | toString)
               "
             ></app-report-item>
             <span *ngIf="!isDataAvailable" class="label-na">N/A</span>
@@ -105,8 +115,10 @@
               [item]="currentPageItem"
               [text]="
                 currentPageItem?.isStackable
-                  ? (currentPageItem?.count | surroundWithBrackets)
-                  : (currentPageItem?.count | toString)
+                  ? (currentPageItem?.count
+                    | number: '1.0':'en-US'
+                    | surroundWithBrackets)
+                  : (currentPageItem?.count | number: '1.0':'en-US' | toString)
               "
             ></app-report-item>
             <span *ngIf="!isDataAvailable" class="label-na">N/A</span>

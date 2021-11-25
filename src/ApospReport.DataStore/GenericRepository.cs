@@ -35,8 +35,10 @@ namespace ApospReport.DataStore
         public async Task<IList<Account>> GetAccountsWithItems()
         {
             return await dbContext.Accounts
-                .Include(x => x.BankItems).ThenInclude(x => x.ItemDefinition)
-                .Include(x => x.InventoryItems).ThenInclude(x => x.ItemDefinition)
+                .Include(x => x.BankItems)
+                    .ThenInclude(x => x.ItemDefinition).AsSplitQuery()
+                .Include(x => x.InventoryItems)
+                    .ThenInclude(x => x.ItemDefinition)
                 .OrderBy(x => x.Username)
                 .ToListAsync();
         }

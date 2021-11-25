@@ -2,20 +2,25 @@
 {
     public class Skill
     {
+        public int Xp { get; set; }
         public int CurrentLevel { get; set; }
-        public int BaseLevel { get; set; }
-        public int TotalXp { get; set; }
-        public decimal PercentageDoneForNextLevel => XpPastThisLevel / (decimal)XpDifferenceBetweenNextAndThisLevel;
-        public int XpLeftToNextLevel => XpDifferenceBetweenNextAndThisLevel - XpPastThisLevel;
+        public int Level { get; set; }
 
-        public int NextLevelXp => BaseLevel == 99
-            ? 0
-            : SkillXpTable.GetLevelXp(BaseLevel + 1);
+        private bool IsFinalLevel => Level == 99;
+        public int? NextLevel => IsFinalLevel ? null : Level + 1;
 
-        private int ThisLevelXp => SkillXpTable.GetLevelXp(BaseLevel);
+        // ReSharper disable once PossibleInvalidOperationException
+        public int? NextLevelXp => IsFinalLevel
+            ? null
+            : LevelTable.GetXp(NextLevel.Value);
+        
+        public double? NextLevelCompletionPercentage => NextLevel == null
+            ? null
+            :  ((double?)XpDifferenceFromLevel/XpDifferenceBetweenNextLevelAndLevel) * 100;
 
-        private int XpDifferenceBetweenNextAndThisLevel => BaseLevel == 99 ? 0 : NextLevelXp - ThisLevelXp;
-        private int XpPastThisLevel => TotalXp - ThisLevelXp;
+        public int? XpUntilNextLevel => IsFinalLevel ? null :  XpDifferenceBetweenNextLevelAndLevel - XpDifferenceFromLevel;
 
+        private int? XpDifferenceBetweenNextLevelAndLevel => IsFinalLevel ? null : NextLevelXp - LevelTable.GetXp(Level);
+        private int? XpDifferenceFromLevel => IsFinalLevel ? null : Xp - LevelTable.GetXp(Level);
     }
 }

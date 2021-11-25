@@ -1,8 +1,8 @@
 export interface AccountReportSkillLevel {
-    base: number,
-    current: number,
-    totalXp: number,
-    xpLeftToNextLevel: number,
-    percentageDoneForNextLevel: number,
-    nextLevelXp: number
+    level: number,
+    currentLevel: number,
+    xp: number,
+    xpUntilNextLevel: number | null,
+    nextLevelCompletionPercentage: number | null,
+    nextLevelXp: number | null
 }

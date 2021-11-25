@@ -22,6 +22,7 @@ import { AccountLevelsComponent } from './account-report/components/account-leve
 import { ImageDialogComponent } from './shared/components/image-dialog/image-dialog.component';
 import { ImageComponent } from './shared/components/image/image.component';
 import { AccountLevelsSkillComponent } from './account-report/components/account-levels-skill/account-levels-skill.component';
+import { NaNumberPipe } from '../shared/pipes/na-number.pipe';
 
 @NgModule({
   imports: [
@@ -42,6 +43,7 @@ import { AccountLevelsSkillComponent } from './account-report/components/account
     TimeDiffPipe,
     ToStringPipe,
     SurroundWithBracketsPipe,
+    NaNumberPipe,
     ReportItemComponent,
     BankReportItemDialogComponent,
     ImageDialogComponent,

@@ -13,7 +13,6 @@ using Swashbuckle.AspNetCore.Filters;
 namespace ApospReport.API.Controllers
 {
 
-    [Authorize]
     [ApiController]
     [Route("api/reports")]
     public class ReportController : ControllerBase
@@ -25,6 +24,7 @@ namespace ApospReport.API.Controllers
             this.mediator = mediator;
         }
 
+        [Authorize]
         [HttpPost("account")]
         [SwaggerRequestExample(typeof(AccountReportDto), typeof(SaveAccountReportExample))]
         public async Task<IActionResult> SaveAccountReport([FromBody] AccountReportDto request)
@@ -33,6 +33,7 @@ namespace ApospReport.API.Controllers
             return Ok();
         }
 
+        [Authorize]
         [HttpDelete("account/{username}")]
         public async Task<IActionResult> RemoveAccountReport(string username)
         {
@@ -40,10 +41,12 @@ namespace ApospReport.API.Controllers
             return Ok();
         }
 
+        [Authorize]
         [HttpGet("account")]
         public async Task<IActionResult> GetAccountReports() =>
             Ok(await mediator.Send(new GetAccountReportQuery()));
 
+        [Authorize]
         [HttpGet("bank")]
         public async Task<IActionResult> GetBankReport()
         {
