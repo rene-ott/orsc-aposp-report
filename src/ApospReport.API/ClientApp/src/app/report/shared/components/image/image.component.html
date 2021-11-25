@@ -1,7 +1,15 @@
-<img
+<ng-template [ngIf]="base64EncodedString != null" [ngIfElse]="emptyImage">
+  <img
   (click)="openBankReportItemDialog()"
-  *ngIf="base64EncodedString != ''"
   width="64"
   height="44"
   src="{{ 'data:image/png;base64,' + base64EncodedString }}"
 />
+</ng-template>
+<ng-template #emptyImage>
+  <img
+  width="64"
+  height="44"
+  src="assets/no-image.png"
+/>
+ </ng-template>

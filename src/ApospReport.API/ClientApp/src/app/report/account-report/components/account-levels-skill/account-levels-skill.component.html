@@ -8,6 +8,6 @@
     skillLevel.nextLevelCompletionPercentage | naNumber: '1.2-2':null:'%'
   }}"
 >
-  <img src="/images/skills/{{ skillName }}.gif" />&nbsp;{{ skillName }}:
+  <img src="/images/skills/{{ skillName | lowercase }}.gif" />&nbsp;{{ skillName }}:
   {{ skillLevel.currentLevel }}/{{ skillLevel.level }}
 </div>
