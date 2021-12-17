@@ -19,4 +19,6 @@ export interface AccountReportSkill {
     hits: AccountReportSkillLevel;
     thieving: AccountReportSkillLevel;
     woodcut: AccountReportSkillLevel;
+
+    totalLevel: Number;
 }

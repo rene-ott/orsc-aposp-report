@@ -48,7 +48,8 @@ namespace ApospReport.Application.GetAccountReport
                     Smithing = MapSkill(account.Smithing),
                     Strength = MapSkill(account.Strength),
                     Thieving = MapSkill(account.Thieving),
-                    Woodcut = MapSkill(account.Woodcut)
+                    Woodcut = MapSkill(account.Woodcut),
+                    TotalLevel = account.GetTotalLevel()
                 }
             };
         }

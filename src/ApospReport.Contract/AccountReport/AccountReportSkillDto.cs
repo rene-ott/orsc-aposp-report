@@ -20,5 +20,7 @@
         public AccountReportSkillLevelDto Herblaw { get; set; }
         public AccountReportSkillLevelDto Agility { get; set; }
         public AccountReportSkillLevelDto Thieving { get; set; }
+
+        public int TotalLevel { get; set; }
     }
 }

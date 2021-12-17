@@ -42,11 +42,8 @@ namespace ApospReport.API
             app.UseAuthentication();
             app.UseAuthorization();
 
-            if (env.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ApospReport v1"));
-            }
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ApospReport v1"));
 
             app.ApplicationServices.InitializeDatabase(env);
 

@@ -2,7 +2,10 @@
   <app-account-levels-skill [skillLevel]="skill.attack" skillName="Attack">
   </app-account-levels-skill>
 
-  <app-account-levels-skill [skillLevel]="skill.fletching" skillName="Fletching">
+  <app-account-levels-skill
+    [skillLevel]="skill.fletching"
+    skillName="Fletching"
+  >
   </app-account-levels-skill>
 
   <app-account-levels-skill [skillLevel]="skill.defense" skillName="Defense">
@@ -14,7 +17,10 @@
   <app-account-levels-skill [skillLevel]="skill.strength" skillName="Strength">
   </app-account-levels-skill>
 
-  <app-account-levels-skill [skillLevel]="skill.firemaking" skillName="Firemaking">
+  <app-account-levels-skill
+    [skillLevel]="skill.firemaking"
+    skillName="Firemaking"
+  >
   </app-account-levels-skill>
 
   <app-account-levels-skill [skillLevel]="skill.hits" skillName="Hits">
@@ -52,4 +58,10 @@
 
   <app-account-levels-skill [skillLevel]="skill.thieving" skillName="Thieving">
   </app-account-levels-skill>
+
+  <div class="overall-level">
+    <img src="/images/skills/overall.gif" />&nbsp;Total:&nbsp;{{
+      skill.totalLevel
+    }}
+  </div>
 </div>

@@ -83,5 +83,15 @@ namespace ApospReport.Domain.Models
             UpdateSkill(Agility, account.Agility);
             UpdateSkill(Thieving, account.Thieving);
         }
+
+        public int GetTotalLevel()
+        {
+            return Attack.Level + Defense.Level + Strength.Level +
+                   Hits.Level + Ranged.Level + Prayer.Level +
+                   Magic.Level + Cooking.Level + Woodcut.Level +
+                   Fletching.Level + Fishing.Level + Firemaking.Level +
+                   Crafting.Level + Smithing.Level + Mining.Level +
+                   Herblaw.Level + Agility.Level + Thieving.Level;
+        }
     }
 }
