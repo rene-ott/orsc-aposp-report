@@ -14,8 +14,8 @@ export class AccountReportComponent implements OnInit {
     private accountReportService: AccountReportService) {
   }
 
-  displayedColumns: string[] = ['username', /* 'skills', 'inventory', */ 'bank', 'actions'];
-  dataSource = new MatTableDataSource<AccountReport>();;
+  displayedColumns: string[] = ['username', 'inventory', 'bank', 'actions'];
+  dataSource = new MatTableDataSource<AccountReport>();
 
   ngOnInit() {
     this.accountReportService.getAccountReports().subscribe(x => {

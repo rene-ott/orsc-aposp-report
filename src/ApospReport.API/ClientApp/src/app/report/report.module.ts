@@ -23,6 +23,7 @@ import { ImageDialogComponent } from './shared/components/image-dialog/image-dia
 import { ImageComponent } from './shared/components/image/image.component';
 import { AccountLevelsSkillComponent } from './account-report/components/account-levels-skill/account-levels-skill.component';
 import { NaNumberPipe } from '../shared/pipes/na-number.pipe';
+import { AccountInventoryTableComponent } from './account-report/components/account-inventory-table/account-inventory-table.component';
 
 @NgModule({
   imports: [
@@ -39,6 +40,7 @@ import { NaNumberPipe } from '../shared/pipes/na-number.pipe';
     BankReportComponent,
     AccountReportComponent,
     AccountBankItemTableComponent,
+    AccountInventoryTableComponent,
     ReportComponent,
     TimeDiffPipe,
     ToStringPipe,
