@@ -27,7 +27,9 @@
   <ng-container matColumnDef="inventory">
     <th mat-header-cell *matHeaderCellDef>Inventory</th>
     <td mat-cell *matCellDef="let element; index as i">
-      <app-account-inventory-table></app-account-inventory-table>
+      <app-account-inventory-table
+        [items]="dataSource.data[i].inventoryItems"
+      ></app-account-inventory-table>
     </td>
   </ng-container>
 

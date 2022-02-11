@@ -7,5 +7,6 @@ export interface AccountReport {
     bankViewTimestamp: string;
     reportTimestamp: string;
     bankItems: ReportItem[];
+    inventoryItems: ReportItem[];
     skill: AccountReportSkill;
 }

@@ -3,7 +3,7 @@
 }
 
 .report-content {
-  width: 65%;
+  width: 75%;
   margin-left: auto;
   margin-right: auto;
   margin-top: 5vh !important;
@@ -27,15 +27,21 @@
 }
 
 .mat-column-username {
-  flex: 0 0 30% !important;
-  width: 30% !important;
+  flex: 0 0 25% !important;
+  width: 25% !important;
 }
+
+.mat-column-inventory {
+  flex: 0 0 25% !important;
+  width: 25% !important;
+}
+
 .mat-column-bank {
-  flex: 0 0 60% !important;
-  width: 60% !important;
+  flex: 0 0 40% !important;
+  width: 40% !important;
 }
 
 .mat-column-actions {
-  flex: 0 0 10% !important;
-  width: 10% !important;
+  flex: 0 0 5% !important;
+  width: 5% !important;
 }

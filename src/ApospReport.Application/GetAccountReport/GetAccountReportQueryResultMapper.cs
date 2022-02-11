@@ -59,7 +59,12 @@ namespace ApospReport.Application.GetAccountReport
             return new()
             {
                 Position = accountItem.Position,
-                Count = accountItem.Count,
+
+                // This should be actually fixed on the bot side
+                Count = accountItem is InventoryItem inventoryItem && !inventoryItem.ItemDefinition.IsStackable
+                    ? 1
+                    : accountItem.Count,
+
                 Id = accountItem.ItemDefinition.Id,
                 IsStackable = accountItem.ItemDefinition.IsStackable,
                 Name = accountItem.ItemDefinition.Name

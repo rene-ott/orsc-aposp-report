@@ -1,3 +1,30 @@
-<p>
-  account-inventory-table works!
-</p>
+<table class="item-table item-table--margin account-inventory-table">
+  <tbody>
+    <tr *ngFor="let i of [].constructor(6); let rowIndex = index">
+      <td
+        *ngFor="let j of [].constructor(5); let columnIndex = index"
+        class="item-table__cell"
+      >
+        <ng-template
+          #selfie
+          [ngTemplateOutlet]="selfie"
+          let-currentItem="aVariable"
+          [ngTemplateOutletContext]="{
+            aVariable: items[rowIndex * 5 + columnIndex]
+          }"
+        >
+          <app-report-item
+            [item]="currentItem"
+            [text]="
+              currentItem?.isStackable
+                ? (currentItem?.count
+                  | number: '1.0':'en-US'
+                  | surroundWithBrackets)
+                : ''
+            "
+          ></app-report-item>
+        </ng-template>
+      </td>
+    </tr>
+  </tbody>
+</table>
