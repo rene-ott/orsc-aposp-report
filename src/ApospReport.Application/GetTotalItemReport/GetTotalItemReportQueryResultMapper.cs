@@ -7,68 +7,60 @@ namespace ApospReport.Application.GetTotalItemReport
 {
     internal interface IGetTotalItemReportQueryResultMapper
     {
-        TotalItemReportDto MapResult(IList<ItemDefinition> itemDefinitions);
+        ItemReportDto MapResult(IList<ItemDefinition> itemDefinitions);
     }
 
     internal class GetTotalItemReportQueryResultMapper : IGetTotalItemReportQueryResultMapper
     {
-        public TotalItemReportDto MapResult(IList<ItemDefinition> itemDefinitions)
+        public ItemReportDto MapResult(IList<ItemDefinition> itemDefinitions)
         {
-            var itemDefinitionGroups = GetAccountItemsGroupedByItemDefinition(itemDefinitions);
+            var itemReportItems = new List<ItemReportItemDto>();
 
-            var totalItemReportItems = new List<TotalItemReportItemDto>();
-            foreach (var itemDefinitionGroup in itemDefinitionGroups)
+            foreach (var itemDefinition in itemDefinitions)
             {
-                var items = itemDefinitionGroup.ToList();
+                var inventoryItemCount = itemDefinition.InventoryItems.Sum(x => x.Count);
+                var bankItemCount = itemDefinition.BankItems.Sum(x => x.Count);
 
-                var inventoryItems = FilterByItemType<InventoryItem>(itemDefinitionGroup);
-                var bankItems = FilterByItemType<BankItem>(itemDefinitionGroup);
-                var itemDefinition = GetItemDefinition(inventoryItems, bankItems);
-
-                var inventoryItemCount = inventoryItems.Sum(x => x.Count);
-                var bankItemCount = bankItems.Sum(x => x.Count);
-
-                var reportItem = new TotalItemReportItemDto
+                var reportItemDto = new ItemReportItemDto
                 {
-                    Id = itemDefinitionGroup.Key,
+                    Id = itemDefinition.Id,
                     IsStackable = itemDefinition.IsStackable,
                     Name = itemDefinition.Name,
-                    BankItemCount = bankItemCount,
-                    InventoryItemCount = inventoryItemCount,
-                    TotalItemCount = bankItemCount + inventoryItemCount
+                    BankCount = bankItemCount,
+                    InventoryCount = inventoryItemCount,
+                    TotalCount = bankItemCount + inventoryItemCount
                 };
 
-                // WIP
-                foreach (var item in items)
+                var accountsWithItems = itemDefinition
+                    .BankItems.Cast<AccountItem>()
+                    .Concat(itemDefinition.InventoryItems)
+                    .GroupBy(x => x.Account);
+
+                foreach (var accountWithItems in accountsWithItems)
                 {
-                    var bankReportUser = new TotalItemReportUserDto
+                    var accountItems = accountWithItems.ToList();
+                    if (accountItems.Count < 2)
                     {
-                        Username = item.Account.Username,
+
+                    }
+                    var accountBankItemCount = accountItems[0]?.Count ?? 0;
+                    var accountInventoryItemCount = accountItems[1]?.Count ?? 0;
+
+                    var useItems = new ItemReportAccountItemDto
+                    {
+                        Username = accountWithItems.Key.Username,
+                        BankCount = accountBankItemCount,
+                        InventoryCount = accountInventoryItemCount,
+                        TotalCount = accountBankItemCount + accountInventoryItemCount,
                     };
+                    reportItemDto.Accounts.Add(useItems);
                 }
             }
 
-            return new TotalItemReportDto();
-        }
-
-        private static ItemDefinition GetItemDefinition(IList<InventoryItem> inventoryItems, IList<BankItem> bankItems)
-        {
-            return inventoryItems.FirstOrDefault()?.ItemDefinition ??
-                   bankItems.FirstOrDefault()?.ItemDefinition;
-        }
-
-        private static IList<TAccountItem> FilterByItemType<TAccountItem>(IEnumerable<AccountItem> itemDefinitionGroup)
-            where TAccountItem : AccountItem
-        {
-            return itemDefinitionGroup.Where(x => x is TAccountItem).Cast<TAccountItem>().ToList();
-        }
-
-        private static IEnumerable<IGrouping<int, AccountItem>> GetAccountItemsGroupedByItemDefinition(IList<ItemDefinition> itemDefinitions)
-        {
-            return itemDefinitions
-                .SelectMany(x => x.BankItems.Cast<AccountItem>())
-                .Concat(itemDefinitions.SelectMany(x => x.InventoryItems.Cast<AccountItem>()))
-                .GroupBy(x => x.ItemDefinitionId);
+            return new ItemReportDto
+            {
+                Items = itemReportItems
+            };
         }
     }
 }

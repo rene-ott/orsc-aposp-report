@@ -52,6 +52,17 @@ namespace ApospReport.DataStore
                 .ToListAsync();
         }
 
+        public async Task<IList<ItemDefinition>> GetAllItemsWithAcounts()
+        {
+            return await dbContext.ItemDefinitions
+                .Include(x => x.BankItems)
+                    .ThenInclude(x => x.Account)
+                .Include(x => x.InventoryItems)
+                    .ThenInclude(x => x.Account)
+                .Where(x => x.BankItems.Any() || x.InventoryItems.Any())
+                .ToListAsync();
+        }
+
         public void Remove(Account account)
         {
             dbContext.Remove(account);

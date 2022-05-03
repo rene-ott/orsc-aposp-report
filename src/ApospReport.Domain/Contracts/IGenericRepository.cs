@@ -12,6 +12,7 @@ namespace ApospReport.Domain.Contracts
         Task UpsertAccount(Account account);
         void Remove(Account account);
         Task<IList<ItemDefinition>> GetBankItemsWithAccounts();
+        Task<IList<ItemDefinition>> GetAllItemsWithAcounts();
         Task Save();
     }
 }

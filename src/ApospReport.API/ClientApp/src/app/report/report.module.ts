@@ -15,6 +15,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { AccountReportService } from './account-report/services/account-report.service';
 import { BankReportService } from './bank-report/services/bank-report.service';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { BankReportItemDialogComponent } from './bank-report-item-dialog/bank-report-item-dialog.component';
 import { ToStringPipe } from '../shared/to-string.pipe';
 import { SurroundWithBracketsPipe } from '../shared/surround-with-brackets.pipe';
@@ -35,6 +36,7 @@ import { AccountInventoryTableComponent } from './account-report/components/acco
     ReportRoutingModule,
     MatDialogModule,
     MatTooltipModule,
+    MatCheckboxModule,
   ],
   declarations: [
     BankReportComponent,

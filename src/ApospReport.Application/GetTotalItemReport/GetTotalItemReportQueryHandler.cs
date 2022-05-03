@@ -6,7 +6,7 @@ using MediatR;
 
 namespace ApospReport.Application.GetTotalItemReport
 {
-    internal class GetTotalItemReportQueryHandler : IRequestHandler<GetTotalItemReportQuery, TotalItemReportDto>
+    internal class GetTotalItemReportQueryHandler : IRequestHandler<GetTotalItemReportQuery, ItemReportDto>
     {
         private readonly IGenericRepository genericRepository;
         private readonly IGetTotalItemReportQueryResultMapper resultMapper;
@@ -18,9 +18,9 @@ namespace ApospReport.Application.GetTotalItemReport
             this.resultMapper = resultMapper;
         }
 
-        public async Task<TotalItemReportDto> Handle(GetTotalItemReportQuery request, CancellationToken cancellationToken)
+        public async Task<ItemReportDto> Handle(GetTotalItemReportQuery request, CancellationToken cancellationToken)
         {
-            var items = await genericRepository.GetBankItemsWithAccounts();
+            var items = await genericRepository.GetAllItemsWithAcounts();
             var result = resultMapper.MapResult(items);
 
             return result;

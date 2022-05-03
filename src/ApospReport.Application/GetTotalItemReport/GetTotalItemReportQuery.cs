@@ -4,7 +4,7 @@ using MediatR;
 
 namespace ApospReport.Application.GetTotalItemReport
 {
-    public class GetTotalItemReportQuery : IRequest<TotalItemReportDto>
+    public class GetTotalItemReportQuery : IRequest<ItemReportDto>
     {
     }
 }

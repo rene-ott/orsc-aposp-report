@@ -2,6 +2,7 @@
 using ApospReport.API.Samples;
 using ApospReport.Application.GetAccountReport;
 using ApospReport.Application.GetBankReport;
+using ApospReport.Application.GetTotalItemReport;
 using ApospReport.Application.RemoveAccountReport;
 using ApospReport.Application.SaveAccountReport;
 using ApospReport.Contract.AccountReport;
@@ -52,5 +53,12 @@ namespace ApospReport.API.Controllers
         {
             return Ok(await mediator.Send(new GetTotalBankItemReportQuery()));
         }
+
+        [HttpGet("item")]
+        public async Task<IActionResult> GetItemReport()
+        {
+            return Ok(await mediator.Send(new GetTotalItemReportQuery()));
+        }
+
     }
 }
