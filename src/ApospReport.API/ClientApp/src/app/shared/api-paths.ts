@@ -1,6 +1,6 @@
 export enum ApiPaths {
     AccountReport = '/api/reports/account',
-    BankReport = '/api/reports/bank',
+    ItemReport = '/api/reports/item',
     ItemImages = '/api/resources/item-images',
     Authentication = '/api/authenticate'
 }

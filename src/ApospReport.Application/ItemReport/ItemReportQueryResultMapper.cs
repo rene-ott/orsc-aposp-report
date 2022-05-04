@@ -28,7 +28,7 @@ namespace ApospReport.Application.ItemReport
                     Name = itemDefinition.Name,
                     BankCount = bankItemCount,
                     InventoryCount = inventoryItemCount,
-                    TotalCount = bankItemCount + inventoryItemCount
+                    Count = bankItemCount + inventoryItemCount
                 };
 
                 var accountsWithItems = itemDefinition
@@ -48,7 +48,7 @@ namespace ApospReport.Application.ItemReport
                         Username = accountWithItems.Key.Username,
                         BankCount = accountBankItemCount,
                         InventoryCount = accountInventoryItemCount,
-                        TotalCount = accountBankItemCount + accountInventoryItemCount,
+                        Count = accountBankItemCount + accountInventoryItemCount,
                     };
                     reportItemDto.Accounts.Add(accountItemDto);
                 }

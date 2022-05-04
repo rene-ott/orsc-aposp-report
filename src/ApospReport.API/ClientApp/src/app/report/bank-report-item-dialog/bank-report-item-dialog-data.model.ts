@@ -1,5 +1,5 @@
-import { BankReportItem } from "../bank-report/models/bank-report-item.model";
+import { ItemReportItem } from "../bank-report/models/item-report-item.model";
 
 export interface BankReportItemDialogData {
-    items: BankReportItem[]
+    items: ItemReportItem[]
 }

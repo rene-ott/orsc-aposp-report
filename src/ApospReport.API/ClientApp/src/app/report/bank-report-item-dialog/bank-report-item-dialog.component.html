@@ -1,10 +1,7 @@
 <h1 mat-dialog-title>Item owners</h1>
 <div mat-dialog-content>
   <table
-    class="
-      item-table item-table--margin item-table--center
-      bank-report-item-dialog__table
-    "
+    class="item-table item-table--margin item-table--center bank-report-item-dialog__table"
     *ngFor="let item of data.items"
   >
     <thead>
@@ -13,7 +10,7 @@
       <th class="item-table__cell item-table__cell--wrap-content">Count</th>
     </thead>
     <tbody>
-      <tr *ngFor="let user of item.users; let first = first">
+      <tr *ngFor="let user of item.accounts; let first = first">
         <td class="item-table__cell item-table__cell--wrap-content">
           <app-report-item
             *ngIf="first"
@@ -25,7 +22,7 @@
           {{ user.username }}
         </td>
         <td class="item-table__cell item-table__cell--wrap-content">
-          {{ user.itemCount }}
+          {{ user.count }}
         </td>
       </tr>
       <tr>

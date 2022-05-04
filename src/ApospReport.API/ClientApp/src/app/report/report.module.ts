@@ -11,9 +11,9 @@ import { ReportComponent } from './report.component';
 import { ReportRoutingModule } from './report-routing.module';
 import { TimeDiffPipe } from '../shared/time-diff.pipe';
 import { ReportItemComponent } from './shared/components/report-item/report-item.component';
-import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { AccountReportService } from './account-report/services/account-report.service';
-import { BankReportService } from './bank-report/services/bank-report.service';
+import { ItemReportService } from './bank-report/services/item-report.service';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { BankReportItemDialogComponent } from './bank-report-item-dialog/bank-report-item-dialog.component';
@@ -55,7 +55,7 @@ import { AccountInventoryTableComponent } from './account-report/components/acco
     AccountLevelsComponent,
     AccountLevelsSkillComponent
   ],
-  providers: [AccountReportService, BankReportService],
+  providers: [AccountReportService, ItemReportService],
   exports: [ReportComponent, MatTabsModule] // This needs to be exported to AppModule, otherwise error with [active] 
 })
 export class ReportModule { }

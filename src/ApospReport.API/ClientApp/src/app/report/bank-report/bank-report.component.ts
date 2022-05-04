@@ -1,6 +1,6 @@
 import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
-import { BankReportItem } from './models/bank-report-item.model';
-import { BankReportService } from './services/bank-report.service';
+import { ItemReportItem } from './models/item-report-item.model';
+import { ItemReportService } from './services/item-report.service';
 import * as _ from 'lodash'
 import { ReportItemComponent } from '../shared/components/report-item/report-item.component';
 import {MatDialog} from '@angular/material/dialog';
@@ -16,13 +16,13 @@ export class BankReportComponent implements OnInit {
 
   @ViewChildren('reportItem') reportItemComponents!: QueryList<ReportItemComponent>;
 
-  selectedBankReportItems: BankReportItem[] = [];
+  selectedBankReportItems: ItemReportItem[] = [];
 
   rowSize = 10;
-  bankReportItems: (BankReportItem | null)[] = [];
+  bankReportItems: (ItemReportItem | null)[] = [];
   rowCount = 10
 
-  constructor(private bankReportService: BankReportService, public dialog: MatDialog)
+  constructor(private itemReportService: ItemReportService, public dialog: MatDialog)
   {}
 
   openBankReportItemDialog() {
@@ -35,7 +35,7 @@ export class BankReportComponent implements OnInit {
   }
 
   onReportItemSelected(evt: ReportItemSelectionChangedEvent) {
-    var bankReportItem = evt.item as BankReportItem;
+    var bankReportItem = evt.item as ItemReportItem;
 
     if (!evt.isSelected) {
       _.remove(this.selectedBankReportItems, x => x == bankReportItem);
@@ -45,7 +45,7 @@ export class BankReportComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.bankReportService.getBankReportItems().subscribe(x => {
+    this.itemReportService.getItemReport().subscribe(x => {
       this.bankReportItems = x.items;
       this.rowCount = this.getRowCount();
       _.times(this.getBankItemPlaceholderCount(), _ => this.appendPlaceholder());
