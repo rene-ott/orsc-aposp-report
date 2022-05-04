@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using ApospReport.Contract.Common;
 
-namespace ApospReport.Contract.TotalItemReport
+namespace ApospReport.Contract.ItemReport
 {
     public class ItemReportItemDto : ItemDefinitionDto
     {

@@ -5,21 +5,21 @@ using ApospReport.Contract.AccountReport;
 using ApospReport.Domain.Contracts;
 using MediatR;
 
-namespace ApospReport.Application.GetAccountReport
+namespace ApospReport.Application.AccountReport
 {
-    internal class GetAccountReportQueryHandler : IRequestHandler<GetAccountReportQuery, IList<AccountReportDto>>
+    internal class AccountReportQueryHandler : IRequestHandler<AccountReportQuery, IList<AccountReportDto>>
     {
         private readonly IGenericRepository genericRepository;
-        private readonly IGetAccountReportQueryResultMapper resultMapper;
+        private readonly IAccountReportQueryResultMapper resultMapper;
 
-        public GetAccountReportQueryHandler(IGenericRepository genericRepository,
-                                            IGetAccountReportQueryResultMapper resultMapper)
+        public AccountReportQueryHandler(IGenericRepository genericRepository,
+                                            IAccountReportQueryResultMapper resultMapper)
         {
             this.genericRepository = genericRepository;
             this.resultMapper = resultMapper;
         }
 
-        public async Task<IList<AccountReportDto>> Handle(GetAccountReportQuery request, CancellationToken cancellationToken)
+        public async Task<IList<AccountReportDto>> Handle(AccountReportQuery request, CancellationToken cancellationToken)
         {
             var accounts = await genericRepository.GetAccountsWithItems();
             var result = resultMapper.MapResult(accounts);

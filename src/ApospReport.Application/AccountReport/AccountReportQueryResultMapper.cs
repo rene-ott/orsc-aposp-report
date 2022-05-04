@@ -3,14 +3,14 @@ using System.Linq;
 using ApospReport.Contract.AccountReport;
 using ApospReport.Domain.Models;
 
-namespace ApospReport.Application.GetAccountReport
+namespace ApospReport.Application.AccountReport
 {
-    internal interface IGetAccountReportQueryResultMapper
+    internal interface IAccountReportQueryResultMapper
     {
         IList<AccountReportDto> MapResult(IList<Account> account);
     }
 
-    internal class GetAccountReportQueryResultMapper : IGetAccountReportQueryResultMapper
+    internal class AccountReportQueryResultMapper : IAccountReportQueryResultMapper
     {
         public IList<AccountReportDto> MapResult(IList<Account> account)
         {

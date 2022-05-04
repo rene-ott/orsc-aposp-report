@@ -1,4 +1,4 @@
-﻿namespace ApospReport.Contract.TotalItemReport
+﻿namespace ApospReport.Contract.ItemReport
 {
     public class ItemReportAccountItemDto
     {

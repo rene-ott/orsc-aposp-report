@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 using ApospReport.API.Samples;
-using ApospReport.Application.GetAccountReport;
+using ApospReport.Application.AccountReport;
 using ApospReport.Application.GetBankReport;
-using ApospReport.Application.GetTotalItemReport;
+using ApospReport.Application.ItemReport;
 using ApospReport.Application.RemoveAccountReport;
 using ApospReport.Application.SaveAccountReport;
 using ApospReport.Contract.AccountReport;
@@ -45,7 +45,7 @@ namespace ApospReport.API.Controllers
         [Authorize]
         [HttpGet("account")]
         public async Task<IActionResult> GetAccountReports() =>
-            Ok(await mediator.Send(new GetAccountReportQuery()));
+            Ok(await mediator.Send(new AccountReportQuery()));
 
         [Authorize]
         [HttpGet("bank")]
@@ -57,7 +57,7 @@ namespace ApospReport.API.Controllers
         [HttpGet("item")]
         public async Task<IActionResult> GetItemReport()
         {
-            return Ok(await mediator.Send(new GetTotalItemReportQuery()));
+            return Ok(await mediator.Send(new ItemReportQuery()));
         }
 
     }

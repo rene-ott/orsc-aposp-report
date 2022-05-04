@@ -1,16 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ApospReport.Contract.TotalItemReport;
+using ApospReport.Contract.ItemReport;
 using ApospReport.Domain.Models;
 
-namespace ApospReport.Application.GetTotalItemReport
+namespace ApospReport.Application.ItemReport
 {
-    internal interface IGetTotalItemReportQueryResultMapper
+    internal interface IItemReportQueryResultMapper
     {
         ItemReportDto MapResult(IList<ItemDefinition> itemDefinitions);
     }
 
-    internal class GetTotalItemReportQueryResultMapper : IGetTotalItemReportQueryResultMapper
+    internal class ItemReportQueryResultMapper : IItemReportQueryResultMapper
     {
         public ItemReportDto MapResult(IList<ItemDefinition> itemDefinitions)
         {
@@ -39,28 +39,32 @@ namespace ApospReport.Application.GetTotalItemReport
                 foreach (var accountWithItems in accountsWithItems)
                 {
                     var accountItems = accountWithItems.ToList();
-                    if (accountItems.Count < 2)
-                    {
 
-                    }
-                    var accountBankItemCount = accountItems[0]?.Count ?? 0;
-                    var accountInventoryItemCount = accountItems[1]?.Count ?? 0;
+                    var accountBankItemCount = GetAccountItem<BankItem>(accountItems)?.Count ?? 0;
+                    var accountInventoryItemCount = GetAccountItem<InventoryItem>(accountItems)?.Count ?? 0;
 
-                    var useItems = new ItemReportAccountItemDto
+                    var accountItemDto = new ItemReportAccountItemDto
                     {
                         Username = accountWithItems.Key.Username,
                         BankCount = accountBankItemCount,
                         InventoryCount = accountInventoryItemCount,
                         TotalCount = accountBankItemCount + accountInventoryItemCount,
                     };
-                    reportItemDto.Accounts.Add(useItems);
+                    reportItemDto.Accounts.Add(accountItemDto);
                 }
+
+                itemReportItems.Add(reportItemDto);
             }
 
             return new ItemReportDto
             {
                 Items = itemReportItems
             };
+        }
+
+        private static T GetAccountItem<T>(IEnumerable<AccountItem> accountItems) where T : AccountItem
+        {
+            return (T) accountItems.SingleOrDefault(x => x is T);
         }
     }
 }
