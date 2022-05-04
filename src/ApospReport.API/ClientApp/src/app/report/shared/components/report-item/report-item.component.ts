@@ -7,7 +7,7 @@ import { ReportItem } from './report-item.model';
   templateUrl: './report-item.component.html',
   styleUrls: ['./report-item.component.scss']
 })
-export class ReportItemComponent implements OnInit {
+export class ReportItemComponent<T extends ReportItem> implements OnInit {
 
   isSelected = false;
   hasContent: boolean = false;
@@ -17,7 +17,7 @@ export class ReportItemComponent implements OnInit {
   text: string = "";
 
   @Input()
-  item: ReportItem | null = null;
+  item: T | null = null;
 
   @Output()
   reportItemSelect: EventEmitter<ReportItemSelectionChangedEvent> = new EventEmitter();

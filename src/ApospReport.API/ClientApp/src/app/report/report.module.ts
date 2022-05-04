@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AccountBankItemTableComponent } from './account-report/components/account-bank-table/account-bank-table.component';
-import { BankReportComponent } from './bank-report/bank-report.component';
+import { ItemReportComponent } from './item-report/item-report.component';
 import { AccountReportComponent } from './account-report/account-report.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -13,10 +13,10 @@ import { TimeDiffPipe } from '../shared/time-diff.pipe';
 import { ReportItemComponent } from './shared/components/report-item/report-item.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { AccountReportService } from './account-report/services/account-report.service';
-import { ItemReportService } from './bank-report/services/item-report.service';
+import { ItemReportService } from './item-report/services/item-report.service';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { BankReportItemDialogComponent } from './bank-report-item-dialog/bank-report-item-dialog.component';
+import { MatRadioModule } from '@angular/material/radio';
+import { ItemReportItemDialogComponent } from './item-report-item-dialog/item-report-item-dialog.component';
 import { ToStringPipe } from '../shared/to-string.pipe';
 import { SurroundWithBracketsPipe } from '../shared/surround-with-brackets.pipe';
 import { AccountLevelsComponent } from './account-report/components/account-levels/account-levels.component';
@@ -36,10 +36,10 @@ import { AccountInventoryTableComponent } from './account-report/components/acco
     ReportRoutingModule,
     MatDialogModule,
     MatTooltipModule,
-    MatCheckboxModule,
+    MatRadioModule,
   ],
   declarations: [
-    BankReportComponent,
+    ItemReportComponent,
     AccountReportComponent,
     AccountBankItemTableComponent,
     AccountInventoryTableComponent,
@@ -49,7 +49,7 @@ import { AccountInventoryTableComponent } from './account-report/components/acco
     SurroundWithBracketsPipe,
     NaNumberPipe,
     ReportItemComponent,
-    BankReportItemDialogComponent,
+    ItemReportItemDialogComponent,
     ImageDialogComponent,
     ImageComponent,
     AccountLevelsComponent,

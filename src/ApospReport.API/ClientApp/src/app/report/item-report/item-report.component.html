@@ -1,9 +1,24 @@
 <div class="bank-report__container">
   <mat-card class="mat-elevation-z5 bank-report__content">
-    <section>
-      <mat-checkbox>Inventory</mat-checkbox>
-      <mat-checkbox>Bank</mat-checkbox>
-    </section>
+    <span>Show: </span>
+    <mat-radio-group>
+      <mat-radio-button
+        [value]="[itemReportVisibility.All]"
+        [checked]="true"
+        (change)="showCountRadioChanged($event)"
+        >All</mat-radio-button
+      >
+      <mat-radio-button
+        [value]="itemReportVisibility.Inventory"
+        (change)="showCountRadioChanged($event)"
+        >Inventory count</mat-radio-button
+      >
+      <mat-radio-button
+        [value]="itemReportVisibility.Bank"
+        (change)="showCountRadioChanged($event)"
+        >Bank count</mat-radio-button
+      >
+    </mat-radio-group>
     <hr />
     <table class="item-table item-table--margin item-table--center">
       <tbody>
@@ -21,9 +36,11 @@
               #reportItem
               [item]="bankItem"
               [text]="
-                bankItem?.isStackable
-                  ? (bankItem?.count | surroundWithBrackets)
-                  : (bankItem?.count | toString)
+                visibleCount == 'all'
+                  ? bankItem?.isStackable
+                    ? (bankItem?.count | surroundWithBrackets)
+                    : (bankItem?.count | toString)
+                  : '5'
               "
               (reportItemSelect)="onReportItemSelected($event)"
               [selectable]="!!bankItem"

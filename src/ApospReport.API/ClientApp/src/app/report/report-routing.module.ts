@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from '../shared/auth-guard';
 import { AccountReportComponent } from './account-report/account-report.component';
-import { BankReportComponent } from './bank-report/bank-report.component';
+import { ItemReportComponent } from './item-report/item-report.component';
 import { ReportComponent } from './report.component';
 
 const routes: Routes = [
@@ -10,7 +10,7 @@ const routes: Routes = [
     path: 'report', component: ReportComponent, canActivate: [AuthGuard], children: [
       { path: '', redirectTo: 'account', pathMatch: 'full' },
       { path: 'account', component: AccountReportComponent },
-      { path: 'bank', component: BankReportComponent }
+      { path: 'item', component: ItemReportComponent }
     ],
   }
 ];

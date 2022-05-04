@@ -4,17 +4,18 @@ import { ItemReportService } from './services/item-report.service';
 import * as _ from 'lodash'
 import { ReportItemComponent } from '../shared/components/report-item/report-item.component';
 import {MatDialog} from '@angular/material/dialog';
-import { BankReportItemDialogComponent } from '../bank-report-item-dialog/bank-report-item-dialog.component';
+import { ItemReportItemDialogComponent } from '../item-report-item-dialog/item-report-item-dialog.component';
 import { ReportItemSelectionChangedEvent } from '../shared/components/report-item/report-item-selection-changed-event.model';
+import { MatRadioChange } from '@angular/material/radio';
 
 @Component({
   selector: 'app-bank-report',
-  templateUrl: './bank-report.component.html',
-  styleUrls: ['./bank-report.component.scss']
+  templateUrl: './item-report.component.html',
+  styleUrls: ['./item-report.component.scss']
 })
-export class BankReportComponent implements OnInit {
+export class ItemReportComponent implements OnInit {
 
-  @ViewChildren('reportItem') reportItemComponents!: QueryList<ReportItemComponent>;
+  @ViewChildren('reportItem') reportItemComponents!: QueryList<ReportItemComponent<ItemReportItem>>;
 
   selectedBankReportItems: ItemReportItem[] = [];
 
@@ -22,11 +23,21 @@ export class BankReportComponent implements OnInit {
   bankReportItems: (ItemReportItem | null)[] = [];
   rowCount = 10
 
+  itemReportCountVisibility: ItemReportVisibility = ItemReportVisibility.All
+
   constructor(private itemReportService: ItemReportService, public dialog: MatDialog)
   {}
 
+  public get itemReportVisibility(): typeof ItemReportVisibility {
+    return ItemReportVisibility; 
+  }
+
+  showCountRadioChanged($event: MatRadioChange) {
+    this.itemReportCountVisibility = $event.value;
+  }
+  
   openBankReportItemDialog() {
-    this.dialog.open(BankReportItemDialogComponent, {
+    this.dialog.open(ItemReportItemDialogComponent, {
       height: '600px',
       width: '800px',
       data: {

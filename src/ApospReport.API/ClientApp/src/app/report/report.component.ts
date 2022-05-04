@@ -12,8 +12,8 @@ export class ReportComponent implements OnInit {
 
   constructor(private router: Router) {
     this.navLinks = [
-      { label: 'Account reports', link: './account', index: 0 },
-      { label: 'Total bank report', link: './bank', index: 1 },
+      { label: 'Account report', link: './account', index: 0 },
+      { label: 'Item report', link: './item', index: 1 },
     ];
   }
   ngOnInit(): void {
