@@ -1,4 +1,4 @@
-enum ItemReportVisibility {
+export enum ItemReportVisibility {
     All,
     Inventory,
     Bank

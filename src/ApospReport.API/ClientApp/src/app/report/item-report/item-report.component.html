@@ -34,13 +34,13 @@
           >
             <app-report-item
               #reportItem
+              [isOpaque]="
+                (bankItem | itemReportItemCount: currentItemReportVisibility) ==
+                ''
+              "
               [item]="bankItem"
               [text]="
-                visibleCount == 'all'
-                  ? bankItem?.isStackable
-                    ? (bankItem?.count | surroundWithBrackets)
-                    : (bankItem?.count | toString)
-                  : '5'
+                bankItem | itemReportItemCount: currentItemReportVisibility
               "
               (reportItemSelect)="onReportItemSelected($event)"
               [selectable]="!!bankItem"

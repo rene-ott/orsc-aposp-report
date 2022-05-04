@@ -59,6 +59,5 @@ namespace ApospReport.API.Controllers
         {
             return Ok(await mediator.Send(new ItemReportQuery()));
         }
-
     }
 }

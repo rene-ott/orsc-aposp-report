@@ -25,6 +25,9 @@ export class ReportItemComponent<T extends ReportItem> implements OnInit {
   @Input()
   selectable: boolean = false;
 
+  @Input()
+  isOpaque: boolean = false;
+
   selectItem() {
     if (!this.selectable || this.item == null) {
       return;

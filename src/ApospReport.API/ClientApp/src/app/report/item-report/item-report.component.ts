@@ -7,6 +7,7 @@ import {MatDialog} from '@angular/material/dialog';
 import { ItemReportItemDialogComponent } from '../item-report-item-dialog/item-report-item-dialog.component';
 import { ReportItemSelectionChangedEvent } from '../shared/components/report-item/report-item-selection-changed-event.model';
 import { MatRadioChange } from '@angular/material/radio';
+import { ItemReportVisibility } from '../shared/constants/item-report-count-visibility.enum';
 
 @Component({
   selector: 'app-bank-report',
@@ -23,7 +24,7 @@ export class ItemReportComponent implements OnInit {
   bankReportItems: (ItemReportItem | null)[] = [];
   rowCount = 10
 
-  itemReportCountVisibility: ItemReportVisibility = ItemReportVisibility.All
+  currentItemReportVisibility: ItemReportVisibility = ItemReportVisibility.All
 
   constructor(private itemReportService: ItemReportService, public dialog: MatDialog)
   {}
@@ -33,7 +34,7 @@ export class ItemReportComponent implements OnInit {
   }
 
   showCountRadioChanged($event: MatRadioChange) {
-    this.itemReportCountVisibility = $event.value;
+    this.currentItemReportVisibility = $event.value;
   }
   
   openBankReportItemDialog() {

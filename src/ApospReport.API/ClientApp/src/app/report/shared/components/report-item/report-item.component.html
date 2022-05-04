@@ -2,6 +2,7 @@
   *ngIf="hasContent"
   [class.report-item--selectable]="selectable"
   [class.report-item--selected]="isSelected"
+  [class.report-item--opaque]="isOpaque"
   (click)="selectItem()"
   matTooltip="{{ item?.name }}"
   matTooltipPosition="above"

@@ -3,4 +3,6 @@ import { ItemReportAccountItem } from "./item-report-account-item.model";
 
 export interface ItemReportItem extends ReportItem {
     accounts: ItemReportAccountItem[]
+    inventoryCount:number;
+    bankCount: number;
 }

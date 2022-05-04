@@ -25,6 +25,7 @@ import { ImageComponent } from './shared/components/image/image.component';
 import { AccountLevelsSkillComponent } from './account-report/components/account-levels-skill/account-levels-skill.component';
 import { NaNumberPipe } from '../shared/pipes/na-number.pipe';
 import { AccountInventoryTableComponent } from './account-report/components/account-inventory-table/account-inventory-table.component';
+import { ItemReportItemCountPipe } from './shared/pipes/item-report-item-count.pipe';
 
 @NgModule({
   imports: [
@@ -48,6 +49,7 @@ import { AccountInventoryTableComponent } from './account-report/components/acco
     ToStringPipe,
     SurroundWithBracketsPipe,
     NaNumberPipe,
+    ItemReportItemCountPipe,
     ReportItemComponent,
     ItemReportItemDialogComponent,
     ImageDialogComponent,
